@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="wfs20-nsg-${version}" verbose="0" configfailurepolicy="continue">
+  <parameter name="iut"  value=""/>
+  <parameter name="ics"  value=""/>
+
+  <listeners>
+    <listener class-name="org.opengis.cite.wfs20.nsg.TestRunListener" />
+    <listener class-name="org.opengis.cite.wfs20.nsg.SuiteFixtureListener" />
+    <listener class-name="org.opengis.cite.wfs20.nsg.TestFailureListener" />
+  </listeners>
+
+  <test name="Conformance Level 1">
+    <packages>
+      <package name="org.opengis.cite.wfs20.nsg.level1" />
+    </packages>
+    <classes>
+      <class name="org.opengis.cite.wfs20.nsg.SuitePreconditions" />
+    </classes>
+  </test>
+  <!-- Add test sets for other conformance classes/levels -->
+</suite>
