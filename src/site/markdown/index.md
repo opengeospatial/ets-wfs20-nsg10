@@ -1,5 +1,5 @@
 
-# Conformance Test Suite: NSG WFS Profile
+# Conformance Test Suite: NSG WFS 2.0 Profile
 
 ## Scope
 
