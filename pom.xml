@@ -39,9 +39,14 @@
   </issueManagement>
   <developers>
     <developer>
-      <name>Alpha Beta</name>
-      <url>https://github.com/</url>
-      <timezone>UTC</timezone>
+      <name>Dirk Stenger</name>
+      <email>stenger {AT} lat-lon {DOT} de</email>
+      <timezone>Europe/Berlin</timezone>
+    </developer>
+    <developer>
+      <name>Lyn Goltz</name>
+      <email>goltz {AT} lat-lon {DOT} de</email>
+      <timezone>Europe/Berlin</timezone>
     </developer>
   </developers>
 
@@ -51,6 +56,11 @@
   </properties>
 
   <dependencies>
+    <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>ets-wfs20</artifactId>
+      <version>1.26</version>
+    </dependency>
     <dependency>
       <groupId>org.opengis.cite.teamengine</groupId>
       <artifactId>teamengine-spi</artifactId>
