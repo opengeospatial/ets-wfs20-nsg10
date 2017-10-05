@@ -114,6 +114,7 @@
           </archive>
           <descriptors>
             <descriptor>${basedir}/src/assembly/deps.xml</descriptor>
+            <descriptor>${basedir}/src/assembly/ctl-scripts.xml</descriptor>
             <descriptor>${basedir}/src/assembly/aio.xml</descriptor>
           </descriptors>
         </configuration>
