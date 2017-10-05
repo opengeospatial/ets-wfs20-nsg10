@@ -5,17 +5,13 @@
   <parameter name="ics"  value=""/>
 
   <listeners>
-    <listener class-name="org.opengis.cite.wfs20.nsg.TestRunListener" />
-    <listener class-name="org.opengis.cite.wfs20.nsg.SuiteFixtureListener" />
-    <listener class-name="org.opengis.cite.wfs20.nsg.TestFailureListener" />
+    <listener class-name="org.opengis.cite.iso19142.TestRunListener" />
+    <listener class-name="org.opengis.cite.iso19142.SuiteFixtureListener" />
   </listeners>
 
-  <test name="Conformance Level 1">
-    <packages>
-      <package name="org.opengis.cite.wfs20.nsg.level1" />
-    </packages>
+  <test name="NSG Basic WFS Conformance Class">
     <classes>
-      <class name="org.opengis.cite.wfs20.nsg.SuitePreconditions" />
+      <class name="org.opengis.cite.wfs20.nsg.testsuite.getcapabilities.CapabilitiesServiceBindings" />
     </classes>
   </test>
   <!-- Add test sets for other conformance classes/levels -->
