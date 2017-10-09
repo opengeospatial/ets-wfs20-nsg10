@@ -57,9 +57,9 @@
 
   <dependencies>
     <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>ets-wfs20</artifactId>
-      <version>1.26</version>
+      <groupId>de.latlon</groupId>
+      <artifactId>ets-dgiwg-wfs</artifactId>
+      <version>0.3-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>org.opengis.cite.teamengine</groupId>
