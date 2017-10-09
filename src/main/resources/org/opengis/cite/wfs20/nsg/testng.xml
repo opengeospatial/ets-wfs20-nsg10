@@ -14,5 +14,12 @@
       <class name="org.opengis.cite.wfs20.nsg.testsuite.getcapabilities.CapabilitiesServiceBindings" />
     </classes>
   </test>
+
+  <test name="NSG WFS Profile">
+    <classes>
+      <class name="org.opengis.cite.wfs20.nsg.testsuite.getcapabilities.ServiceConstraints" />
+    </classes>
+  </test>
+
   <!-- Add test sets for other conformance classes/levels -->
 </suite>
