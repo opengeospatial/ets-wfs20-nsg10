@@ -19,6 +19,7 @@
     <classes>
       <class name="org.opengis.cite.wfs20.nsg.testsuite.getcapabilities.ServiceConstraints" />
       <class name="org.opengis.cite.wfs20.nsg.testsuite.getcapabilities.OperationConstraints" />
+      <class name="org.opengis.cite.wfs20.nsg.testsuite.getcapabilities.OperationParameter" />
     </classes>
   </test>
 

@@ -126,6 +126,11 @@
         </wadl:resources>
       </wadl:application>
     </ExtendedCapabilities>
+    <Parameter name="outputFormat">
+      <AllowedValues>
+        <Value>application/gml+xml; version=3.2</Value>
+      </AllowedValues>
+    </Parameter>
   </OperationsMetadata>
   <wfs:FeatureTypeList xmlns:tns="http://example.org/ns1">
     <wfs:FeatureType>
