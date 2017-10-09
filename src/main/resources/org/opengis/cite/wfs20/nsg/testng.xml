@@ -18,6 +18,7 @@
   <test name="NSG WFS Profile">
     <classes>
       <class name="org.opengis.cite.wfs20.nsg.testsuite.getcapabilities.ServiceConstraints" />
+      <class name="org.opengis.cite.wfs20.nsg.testsuite.getcapabilities.OperationConstraints" />
     </classes>
   </test>
 
