@@ -33,6 +33,7 @@
       </class>
       <class name="org.opengis.cite.wfs20.nsg.testsuite.getcapabilities.OperationParameter" />
       <class name="org.opengis.cite.iso19142.versioning.VersioningTests" />
+      <class name="org.opengis.cite.wfs20.nsg.testsuite.getfeature.FeatureEncoding" />
     </classes>
   </test>
 
