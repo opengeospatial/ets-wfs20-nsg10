@@ -2,12 +2,13 @@ package org.opengis.cite.wfs20.nsg.testsuite.getcapabilities;
 
 import static org.opengis.cite.iso19142.ProtocolBinding.GET;
 import static org.opengis.cite.iso19142.ProtocolBinding.POST;
+import static org.opengis.cite.iso19142.util.ServiceMetadataUtils.getOperationEndpoint;
+import static org.testng.Assert.assertNotEquals;
 import static org.testng.Assert.assertNotNull;
 
 import java.net.URI;
 
 import org.opengis.cite.iso19142.BaseFixture;
-import org.opengis.cite.iso19142.util.ServiceMetadataUtils;
 import org.testng.ITestContext;
 import org.testng.annotations.Test;
 import org.w3c.dom.Document;
@@ -23,148 +24,153 @@ public class CapabilitiesServiceBindings extends BaseFixture {
     @Test(description = "See NSG WFS 2.0 Profile: Requirement 7")
     public void supportsGetCapabilitiesGet( ITestContext testContext ) {
         this.wfsMetadata = (Document) testContext.getSuite().getAttribute( org.opengis.cite.iso19142.SuiteAttribute.TEST_SUBJECT.getName() );
-        URI getCapabilitiesUrl = ServiceMetadataUtils.getOperationEndpoint( wfsMetadata, "GetCapabilities", GET );
-        assertNotNull( getCapabilitiesUrl, "GET Binding for operation GetCapabilities must be supported." );
+        URI uri = getOperationEndpoint( wfsMetadata, "GetCapabilities", GET );
+        assertUri( uri, "GET Binding for operation GetCapabilities must be supported." );
     }
 
     @Test(description = "See NSG WFS 2.0 Profile: Requirement 7")
     public void supportsGetCapabilitiesPost( ITestContext testContext ) {
         this.wfsMetadata = (Document) testContext.getSuite().getAttribute( org.opengis.cite.iso19142.SuiteAttribute.TEST_SUBJECT.getName() );
-        URI getCapabilitiesUrl = ServiceMetadataUtils.getOperationEndpoint( wfsMetadata, "GetCapabilities", POST );
-        assertNotNull( getCapabilitiesUrl, "POST Binding for operation GetCapabilities must be supported." );
+        URI uri = getOperationEndpoint( wfsMetadata, "GetCapabilities", POST );
+        assertUri( uri, "POST Binding for operation GetCapabilities must be supported." );
     }
 
     @Test(description = "See NSG WFS 2.0 Profile: Requirement 7")
     public void supportsDescribeFeatureTypeGet( ITestContext testContext ) {
         this.wfsMetadata = (Document) testContext.getSuite().getAttribute( org.opengis.cite.iso19142.SuiteAttribute.TEST_SUBJECT.getName() );
-        URI getCapabilitiesUrl = ServiceMetadataUtils.getOperationEndpoint( wfsMetadata, "DescribeFeatureType", GET );
-        assertNotNull( getCapabilitiesUrl, "GET Binding for operation DescribeFeatureType must be supported." );
+        URI uri = getOperationEndpoint( wfsMetadata, "DescribeFeatureType", GET );
+        assertUri( uri, "GET Binding for operation DescribeFeatureType must be supported." );
     }
 
     @Test(description = "See NSG WFS 2.0 Profile: Requirement 7")
     public void supportsDescribeFeatureTypePost( ITestContext testContext ) {
         this.wfsMetadata = (Document) testContext.getSuite().getAttribute( org.opengis.cite.iso19142.SuiteAttribute.TEST_SUBJECT.getName() );
-        URI getCapabilitiesUrl = ServiceMetadataUtils.getOperationEndpoint( wfsMetadata, "DescribeFeatureType", POST );
-        assertNotNull( getCapabilitiesUrl, "POST Binding for operation DescribeFeatureType must be supported." );
+        URI uri = getOperationEndpoint( wfsMetadata, "DescribeFeatureType", POST );
+        assertUri( uri, "POST Binding for operation DescribeFeatureType must be supported." );
     }
 
     @Test(description = "See NSG WFS 2.0 Profile: Requirement 7")
     public void supportsGetPropertyValueTypeGet( ITestContext testContext ) {
         this.wfsMetadata = (Document) testContext.getSuite().getAttribute( org.opengis.cite.iso19142.SuiteAttribute.TEST_SUBJECT.getName() );
-        URI getCapabilitiesUrl = ServiceMetadataUtils.getOperationEndpoint( wfsMetadata, "GetPropertyValue", GET );
-        assertNotNull( getCapabilitiesUrl, "GET Binding for operation GetPropertyValue must be supported." );
+        URI uri = getOperationEndpoint( wfsMetadata, "GetPropertyValue", GET );
+        assertUri( uri, "GET Binding for operation GetPropertyValue must be supported." );
     }
 
     @Test(description = "See NSG WFS 2.0 Profile: Requirement 7")
     public void supportsGetPropertyValuePost( ITestContext testContext ) {
         this.wfsMetadata = (Document) testContext.getSuite().getAttribute( org.opengis.cite.iso19142.SuiteAttribute.TEST_SUBJECT.getName() );
-        URI getCapabilitiesUrl = ServiceMetadataUtils.getOperationEndpoint( wfsMetadata, "GetPropertyValue", POST );
-        assertNotNull( getCapabilitiesUrl, "POST Binding for operation GetPropertyValue must be supported." );
+        URI uri = getOperationEndpoint( wfsMetadata, "GetPropertyValue", POST );
+        assertUri( uri, "POST Binding for operation GetPropertyValue must be supported." );
     }
 
     @Test(description = "See NSG WFS 2.0 Profile: Requirement 7")
-    public void supportsGetFeatureValueTypeGet( ITestContext testContext ) {
+    public void supportsGetFeatureTypeGet( ITestContext testContext ) {
         this.wfsMetadata = (Document) testContext.getSuite().getAttribute( org.opengis.cite.iso19142.SuiteAttribute.TEST_SUBJECT.getName() );
-        URI getCapabilitiesUrl = ServiceMetadataUtils.getOperationEndpoint( wfsMetadata, "GetFeature", GET );
-        assertNotNull( getCapabilitiesUrl, "GET Binding for operation GetFeature must be supported." );
+        URI uri = getOperationEndpoint( wfsMetadata, "GetFeature", GET );
+        assertUri( uri, "GET Binding for operation GetFeature must be supported." );
     }
 
     @Test(description = "See NSG WFS 2.0 Profile: Requirement 7")
-    public void supportsGetFeatureValuePost( ITestContext testContext ) {
+    public void supportsGetFeaturePost( ITestContext testContext ) {
         this.wfsMetadata = (Document) testContext.getSuite().getAttribute( org.opengis.cite.iso19142.SuiteAttribute.TEST_SUBJECT.getName() );
-        URI getCapabilitiesUrl = ServiceMetadataUtils.getOperationEndpoint( wfsMetadata, "GetFeature", POST );
-        assertNotNull( getCapabilitiesUrl, "POST Binding for operation GetFeature must be supported." );
+        URI uri = getOperationEndpoint( wfsMetadata, "GetFeature", POST );
+        assertUri( uri, "POST Binding for operation GetFeature must be supported." );
     }
 
     @Test(description = "See NSG WFS 2.0 Profile: Requirement 7")
     public void supportsPageResultsGet( ITestContext testContext ) {
         this.wfsMetadata = (Document) testContext.getSuite().getAttribute( org.opengis.cite.iso19142.SuiteAttribute.TEST_SUBJECT.getName() );
-        URI getCapabilitiesUrl = ServiceMetadataUtils.getOperationEndpoint( wfsMetadata, "PageResults", GET );
-        assertNotNull( getCapabilitiesUrl, "GET Binding for operation PageResults must be supported." );
+        URI uri = getOperationEndpoint( wfsMetadata, "PageResults", GET );
+        assertUri( uri, "GET Binding for operation PageResults must be supported." );
     }
 
     @Test(description = "See NSG WFS 2.0 Profile: Requirement 7")
     public void supportsPageResultsPost( ITestContext testContext ) {
         this.wfsMetadata = (Document) testContext.getSuite().getAttribute( org.opengis.cite.iso19142.SuiteAttribute.TEST_SUBJECT.getName() );
-        URI getCapabilitiesUrl = ServiceMetadataUtils.getOperationEndpoint( wfsMetadata, "PageResults", POST );
-        assertNotNull( getCapabilitiesUrl, "POST Binding for operation PageResults must be supported." );
+        URI uri = getOperationEndpoint( wfsMetadata, "PageResults", POST );
+        assertUri( uri, "POST Binding for operation PageResults must be supported." );
     }
 
     @Test(description = "See NSG WFS 2.0 Profile: Requirement 7")
     public void supportsGetFeatureWithLockGet( ITestContext testContext ) {
         this.wfsMetadata = (Document) testContext.getSuite().getAttribute( org.opengis.cite.iso19142.SuiteAttribute.TEST_SUBJECT.getName() );
-        URI getCapabilitiesUrl = ServiceMetadataUtils.getOperationEndpoint( wfsMetadata, "GetFeatureWithLock", GET );
-        assertNotNull( getCapabilitiesUrl, "GET Binding for operation GetFeatureWithLock must be supported." );
+        URI uri = getOperationEndpoint( wfsMetadata, "GetFeatureWithLock", GET );
+        assertUri( uri, "GET Binding for operation GetFeatureWithLock must be supported." );
     }
 
     @Test(description = "See NSG WFS 2.0 Profile: Requirement 7")
     public void supportsGetFeatureWithLockPost( ITestContext testContext ) {
         this.wfsMetadata = (Document) testContext.getSuite().getAttribute( org.opengis.cite.iso19142.SuiteAttribute.TEST_SUBJECT.getName() );
-        URI getCapabilitiesUrl = ServiceMetadataUtils.getOperationEndpoint( wfsMetadata, "GetFeatureWithLock", POST );
-        assertNotNull( getCapabilitiesUrl, "POST Binding for operation GetFeatureWithLock must be supported." );
+        URI uri = getOperationEndpoint( wfsMetadata, "GetFeatureWithLock", POST );
+        assertUri( uri, "POST Binding for operation GetFeatureWithLock must be supported." );
     }
 
     @Test(description = "See NSG WFS 2.0 Profile: Requirement 7")
     public void supportsLockFeatureGet( ITestContext testContext ) {
         this.wfsMetadata = (Document) testContext.getSuite().getAttribute( org.opengis.cite.iso19142.SuiteAttribute.TEST_SUBJECT.getName() );
-        URI getCapabilitiesUrl = ServiceMetadataUtils.getOperationEndpoint( wfsMetadata, "LockFeature", GET );
-        assertNotNull( getCapabilitiesUrl, "GET Binding for operation LockFeature must be supported." );
+        URI uri = getOperationEndpoint( wfsMetadata, "LockFeature", GET );
+        assertUri( uri, "GET Binding for operation LockFeature must be supported." );
     }
 
     @Test(description = "See NSG WFS 2.0 Profile: Requirement 7")
     public void supportsLockFeaturePost( ITestContext testContext ) {
         this.wfsMetadata = (Document) testContext.getSuite().getAttribute( org.opengis.cite.iso19142.SuiteAttribute.TEST_SUBJECT.getName() );
-        URI getCapabilitiesUrl = ServiceMetadataUtils.getOperationEndpoint( wfsMetadata, "LockFeature", POST );
-        assertNotNull( getCapabilitiesUrl, "POST Binding for operation LockFeature must be supported." );
+        URI uri = getOperationEndpoint( wfsMetadata, "LockFeature", POST );
+        assertUri( uri, "POST Binding for operation LockFeature must be supported." );
     }
 
     @Test(description = "See NSG WFS 2.0 Profile: Requirement 7")
     public void supportsTransactionPost( ITestContext testContext ) {
         this.wfsMetadata = (Document) testContext.getSuite().getAttribute( org.opengis.cite.iso19142.SuiteAttribute.TEST_SUBJECT.getName() );
-        URI getCapabilitiesUrl = ServiceMetadataUtils.getOperationEndpoint( wfsMetadata, "Transaction", POST );
-        assertNotNull( getCapabilitiesUrl, "POST Binding for operation Transaction must be supported." );
+        URI uri = getOperationEndpoint( wfsMetadata, "Transaction", POST );
+        assertUri( uri, "POST Binding for operation Transaction must be supported." );
     }
 
     @Test(description = "See NSG WFS 2.0 Profile: Requirement 7")
     public void supportsCreateStoredQueryPost( ITestContext testContext ) {
         this.wfsMetadata = (Document) testContext.getSuite().getAttribute( org.opengis.cite.iso19142.SuiteAttribute.TEST_SUBJECT.getName() );
-        URI getCapabilitiesUrl = ServiceMetadataUtils.getOperationEndpoint( wfsMetadata, "CreateStoredQuery", POST );
-        assertNotNull( getCapabilitiesUrl, "POST Binding for operation CreateStoredQuery must be supported." );
+        URI uri = getOperationEndpoint( wfsMetadata, "CreateStoredQuery", POST );
+        assertUri( uri, "POST Binding for operation CreateStoredQuery must be supported." );
     }
 
     @Test(description = "See NSG WFS 2.0 Profile: Requirement 7")
     public void supportsDropStoredQueryGet( ITestContext testContext ) {
         this.wfsMetadata = (Document) testContext.getSuite().getAttribute( org.opengis.cite.iso19142.SuiteAttribute.TEST_SUBJECT.getName() );
-        URI getCapabilitiesUrl = ServiceMetadataUtils.getOperationEndpoint( wfsMetadata, "DropStoredQuery", GET );
-        assertNotNull( getCapabilitiesUrl, "GET Binding for operation DropStoredQuery must be supported." );
+        URI uri = getOperationEndpoint( wfsMetadata, "DropStoredQuery", GET );
+        assertUri( uri, "GET Binding for operation DropStoredQuery must be supported." );
     }
 
     @Test(description = "See NSG WFS 2.0 Profile: Requirement 7")
-    public void supportsListStoredQueryGet( ITestContext testContext ) {
+    public void supportsListStoredQueriesGet( ITestContext testContext ) {
         this.wfsMetadata = (Document) testContext.getSuite().getAttribute( org.opengis.cite.iso19142.SuiteAttribute.TEST_SUBJECT.getName() );
-        URI getCapabilitiesUrl = ServiceMetadataUtils.getOperationEndpoint( wfsMetadata, "ListStoredQuery", GET );
-        assertNotNull( getCapabilitiesUrl, "GET Binding for operation ListStoredQuery must be supported." );
+        URI uri = getOperationEndpoint( wfsMetadata, "ListStoredQueries", GET );
+        assertUri( uri, "GET Binding for operation ListStoredQueries must be supported." );
     }
 
     @Test(description = "See NSG WFS 2.0 Profile: Requirement 7")
-    public void supportsListStoredQueryPost( ITestContext testContext ) {
+    public void supportsListStoredQueriesPost( ITestContext testContext ) {
         this.wfsMetadata = (Document) testContext.getSuite().getAttribute( org.opengis.cite.iso19142.SuiteAttribute.TEST_SUBJECT.getName() );
-        URI getCapabilitiesUrl = ServiceMetadataUtils.getOperationEndpoint( wfsMetadata, "ListStoredQuery", POST );
-        assertNotNull( getCapabilitiesUrl, "POST Binding for operation ListStoredQuery must be supported." );
+        URI uri = getOperationEndpoint( wfsMetadata, "ListStoredQueries", POST );
+        assertUri( uri, "POST Binding for operation ListStoredQueries must be supported." );
     }
 
     @Test(description = "See NSG WFS 2.0 Profile: Requirement 7")
-    public void supportsDescribeStoredQueryGet( ITestContext testContext ) {
+    public void supportsDescribeStoredQueriesGet( ITestContext testContext ) {
         this.wfsMetadata = (Document) testContext.getSuite().getAttribute( org.opengis.cite.iso19142.SuiteAttribute.TEST_SUBJECT.getName() );
-        URI getCapabilitiesUrl = ServiceMetadataUtils.getOperationEndpoint( wfsMetadata, "DescribeStoredQuery", GET );
-        assertNotNull( getCapabilitiesUrl, "GET Binding for operation DescribeStoredQuery must be supported." );
+        URI uri = getOperationEndpoint( wfsMetadata, "DescribeStoredQueries", GET );
+        assertUri( uri, "GET Binding for operation DescribeStoredQueries must be supported." );
     }
 
     @Test(description = "See NSG WFS 2.0 Profile: Requirement 7")
-    public void supportsDescribeStoredQueryPost( ITestContext testContext ) {
+    public void supportsDescribeStoredQueriesPost( ITestContext testContext ) {
         this.wfsMetadata = (Document) testContext.getSuite().getAttribute( org.opengis.cite.iso19142.SuiteAttribute.TEST_SUBJECT.getName() );
-        URI getCapabilitiesUrl = ServiceMetadataUtils.getOperationEndpoint( wfsMetadata, "DescribeStoredQuery", POST );
-        assertNotNull( getCapabilitiesUrl, "POST Binding for operation DescribeStoredQuery must be supported." );
+        URI uri = getOperationEndpoint( wfsMetadata, "DescribeStoredQueries", POST );
+        assertUri( uri, "POST Binding for operation DescribeStoredQueries must be supported." );
+    }
+
+    private void assertUri( URI uri, String message ) {
+        assertNotNull( uri, message );
+        assertNotEquals( URI.create( "" ), uri, message );
     }
 
 }
