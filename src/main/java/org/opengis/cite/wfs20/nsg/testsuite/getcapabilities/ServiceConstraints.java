@@ -19,7 +19,7 @@ import org.w3c.dom.Document;
 public class ServiceConstraints extends BaseFixture {
 
     @Test(description = "See NSG WFS 2.0 Profile: Requirement 26")
-    public void ImplementsTransactionalWFS( ITestContext testContext ) {
+    public void serviceConstraintImplementsTransactionalWFS( ITestContext testContext ) {
         this.wfsMetadata = (Document) testContext.getSuite().getAttribute( TEST_SUBJECT.getName() );
         String constraintValueTransactionalWFS = getConstraintValue( this.wfsMetadata, "ImplementsTransactionalWFS" );
         String constraintValueLockingWFS = getConstraintValue( this.wfsMetadata, "ImplementsLockingWFS" );
@@ -31,56 +31,56 @@ public class ServiceConstraints extends BaseFixture {
     }
 
     @Test(description = "See NSG WFS 2.0 Profile: Requirement 26")
-    public void KVPEncoding( ITestContext testContext ) {
+    public void serviceConstraintKVPEncoding( ITestContext testContext ) {
         this.wfsMetadata = (Document) testContext.getSuite().getAttribute( TEST_SUBJECT.getName() );
         boolean isImplemented = implementsConformanceClass( this.wfsMetadata, "KVPEncoding" );
         assertTrue( isImplemented, "Constraint KVPEncoding must be implemented." );
     }
 
     @Test(description = "See NSG WFS 2.0 Profile: Requirement 26")
-    public void XMLEncoding( ITestContext testContext ) {
+    public void serviceConstraintXMLEncoding( ITestContext testContext ) {
         this.wfsMetadata = (Document) testContext.getSuite().getAttribute( TEST_SUBJECT.getName() );
         boolean isImplemented = implementsConformanceClass( this.wfsMetadata, "XMLEncoding" );
         assertTrue( isImplemented, "Constraint XMLEncoding must be implemented." );
     }
 
     @Test(description = "See NSG WFS 2.0 Profile: Requirement 26")
-    public void ImplementsResultPaging( ITestContext testContext ) {
+    public void serviceConstraintImplementsResultPaging( ITestContext testContext ) {
         this.wfsMetadata = (Document) testContext.getSuite().getAttribute( TEST_SUBJECT.getName() );
         boolean isImplemented = implementsConformanceClass( this.wfsMetadata, "ImplementsResultPaging" );
         assertTrue( isImplemented, "Constraint ImplementsResultPaging must be implemented." );
     }
 
     @Test(description = "See NSG WFS 2.0 Profile: Requirement 26")
-    public void ImplementsStandardJoins( ITestContext testContext ) {
+    public void serviceConstraintImplementsStandardJoins( ITestContext testContext ) {
         this.wfsMetadata = (Document) testContext.getSuite().getAttribute( TEST_SUBJECT.getName() );
         boolean isImplemented = implementsConformanceClass( this.wfsMetadata, "ImplementsStandardJoins" );
         assertTrue( isImplemented, "Constraint ImplementsStandardJoins must be implemented." );
     }
 
     @Test(description = "See NSG WFS 2.0 Profile: Requirement 26")
-    public void ImplementsSpatialJoins( ITestContext testContext ) {
+    public void serviceConstraintImplementsSpatialJoins( ITestContext testContext ) {
         this.wfsMetadata = (Document) testContext.getSuite().getAttribute( TEST_SUBJECT.getName() );
         boolean isImplemented = implementsConformanceClass( this.wfsMetadata, "ImplementsSpatialJoins" );
         assertTrue( isImplemented, "Constraint ImplementsSpatialJoins must be implemented." );
     }
 
     @Test(description = "See NSG WFS 2.0 Profile: Requirement 26")
-    public void ImplementsTemporalJoins( ITestContext testContext ) {
+    public void serviceConstraintImplementsTemporalJoins( ITestContext testContext ) {
         this.wfsMetadata = (Document) testContext.getSuite().getAttribute( TEST_SUBJECT.getName() );
         boolean isImplemented = implementsConformanceClass( this.wfsMetadata, "ImplementsTemporalJoins" );
         assertTrue( isImplemented, "Constraint ImplementsTemporalJoins must be implemented." );
     }
 
     @Test(description = "See NSG WFS 2.0 Profile: Requirement 26")
-    public void ImplementsFeatureVersioning( ITestContext testContext ) {
+    public void serviceConstraintImplementsFeatureVersioning( ITestContext testContext ) {
         this.wfsMetadata = (Document) testContext.getSuite().getAttribute( TEST_SUBJECT.getName() );
         boolean isImplemented = implementsConformanceClass( this.wfsMetadata, "ImplementsFeatureVersioning" );
         assertTrue( isImplemented, "Constraint ImplementsFeatureVersioning must be implemented." );
     }
 
     @Test(description = "See NSG WFS 2.0 Profile: Requirement 26")
-    public void ImplementsEnhancedPaging( ITestContext testContext ) {
+    public void serviceConstraintImplementsEnhancedPaging( ITestContext testContext ) {
         this.wfsMetadata = (Document) testContext.getSuite().getAttribute( TEST_SUBJECT.getName() );
         String constraintValueTransactionalWFS = getConstraintValue( this.wfsMetadata, "ImplementsEnhancedPaging" );
         assertTrueOrFalse( constraintValueTransactionalWFS, "ImplementsEnhancedPaging" );

@@ -30,7 +30,6 @@ public class OperationParameter extends BaseFixture {
                             throws XPathExpressionException {
         this.wfsMetadata = (Document) testContext.getSuite().getAttribute( TEST_SUBJECT.getName() );
         List<String> outputFormats = parseOutputFormats();
-        System.out.println( outputFormats );
         assertTrue( outputFormats.contains( "application/gml+xml; version=3.2" ) );
     }
 

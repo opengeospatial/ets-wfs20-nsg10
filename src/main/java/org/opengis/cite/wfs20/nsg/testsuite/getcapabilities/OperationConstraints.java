@@ -18,35 +18,35 @@ import org.w3c.dom.Document;
 public class OperationConstraints extends BaseFixture {
 
     @Test(description = "See NSG WFS 2.0 Profile: Requirement 28")
-    public void CountDefault( ITestContext testContext ) {
+    public void operationConstraintCountDefault( ITestContext testContext ) {
         this.wfsMetadata = (Document) testContext.getSuite().getAttribute( TEST_SUBJECT.getName() );
         boolean isDefined = implementsConformanceClass( this.wfsMetadata, "CountDefault" );
         assertTrue( isDefined, "Constraint CountDefault must be populated." );
     }
 
     @Test(description = "See NSG WFS 2.0 Profile: Requirement 28")
-    public void ResolveTimeoutDefault( ITestContext testContext ) {
+    public void operationConstraintResolveTimeoutDefault( ITestContext testContext ) {
         this.wfsMetadata = (Document) testContext.getSuite().getAttribute( TEST_SUBJECT.getName() );
         boolean isDefined = implementsConformanceClass( this.wfsMetadata, "ResolveTimeoutDefault" );
         assertTrue( isDefined, "Constraint ResolveTimeoutDefault must be populated." );
     }
 
     @Test(description = "See NSG WFS 2.0 Profile: Requirement 28")
-    public void ResolveLocalScope( ITestContext testContext ) {
+    public void operationConstraintResolveLocalScope( ITestContext testContext ) {
         this.wfsMetadata = (Document) testContext.getSuite().getAttribute( TEST_SUBJECT.getName() );
         boolean isDefined = implementsConformanceClass( this.wfsMetadata, "ResolveLocalScope" );
         assertTrue( isDefined, "Constraint ResolveLocalScope must be populated." );
     }
 
     @Test(description = "See NSG WFS 2.0 Profile: Requirement 28")
-    public void ResolveRemoteScope( ITestContext testContext ) {
+    public void operationConstraintResolveRemoteScope( ITestContext testContext ) {
         this.wfsMetadata = (Document) testContext.getSuite().getAttribute( TEST_SUBJECT.getName() );
         boolean isDefined = implementsConformanceClass( this.wfsMetadata, "ResolveRemoteScope" );
         assertTrue( isDefined, "Constraint ResolveRemoteScope must be populated." );
     }
 
     @Test(description = "See NSG WFS 2.0 Profile: Requirement 28")
-    public void Authentication( ITestContext testContext ) {
+    public void operationConstraintAuthentication( ITestContext testContext ) {
         this.wfsMetadata = (Document) testContext.getSuite().getAttribute( TEST_SUBJECT.getName() );
         boolean isDefined = implementsConformanceClass( this.wfsMetadata, "Authentication" );
         assertTrue( isDefined, "Constraint Authentication must be populated." );
