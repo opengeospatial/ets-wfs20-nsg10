@@ -3,18 +3,22 @@ package org.opengis.cite.wfs20.nsg.testsuite.getpropertyvalue;
 import static de.latlon.ets.core.assertion.ETSAssert.assertSchemaValid;
 import static org.opengis.cite.iso19142.ErrorMessageKeys.UNEXPECTED_STATUS;
 import static org.opengis.cite.iso19142.ProtocolBinding.POST;
+import static org.opengis.cite.iso19142.SuiteAttribute.TEST_SUBJECT;
 import static org.opengis.cite.wfs20.nsg.testsuite.NSGWFSConstants.GML_OUTPUTFORMAT;
+import static org.opengis.cite.wfs20.nsg.utils.NsgWfsAssertion.assertOutputFormat;
 import static org.opengis.cite.wfs20.nsg.utils.RequestUtils.setOutputFormatAttribute;
 import static org.testng.Assert.assertEquals;
 
 import javax.xml.namespace.QName;
 import javax.xml.validation.Schema;
+import javax.xml.xpath.XPathExpressionException;
 
 import org.opengis.cite.iso19142.ErrorMessage;
 import org.opengis.cite.wfs20.nsg.utils.SchemaUtils;
 import org.testng.ITestContext;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+import org.w3c.dom.Document;
 
 import com.sun.jersey.api.client.ClientResponse;
 
@@ -32,10 +36,14 @@ public class GetPropertyValueOutputFormat extends PropertyValueFixture {
         this.wfsSchema = SchemaUtils.createWFSSchema();
     }
 
-    /**
-     * Precondition R16 is still missing
-     */
-    @Test(description = "See NSG WFS 2.0 Profile: Requirement 8", dataProvider = "feature-types")
+    @Test(description = "See NSG WFS 2.0 Profile: Requirement 16 + 29")
+    public void getPropertyValueOperationParameterOutputFormat( ITestContext testContext )
+                            throws XPathExpressionException {
+        this.wfsMetadata = (Document) testContext.getSuite().getAttribute( TEST_SUBJECT.getName() );
+        assertOutputFormat( this.wfsMetadata, "GetPropertyValue" );
+    }
+
+    @Test(description = "See NSG WFS 2.0 Profile: Requirement 8", dataProvider = "feature-types", dependsOnMethods = "getPropertyValueOperationParameterOutputFormat")
     public void getPropertyValueOutputFormat( QName featureType ) {
         setOutputFormatAttribute( this.reqEntity, GML_OUTPUTFORMAT );
         setValueReference( reqEntity, "@gml:id" );
