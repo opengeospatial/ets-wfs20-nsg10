@@ -78,6 +78,7 @@
           <include name="serviceConstraintImplementsEnhancedPaging" />
         </methods>
       </class>
+      <class name="org.opengis.cite.wfs20.nsg.testsuite.pageresults.PageResults" />
     </classes>
   </test>
 

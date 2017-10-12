@@ -35,7 +35,8 @@ public class PageResultsOutputFormat extends PageResultsFixture {
      */
     @Test(description = "See NSG WFS 2.0 Profile: Requirement 8", dataProvider = "feature-types", dependsOnMethods = "checkIfEnhancedPagingIsSupported")
     public void pageResultsOutputFormat( QName featureType ) {
-        initResultSetRequest( featureType );
+        String resultSetId = submitGetFeatureIndexRequestAndParseResultSetId( featureType );
+        initResultSetRequest( resultSetId );
 
         ClientResponse rsp = wfsClient.submitRequest( reqEntity, POST );
         assertEquals( rsp.getStatus(), ClientResponse.Status.OK.getStatusCode(), ErrorMessage.get( UNEXPECTED_STATUS ) );
