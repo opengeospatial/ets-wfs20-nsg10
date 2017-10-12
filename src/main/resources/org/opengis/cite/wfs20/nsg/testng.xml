@@ -37,6 +37,7 @@
       <class name="org.opengis.cite.wfs20.nsg.testsuite.getfeature.GetFeatureOutputFormat" />
       <class name="org.opengis.cite.wfs20.nsg.testsuite.getfeaturewithlock.GetFeatureWithLockOutputFormat" />
       <class name="org.opengis.cite.wfs20.nsg.testsuite.getpropertyvalue.GetPropertyValueOutputFormat" />
+      <class name="org.opengis.cite.wfs20.nsg.testsuite.pageresults.PageResultsOutputFormat" />
     </classes>
   </test>
 
