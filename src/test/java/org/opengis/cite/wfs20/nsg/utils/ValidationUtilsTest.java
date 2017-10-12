@@ -1,7 +1,7 @@
 package org.opengis.cite.wfs20.nsg.utils;
 
 import static java.util.UUID.randomUUID;
-import static org.opengis.cite.wfs20.nsg.utils.ValidationUtils.assertUuidOrGuideId;
+import static org.opengis.cite.wfs20.nsg.utils.NsgWfsAssertion.assertUuidOrGuideId;
 
 import org.junit.Test;
 

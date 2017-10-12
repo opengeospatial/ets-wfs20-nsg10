@@ -3,12 +3,14 @@ package org.opengis.cite.wfs20.nsg.testsuite.getcapabilities;
 import static org.opengis.cite.iso19142.ProtocolBinding.GET;
 import static org.opengis.cite.iso19142.ProtocolBinding.POST;
 import static org.opengis.cite.iso19142.util.ServiceMetadataUtils.getOperationEndpoint;
+import static org.opengis.cite.wfs20.nsg.utils.NsgWfsAssertion.assertUri;
 import static org.testng.Assert.assertNotEquals;
 import static org.testng.Assert.assertNotNull;
 
 import java.net.URI;
 
 import org.opengis.cite.iso19142.BaseFixture;
+import org.opengis.cite.wfs20.nsg.utils.NsgWfsAssertion;
 import org.testng.ITestContext;
 import org.testng.annotations.Test;
 import org.w3c.dom.Document;
@@ -166,11 +168,6 @@ public class CapabilitiesServiceBindings extends BaseFixture {
         this.wfsMetadata = (Document) testContext.getSuite().getAttribute( org.opengis.cite.iso19142.SuiteAttribute.TEST_SUBJECT.getName() );
         URI uri = getOperationEndpoint( wfsMetadata, "DescribeStoredQueries", POST );
         assertUri( uri, "POST Binding for operation DescribeStoredQueries must be supported." );
-    }
-
-    private void assertUri( URI uri, String message ) {
-        assertNotNull( uri, message );
-        assertNotEquals( URI.create( "" ), uri, message );
     }
 
 }

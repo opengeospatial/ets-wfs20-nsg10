@@ -12,7 +12,7 @@ import org.testng.ITestContext;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import static org.opengis.cite.wfs20.nsg.utils.ValidationUtils.assertUuidOrGuideId;
+import static org.opengis.cite.wfs20.nsg.utils.NsgWfsAssertion.assertUuidOrGuideId;
 
 /**
  * Contains test for the feature instance identifier.
