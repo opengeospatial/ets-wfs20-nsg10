@@ -18,6 +18,7 @@ import net.sf.saxon.s9api.XdmValue;
 
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.opengis.cite.iso19142.util.XMLUtils;
 import org.w3c.dom.Document;
@@ -26,6 +27,7 @@ import org.w3c.dom.Document;
  * Verifies the results of executing a test run using the main controller (TestNGController).
  * 
  */
+@Ignore
 public class VerifyTestNGController {
 
     private static DocumentBuilder docBuilder;
