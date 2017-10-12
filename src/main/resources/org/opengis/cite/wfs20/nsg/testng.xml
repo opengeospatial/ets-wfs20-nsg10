@@ -33,7 +33,10 @@
       </class>
       <class name="org.opengis.cite.wfs20.nsg.testsuite.getcapabilities.OperationParameter" />
       <class name="org.opengis.cite.iso19142.versioning.VersioningTests" />
-      <class name="org.opengis.cite.wfs20.nsg.testsuite.getfeature.FeatureEncoding" />
+      <class name="org.opengis.cite.wfs20.nsg.testsuite.describefeaturetype.DescribeFeatureTypeOutputFormat" />
+      <class name="org.opengis.cite.wfs20.nsg.testsuite.getfeature.GetFeatureOutputFormat" />
+      <class name="org.opengis.cite.wfs20.nsg.testsuite.getfeaturewithlock.GetFeatureWithLockOutputFormat" />
+      <class name="org.opengis.cite.wfs20.nsg.testsuite.getpropertyvalue.GetPropertyValueOutputFormat" />
     </classes>
   </test>
 
