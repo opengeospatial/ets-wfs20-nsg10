@@ -44,6 +44,8 @@
       <class name="org.opengis.cite.wfs20.nsg.testsuite.pageresults.PageResultsOutputFormat" />
       <class name="org.opengis.cite.wfs20.nsg.testsuite.featureinstance.InstanceIdentifier" />
       <class name="org.opengis.cite.wfs20.nsg.testsuite.getfeature.CountParameter" />
+      <class name="org.opengis.cite.wfs20.nsg.testsuite.getcapabilities.CapabilitiesAbstract" />
+      <class name="org.opengis.cite.wfs20.nsg.testsuite.getcapabilities.CapabilitiesProfile" />
     </classes>
   </test>
 
