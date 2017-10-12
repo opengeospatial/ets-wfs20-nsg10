@@ -1,5 +1,6 @@
 package org.opengis.cite.wfs20.nsg.testsuite.pageresults;
 
+import static javax.xml.xpath.XPathConstants.STRING;
 import static org.opengis.cite.iso19142.ProtocolBinding.POST;
 import static org.opengis.cite.iso19142.SuiteAttribute.TEST_SUBJECT;
 import static org.opengis.cite.iso19142.util.ServiceMetadataUtils.implementsConformanceClass;
@@ -7,17 +8,16 @@ import static org.opengis.cite.iso19142.util.WFSMessage.appendSimpleQuery;
 import static org.opengis.cite.iso19142.util.WFSMessage.createRequestEntity;
 import static org.opengis.cite.wfs20.nsg.testsuite.NSGWFSConstants.GML_OUTPUTFORMAT;
 import static org.opengis.cite.wfs20.nsg.testsuite.NSGWFSConstants.NSG_NAMESPACE;
+import static org.opengis.cite.wfs20.nsg.utils.NamespaceUtils.withStandardBindings;
 import static org.testng.Assert.assertNotNull;
 
 import java.util.logging.Logger;
 
 import javax.xml.namespace.QName;
-import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpressionException;
 
 import org.opengis.cite.iso19142.basic.filter.QueryFilterFixture;
 import org.opengis.cite.iso19142.util.XMLUtils;
-import org.opengis.cite.wfs20.nsg.utils.NamespaceUtils;
 import org.opengis.cite.wfs20.nsg.utils.NsgWfsClient;
 import org.testng.ITestContext;
 import org.testng.SkipException;
@@ -113,9 +113,8 @@ public class PageResultsFixture extends QueryFilterFixture {
     protected int parseNumberOfFeatures( Document rspDocument ) {
         String xPath = "count(//nsg:FeatureCollection/wfs:member)";
         try {
-            return (Integer) XMLUtils.evaluateXPath( rspDocument, xPath,
-                                                     NamespaceUtils.withStandardBindings().getAllBindings(),
-                                                     XPathConstants.NUMBER );
+            return Integer.parseInt( (String) XMLUtils.evaluateXPath( rspDocument, xPath,
+                                                                      withStandardBindings().getAllBindings(), STRING ) );
         } catch ( XPathExpressionException e ) {
             LOGR.warning( "XPath " + xPath + " could not be evaluated" );
         }

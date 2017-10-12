@@ -9,6 +9,11 @@
     <listener class-name="org.opengis.cite.iso19142.SuiteFixtureListener" />
   </listeners>
 
+  <test name="Preconditions">
+    <classes>
+      <class name="org.opengis.cite.iso19142.SuitePreconditions"/>
+    </classes>
+  </test>
   <test name="NSG Basic WFS Conformance Class">
     <classes>
       <class name="org.opengis.cite.wfs20.nsg.testsuite.getcapabilities.CapabilitiesServiceBindings" />
@@ -38,6 +43,7 @@
       <class name="org.opengis.cite.wfs20.nsg.testsuite.getpropertyvalue.GetPropertyValueOutputFormat" />
       <class name="org.opengis.cite.wfs20.nsg.testsuite.pageresults.PageResultsOutputFormat" />
       <class name="org.opengis.cite.wfs20.nsg.testsuite.featureinstance.InstanceIdentifier" />
+      <class name="org.opengis.cite.wfs20.nsg.testsuite.getfeature.CountParameter" />
     </classes>
   </test>
 
