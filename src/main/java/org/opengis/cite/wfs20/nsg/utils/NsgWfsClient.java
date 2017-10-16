@@ -16,6 +16,7 @@ import javax.xml.xpath.XPathExpressionException;
 import org.opengis.cite.iso19142.ProtocolBinding;
 import org.opengis.cite.iso19142.util.WFSClient;
 import org.opengis.cite.iso19142.util.XMLUtils;
+import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 
 import com.sun.jersey.api.client.ClientResponse;
@@ -29,6 +30,13 @@ import com.sun.jersey.api.client.WebResource;
 public class NsgWfsClient extends WFSClient {
 
     private static final Logger LOGR = Logger.getLogger( NsgWfsClient.class.getPackage().getName() );
+
+    NsgWfsClient() {
+    }
+
+    public NsgWfsClient( Document wfsMetadata ) {
+        super( wfsMetadata );
+    }
 
     @Override
     public ClientResponse submitRequest( Source entity, ProtocolBinding binding, URI endpoint ) {

@@ -43,8 +43,9 @@ public class PageResultsFixture extends QueryFilterFixture {
      * Overwrites the used WFSClient.
      */
     @BeforeClass(alwaysRun = true, dependsOnMethods = "initBaseFixture")
-    public void initPageResultsFixture() {
-        this.wfsClient = new NsgWfsClient();
+    public void initPageResultsFixture( ITestContext testContext ) {
+        this.wfsMetadata = (Document) testContext.getSuite().getAttribute( TEST_SUBJECT.getName() );
+        this.wfsClient = new NsgWfsClient( this.wfsMetadata );
     }
 
     @Test
@@ -111,7 +112,7 @@ public class PageResultsFixture extends QueryFilterFixture {
     }
 
     protected int parseNumberOfFeatures( Document rspDocument ) {
-        String xPath = "count(//nsg:FeatureCollection/wfs:member)";
+        String xPath = "//nsg:FeatureCollection/@numberMatched";
         try {
             return Integer.parseInt( (String) XMLUtils.evaluateXPath( rspDocument, xPath,
                                                                       withStandardBindings().getAllBindings(), STRING ) );
