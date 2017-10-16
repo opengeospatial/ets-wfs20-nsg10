@@ -26,6 +26,10 @@ public class NsgWfsAssertion {
 
     private static final String GUIDE_ID_PATTERN = "^guide://[0-9a-z]*/[0-9a-z]*";
 
+    private static final String XPATH_PARAM_PER_OPERATION = "//ows:OperationsMetadata/ows:Operation[@name='%s']/ows:Parameter[@name='%s']/ows:AllowedValues/ows:Value";
+
+    private static final String XPATH_PARAM_GLOBAL = "//ows:OperationsMetadata/ows:Parameter[@name='%s']/ows:AllowedValues/ows:Value";
+
     /**
      * Validates if the passed id is not null and a valid UUID or GUIDE ID identifier. The format of the GUIDE id is as
      * follows: guide://{prefix}/{suffix}
@@ -62,19 +66,30 @@ public class NsgWfsAssertion {
      */
     public static void assertOutputFormat( Document wfsMetadata, String operation )
                             throws XPathExpressionException {
-        List<String> outputFormats = parseOutputFormats( wfsMetadata, operation );
+        List<String> outputFormats = parseParameters( wfsMetadata, operation, "outputFormat" );
 
         assertTrue( outputFormats.contains( "application/gml+xml; version=3.2" ) );
     }
 
-    private static List<String> parseOutputFormats( Document wfsMetadata, String operation )
+    /**
+     * Parases the parameter values of a passed parameter name (per operation and global).
+     *
+     * @param wfsMetadata
+     *            the capabilities, never <code>null</code>
+     * @param operationName
+     *            the name of the operation
+     * @param parameterName
+     *            the name of the parameter
+     * @return all parameter values, never <code>null</code>
+     * @throws XPathExpressionException
+     */
+    public static List<String> parseParameters( Document wfsMetadata, String operationName, String parameterName )
                             throws XPathExpressionException {
         List<String> outputFormats = new ArrayList<>();
-        String xPathPerOperation = "//ows:OperationsMetadata/ows:Operation[@name='" + operation
-                                   + "']/ows:Parameter[@name='outputFormat']/ows:AllowedValues/ows:Value";
+        String xPathPerOperation = String.format( XPATH_PARAM_PER_OPERATION, operationName, parameterName );
         addOutputFormats( wfsMetadata, outputFormats, xPathPerOperation );
 
-        String xPathCommon = "//ows:OperationsMetadata/ows:Parameter[@name='outputFormat']/ows:AllowedValues/ows:Value";
+        String xPathCommon = String.format( XPATH_PARAM_GLOBAL, parameterName );
         addOutputFormats( wfsMetadata, outputFormats, xPathCommon );
         return outputFormats;
     }

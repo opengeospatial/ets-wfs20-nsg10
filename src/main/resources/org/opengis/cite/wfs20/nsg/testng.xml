@@ -46,6 +46,7 @@
       <class name="org.opengis.cite.wfs20.nsg.testsuite.getfeature.CountParameter" />
       <class name="org.opengis.cite.wfs20.nsg.testsuite.getcapabilities.CapabilitiesAbstract" />
       <class name="org.opengis.cite.wfs20.nsg.testsuite.getcapabilities.CapabilitiesProfile" />
+      <class name="org.opengis.cite.wfs20.nsg.testsuite.getcapabilities.CapabilitiesTimeout" />
     </classes>
   </test>
 

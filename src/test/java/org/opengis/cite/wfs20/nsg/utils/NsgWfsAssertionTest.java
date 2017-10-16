@@ -1,8 +1,13 @@
 package org.opengis.cite.wfs20.nsg.utils;
 
+import static org.hamcrest.CoreMatchers.hasItem;
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
 import static org.opengis.cite.wfs20.nsg.utils.NsgWfsAssertion.assertOutputFormat;
+import static org.opengis.cite.wfs20.nsg.utils.NsgWfsAssertion.parseParameters;
 
 import java.io.InputStream;
+import java.util.List;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -48,6 +53,26 @@ public class NsgWfsAssertionTest {
                             throws Exception {
         Document wfsMetadata = readCapabilities( "/capabilities-simple2.xml" );
         assertOutputFormat( wfsMetadata, "GetFeature" );
+    }
+
+    @Test
+    public void testParseParameters_DescribeFeatureType()
+                            throws Exception {
+        Document wfsMetadata = readCapabilities( "/capabilities-simple.xml" );
+
+        List<String> parameters = parseParameters( wfsMetadata, "DescribeFeatureType", "Timeout" );
+        assertThat( parameters.size(), is( 1 ) );
+        assertThat( parameters, hasItem( "5" ) );
+    }
+
+    @Test
+    public void testParseParameters_ListStoredQueries()
+                            throws Exception {
+        Document wfsMetadata = readCapabilities( "/capabilities-simple2.xml" );
+
+        List<String> parameters = parseParameters( wfsMetadata, "ListStoredQueries", "Timeout" );
+        assertThat( parameters.size(), is( 1 ) );
+        assertThat( parameters, hasItem( "10" ) );
     }
 
     private Document readCapabilities( String resource )

@@ -49,6 +49,11 @@
           <Value>application/gml+xml; version=3.2</Value>
         </AllowedValues>
       </Parameter>
+      <Parameter name="Timeout">
+        <AllowedValues>
+          <Value>10</Value>
+        </AllowedValues>
+      </Parameter>
     </Operation>
     <Operation name="DescribeStoredQueries">
       <DCP>
