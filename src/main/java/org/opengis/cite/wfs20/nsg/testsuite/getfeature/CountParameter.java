@@ -39,9 +39,9 @@ public class CountParameter extends QueryFilterFixture {
     @Test(description = "See NSG WFS 2.0 Profile: Requirement 13 + 14")
     public void checkCountDefaultIs10( ITestContext testContext ) {
         this.wfsMetadata = (Document) testContext.getSuite().getAttribute( TEST_SUBJECT.getName() );
-        String constraintValueCountDefault = getConstraintValue( this.wfsMetadata, "ImplementsTransactionalWFS" );
+        String constraintValueCountDefault = getConstraintValue( this.wfsMetadata, "CountDefault" );
 
-        if ( constraintValueCountDefault != null )
+        if ( constraintValueCountDefault == null || !"10".equals( constraintValueCountDefault ))
             throw new SkipException( "A value of 10 for DefaultCount is recommended" );
 
     }
