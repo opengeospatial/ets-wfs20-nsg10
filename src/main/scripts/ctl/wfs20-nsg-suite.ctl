@@ -32,15 +32,19 @@
              <div style="background:#F0F8FF" bgcolor="#F0F8FF">
                <p>The implementation under test (IUT) is checked against the following specifications:</p>
                <ul>
-                 <li><a href="http://www.w3.org/TR/xml/">Extensible Markup Language (XML) 1.0</a>, 
-				 Fifth Edition</li>
-				 <li><a href="http://www.w3.org/TR/xmlbase/">XML Base</a>, Second Edition</li>
+                 <li><a href="https://nsgreg.nga.mil/doc/view?i=4283">National System for Geospatial-Intelligence
+                   (NSG) Web Feature Service 2.0</a></li>
                </ul>
-               <p>Two conformance levels are defined:</p>
-               <ul>
-                 <li>Level 1</li>
-                 <li>Level 2</li>
-               </ul>
+               <p>Seven fundamental conformance levels are defined. The content of the capabilities document will determine which tests are run: :</p>
+               <ol>
+                 <li>NSG Basic WFS</li>
+                 <li>NSG Locking WFS</li>
+                 <li>Inheritance</li>
+                 <li>Remote Resolve</li>
+                 <li>NSG Manage Stored Queries</li>
+                 <li>SOAP</li>
+                 <li>Enhanced Paging</li>
+               </ol>
              </div>
              <fieldset style="background:#ccffff">
                <legend style="font-family: sans-serif; color: #000099; 
@@ -48,22 +52,15 @@
                        border-width: medium; padding:4px">Implementation under test</legend>
                <p>
                  <label for="uri">
-                   <h4 style="margin-bottom: 0.5em">Location of IUT (absolute http: or file: URI)</h4>
+                   <h4 style="margin-bottom: 0.5em">Location of WFS capabilities document (absolute http: or file: URI)</h4>
                  </label>
                  <input id="uri" name="uri" size="128" type="text" value="http://www.w3schools.com/xml/note.xml" />
                </p>
                <p>
                  <label for="doc">
-                   <h4 style="margin-bottom: 0.5em">Upload IUT</h4>
+                   <h4 style="margin-bottom: 0.5em">Upload WFS capabilities document</h4>
                  </label>
                  <input name="doc" id="doc" size="128" type="file" />
-               </p>
-               <p>
-                 <label for="level">Conformance class: </label>
-                 <input id="level-1" type="radio" name="level" value="1" checked="checked" />
-                 <label for="level-1"> Level 1 | </label>
-                 <input id="level-2" type="radio" name="level" value="2" />
-                 <label class="form-label" for="level-2"> Level 2</label>
                </p>
              </fieldset>
              <p>
