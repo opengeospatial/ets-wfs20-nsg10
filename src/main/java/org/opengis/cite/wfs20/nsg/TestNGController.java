@@ -14,6 +14,8 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.Source;
 
+import org.opengis.cite.iso19142.CommandLineArguments;
+import org.opengis.cite.iso19142.TestRunArg;
 import org.opengis.cite.iso19142.util.TestSuiteLogger;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -24,6 +26,9 @@ import com.beust.jcommander.ParameterException;
 import com.occamlab.te.spi.executors.TestRunExecutor;
 import com.occamlab.te.spi.executors.testng.TestNGExecutor;
 import com.occamlab.te.spi.jaxrs.TestSuiteController;
+
+import static org.opengis.cite.iso19142.TestRunArg.IUT;
+import static org.opengis.cite.iso19142.TestRunArg.WFS;
 
 /**
  * Main test run controller oversees execution of TestNG test suites.
@@ -158,9 +163,9 @@ public class TestNGController implements TestSuiteController {
             Element entry = (Element) entries.item( i );
             args.put( entry.getAttribute( "key" ), entry.getTextContent() );
         }
-        if ( !args.containsKey( TestRunArg.IUT.toString() ) ) {
-            throw new IllegalArgumentException( String.format( "Missing argument: '%s' must be present.",
-                                                               TestRunArg.IUT ) );
+        if ( !args.containsKey( IUT.toString() ) && !args.containsKey( WFS.toString() ) ) {
+            throw new IllegalArgumentException( String.format( "Missing argument: '%s' or '%s' must be present.", IUT,
+                                                               WFS ) );
         }
     }
 }
