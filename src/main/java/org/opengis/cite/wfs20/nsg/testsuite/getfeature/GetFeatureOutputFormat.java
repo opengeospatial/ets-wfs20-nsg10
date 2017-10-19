@@ -38,7 +38,7 @@ public class GetFeatureOutputFormat extends QueryFilterFixture {
         this.wfsSchema = SchemaUtils.createWFSSchema();
     }
 
-    @Test(description = "See NSG WFS 2.0 Profile: Requirement 16 + 29")
+    @Test(description = "See NSG WFS 2.0 Profile: Requirement 16")
     public void getFeatureOperationParameterOutputFormat( ITestContext testContext )
                             throws XPathExpressionException {
         this.wfsMetadata = (Document) testContext.getSuite().getAttribute( TEST_SUBJECT.getName() );

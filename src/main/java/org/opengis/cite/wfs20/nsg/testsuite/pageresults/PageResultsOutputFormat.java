@@ -34,7 +34,7 @@ public class PageResultsOutputFormat extends PageResultsFixture {
         this.wfsSchema = SchemaUtils.createWFSSchema();
     }
 
-    @Test(description = "See NSG WFS 2.0 Profile: Requirement 16 + 29")
+    @Test(description = "See NSG WFS 2.0 Profile: Requirement 16")
     public void pageResultsOperationParameterOutputFormat( ITestContext testContext )
                             throws XPathExpressionException {
         this.wfsMetadata = (Document) testContext.getSuite().getAttribute( TEST_SUBJECT.getName() );

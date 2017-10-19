@@ -36,7 +36,7 @@ public class GetPropertyValueOutputFormat extends PropertyValueFixture {
         this.wfsSchema = SchemaUtils.createWFSSchema();
     }
 
-    @Test(description = "See NSG WFS 2.0 Profile: Requirement 16 + 29")
+    @Test(description = "See NSG WFS 2.0 Profile: Requirement 16")
     public void getPropertyValueOperationParameterOutputFormat( ITestContext testContext )
                             throws XPathExpressionException {
         this.wfsMetadata = (Document) testContext.getSuite().getAttribute( TEST_SUBJECT.getName() );

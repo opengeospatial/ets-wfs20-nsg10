@@ -49,7 +49,7 @@ public class GetFeatureWithLockOutputFormat extends LockingFixture {
         this.reqEntity = WFSMessage.createRequestEntity( "GetFeatureWithLock", this.wfsVersion );
     }
 
-    @Test(description = "See NSG WFS 2.0 Profile: Requirement 16 + 29")
+    @Test(description = "See NSG WFS 2.0 Profile: Requirement 16")
     public void getFeatureWithLockOperationParameterOutputFormat( ITestContext testContext )
                             throws XPathExpressionException {
         this.wfsMetadata = (Document) testContext.getSuite().getAttribute( TEST_SUBJECT.getName() );
