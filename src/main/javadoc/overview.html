@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
-  <head>
-    <title>Conformance Test Suite: NSG WFS Profile</title>
-    <meta charset="UTF-8" />
+<head>
+    <title>NSG WFS 2.0 Profile</title>
+    <meta charset="UTF-8"/>
     <style type="text/css">
 body {
   color: black;
@@ -51,46 +51,44 @@ dt {
   margin-top: 0.5em;
   font-weight: bold;
 }
+
     </style>
-  </head>
-  <body>
-  <h1>Conformance Test Suite: NSG WFS Profile</h1>
-	<p>This executable test suite (ETS) verifies the conformance of the implementation 
-	under test (IUT) with respect to all relevant specifications. Conformance testing 
-  is a kind of "black box" testing that examines externally visible characteristics 
-  or behaviors of the IUT and is independent of any implementation details.</p>
+</head>
+<body>
+<h1>NSG WFS 2.0 Profile</h1>
 
-	<p>The test run arguments are summarized in the following table. The <em>Obligation</em> 
-	descriptor can have the following values: M (mandatory), O (optional), or C 
-	(conditional).</p>
+<p>This executable test suite (ETS) verifies the conformance of the WFS 2.0 implementations
+    with respect to the National System for Geospatial-Intelligence (NSG) Web Feature Service 2.0
+    Implementation Profile and related specifications. Conformance testing
+    is a kind of "black box" testing that examines externally visible characteristics
+    or behaviors of the SUT and is independent of any implementation details.</p>
 
-	<table border="1" style="border-collapse: collapse;">
-	  <caption>Test run arguments</caption>
-	  <thead>
-      <tr>
+<p>The test run arguments are summarized in the following table. The <em>Obligation</em>
+    descriptor can have the following values: M (mandatory), O (optional), or C
+    (conditional).</p>
+
+<table border="1" style="border-collapse: collapse;">
+    <caption>Test run arguments</caption>
+    <thead>
+    <tr>
         <th>Name</th>
         <th>Value domain</th>
-		    <th>Obligation</th>
-		    <th>Description</th>
-      </tr>
-      </thead>
-	  <tbody>
-      <tr>
+        <th>Obligation</th>
+        <th>Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
         <td>iut</td>
         <td>URI</td>
-		<td>M</td>
-		<td>A URI that refers to the implementation under test or metadata about it.
-    Ampersand ('&amp;') characters must be percent-encoded as '%26'.</td>
-      </tr>
-	  <tr>
-      <td>ics</td>
-      <td>A comma-separated list of string values.</td>
-      <td>O</td>
-      <td>An implementation conformance statement that indicates which conformance 
-      classes or options are supported.</td>
+        <td>M</td>
+        <td>A URI that refers to a representation of the service capabilities document. This document does not need to
+            be obtained from the service under test (SUT), but it must describe the SUT. Ampersand ('&') characters
+            appearing within a query parameter value must be percent-encoded as '%26'.
+        </td>
     </tr>
-	  </tbody>
-  </table>
+    </tbody>
+</table>
 
-  </body>
+</body>
 </html>

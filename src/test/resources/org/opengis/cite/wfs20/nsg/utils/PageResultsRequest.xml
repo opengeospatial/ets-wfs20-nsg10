@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<nsg:PageResults version="2.0.0" service="WFS"
+                 startIndex="10" count="9" outputFormat="gml" resultType="results" timeout="145"
+                 xmlns:nsg="http://www.opengis.net/nsg/2.0"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xsi:schemaLocation="http://www.opengis.net/nsg/2.0 ../xsd/nsg/wfs_nsg.xsd">
+  <nsg:resultSetID>xyz</nsg:resultSetID>
+</nsg:PageResults>

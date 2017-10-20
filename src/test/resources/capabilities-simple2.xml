@@ -9,8 +9,6 @@
   <ServiceIdentification>
     <ServiceType codeSpace="http://www.opengeospatial.org/standards/">wfs</ServiceType>
     <ServiceTypeVersion>2.0.0</ServiceTypeVersion>
-    <Abstract>This service implements the NSG BASIC WFS profile of WFS 2.0</Abstract>
-    <Profile>urn:nga:service:wfs:2.0:profile:basic</Profile>
   </ServiceIdentification>
   <ServiceProvider>
     <ProviderName>ACME Corp</ProviderName>
@@ -33,6 +31,11 @@
           <Get xlink:href="http://localhost/wfs2"/>
         </HTTP>
       </DCP>
+      <Parameter name="outputFormat">
+        <AllowedValues>
+          <Value>application/gml+xml; version=3.2</Value>
+        </AllowedValues>
+      </Parameter>
     </Operation>
     <Operation name="ListStoredQueries">
       <DCP>
@@ -40,6 +43,17 @@
           <Get xlink:href="http://localhost/wfs2"/>
         </HTTP>
       </DCP>
+      <Parameter name="outputFormat">
+        <AllowedValues>
+          <Value>application/gml+xml; version=3.1.1</Value>
+          <Value>application/gml+xml; version=3.2</Value>
+        </AllowedValues>
+      </Parameter>
+      <Parameter name="Timeout">
+        <AllowedValues>
+          <Value>10</Value>
+        </AllowedValues>
+      </Parameter>
     </Operation>
     <Operation name="DescribeStoredQueries">
       <DCP>
@@ -115,6 +129,9 @@
       <ValuesReference ows:reference="http://www.w3.org/2001/XMLSchema#boolean"/>
       <DefaultValue>FALSE</DefaultValue>
     </Constraint>
+    <Constraint name="CountDefault">
+      <DefaultValue>10</DefaultValue>
+    </Constraint>
     <ExtendedCapabilities>
       <wadl:application xmlns:wadl="http://wadl.dev.java.net/2009/02">
         <wadl:resources base="http://localhost:1999/">
@@ -128,16 +145,6 @@
         </wadl:resources>
       </wadl:application>
     </ExtendedCapabilities>
-    <Parameter name="outputFormat">
-      <AllowedValues>
-        <Value>application/gml+xml; version=3.2</Value>
-      </AllowedValues>
-    </Parameter>
-    <Parameter name="Timeout">
-      <AllowedValues>
-        <Value>5</Value>
-      </AllowedValues>
-    </Parameter>
   </OperationsMetadata>
   <wfs:FeatureTypeList xmlns:tns="http://example.org/ns1">
     <wfs:FeatureType>

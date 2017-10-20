@@ -1,22 +1,94 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="wfs20-nsg-${version}" verbose="0" configfailurepolicy="continue">
-  <parameter name="iut"  value=""/>
-  <parameter name="ics"  value=""/>
+  <parameter name="iut" value="" />
+  <parameter name="ics" value="" />
 
   <listeners>
-    <listener class-name="org.opengis.cite.wfs20.nsg.TestRunListener" />
-    <listener class-name="org.opengis.cite.wfs20.nsg.SuiteFixtureListener" />
-    <listener class-name="org.opengis.cite.wfs20.nsg.TestFailureListener" />
+    <listener class-name="org.opengis.cite.iso19142.TestRunListener" />
+    <listener class-name="org.opengis.cite.iso19142.SuiteFixtureListener" />
   </listeners>
 
-  <test name="Conformance Level 1">
-    <packages>
-      <package name="org.opengis.cite.wfs20.nsg.level1" />
-    </packages>
+  <test name="Preconditions">
     <classes>
-      <class name="org.opengis.cite.wfs20.nsg.SuitePreconditions" />
+      <class name="org.opengis.cite.iso19142.SuitePreconditions"/>
     </classes>
   </test>
-  <!-- Add test sets for other conformance classes/levels -->
+  <test name="NSG Basic WFS Conformance Class">
+    <classes>
+      <class name="org.opengis.cite.wfs20.nsg.testsuite.getcapabilities.CapabilitiesServiceBindings" />
+      <class name="org.opengis.cite.wfs20.nsg.testsuite.getcapabilities.ServiceConstraints">
+        <methods>
+          <include name="serviceConstraintKVPEncoding" />
+          <include name="serviceConstraintXMLEncoding" />
+          <include name="serviceConstraintImplementsStandardJoins" />
+          <include name="serviceConstraintImplementsSpatialJoins" />
+          <include name="serviceConstraintImplementsTemporalJoins" />
+          <include name="serviceConstraintImplementsResultPaging" />
+          <include name="serviceConstraintImplementsFeatureVersioning" />
+        </methods>
+      </class>
+      <class name="org.opengis.cite.wfs20.nsg.testsuite.getcapabilities.OperationConstraints">
+        <methods>
+          <include name="operationConstraintCountDefault" />
+          <include name="operationConstraintResolveTimeoutDefault" />
+          <include name="operationConstraintResolveLocalScope" />
+          <include name="operationConstraintAuthentication" />
+        </methods>
+      </class>
+      <class name="org.opengis.cite.iso19142.versioning.VersioningTests" />
+      <class name="org.opengis.cite.wfs20.nsg.testsuite.describefeaturetype.DescribeFeatureTypeOutputFormat" />
+      <class name="org.opengis.cite.wfs20.nsg.testsuite.getfeature.GetFeatureOutputFormat" />
+      <class name="org.opengis.cite.wfs20.nsg.testsuite.getfeaturewithlock.GetFeatureWithLockOutputFormat" />
+      <class name="org.opengis.cite.wfs20.nsg.testsuite.getpropertyvalue.GetPropertyValueOutputFormat" />
+      <class name="org.opengis.cite.wfs20.nsg.testsuite.pageresults.PageResultsOutputFormat" />
+      <class name="org.opengis.cite.wfs20.nsg.testsuite.featureinstance.InstanceIdentifier" />
+      <class name="org.opengis.cite.wfs20.nsg.testsuite.getfeature.CountParameter" />
+      <class name="org.opengis.cite.wfs20.nsg.testsuite.getcapabilities.CapabilitiesAbstract" />
+      <class name="org.opengis.cite.wfs20.nsg.testsuite.getcapabilities.CapabilitiesProfile" />
+      <class name="org.opengis.cite.wfs20.nsg.testsuite.getcapabilities.CapabilitiesTimeout" />
+      <class name="org.opengis.cite.wfs20.nsg.testsuite.getfeature.GetFeatureWIthResultTypeIndex" />
+    </classes>
+  </test>
+
+  <test name="NSG Locking WFS">
+    <classes>
+      <class name="org.opengis.cite.wfs20.nsg.testsuite.getcapabilities.ServiceConstraints">
+        <methods>
+          <include name="serviceConstraintImplementsTransactionalWFS" />
+        </methods>
+      </class>
+    </classes>
+  </test>
+
+  <test name="Inheritance">
+  </test>
+
+  <test name="Remote Resolve">
+    <classes>
+      <class name="org.opengis.cite.wfs20.nsg.testsuite.getcapabilities.OperationConstraints">
+        <methods>
+          <include name="operationConstraintResolveRemoteScope" />
+        </methods>
+      </class>
+    </classes>
+  </test>
+
+  <test name="NSG Manage Stored Queries">
+  </test>
+
+  <test name="SOAP">
+  </test>
+
+  <test name="Enhanced Paging">
+    <classes>
+      <class name="org.opengis.cite.wfs20.nsg.testsuite.getcapabilities.ServiceConstraints">
+        <methods>
+          <include name="serviceConstraintImplementsEnhancedPaging" />
+        </methods>
+      </class>
+      <class name="org.opengis.cite.wfs20.nsg.testsuite.pageresults.PageResults" />
+    </classes>
+  </test>
+
 </suite>

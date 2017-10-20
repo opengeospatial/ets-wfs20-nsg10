@@ -4,7 +4,7 @@
 <organization>
   <name>OGC</name>
   <standard>
-    <name>Conformance Test Suite: NSG WFS Profile</name>
+    <name>NSG WFS 2.0 Profile</name>
     <version>
       <name>${spec-version}</name>
       <suite>

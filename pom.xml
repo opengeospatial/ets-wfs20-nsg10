@@ -13,7 +13,7 @@
   <version>0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <name>Conformance Test Suite: NSG WFS v2 Profile</name>
+  <name>NSG WFS 2.0 Profile Conformance Test Suite</name>
   <description>Verifies that a WFS implementation conforms to the NSG WFS v2 Profile, v1.0.</description>
   <url>http://opengeospatial.github.io/ets-wfs20-nsg/</url>
   <licenses>
@@ -39,9 +39,14 @@
   </issueManagement>
   <developers>
     <developer>
-      <name>Alpha Beta</name>
-      <url>https://github.com/</url>
-      <timezone>UTC</timezone>
+      <name>Dirk Stenger</name>
+      <email>stenger {AT} lat-lon {DOT} de</email>
+      <timezone>Europe/Berlin</timezone>
+    </developer>
+    <developer>
+      <name>Lyn Goltz</name>
+      <email>goltz {AT} lat-lon {DOT} de</email>
+      <timezone>Europe/Berlin</timezone>
     </developer>
   </developers>
 
@@ -51,6 +56,11 @@
   </properties>
 
   <dependencies>
+    <dependency>
+      <groupId>de.latlon</groupId>
+      <artifactId>ets-dgiwg-wfs</artifactId>
+      <version>0.3-SNAPSHOT</version>
+    </dependency>
     <dependency>
       <groupId>org.opengis.cite.teamengine</groupId>
       <artifactId>teamengine-spi</artifactId>
