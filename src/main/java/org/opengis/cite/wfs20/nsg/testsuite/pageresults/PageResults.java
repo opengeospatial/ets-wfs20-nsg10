@@ -35,7 +35,7 @@ public class PageResults extends PageResultsFixture {
 
     private Map<QName, ResultSetIdAndNumberOfFeatures> featureTypeToAdditionalInfos = new HashMap<>();
 
-    @Test(description = "See NSG WFS 2.0 Profile: Requirement 17, 19, 33, 34", dataProvider = "feature-types", dependsOnMethods = "checkIfEnhancedPagingIsSupported")
+    @Test(description = "See NSG WFS 2.0 Profile: Requirement 19, 33, 34", dataProvider = "feature-types", dependsOnMethods = "checkIfEnhancedPagingIsSupported")
     public void requestResultId( QName featureType ) {
         ClientResponse indexResponse = submitGetFeatureIndexRequest( featureType );
         assertEquals( indexResponse.getStatus(), OK.getStatusCode(), ErrorMessage.get( UNEXPECTED_STATUS ) );
@@ -58,7 +58,7 @@ public class PageResults extends PageResultsFixture {
                                                                                            numberOfFeatures ) );
     }
 
-    @Test(description = "See NSG WFS 2.0 Profile: Requirement 17, 19, 33, 34", dataProvider = "feature-types", dependsOnMethods = "requestResultId")
+    @Test(description = "See NSG WFS 2.0 Profile: Requirement 19, 33, 34", dataProvider = "feature-types", dependsOnMethods = "requestResultId")
     public void pageResultsPost( ITestContext testContext, QName featureType ) {
         this.wfsMetadata = (Document) testContext.getSuite().getAttribute( SuiteAttribute.TEST_SUBJECT.getName() );
         URI uri = getOperationEndpoint( wfsMetadata, "PageResults", POST );
@@ -71,7 +71,7 @@ public class PageResults extends PageResultsFixture {
         assertNumberOfFeatures( clientResponse, resultSetAndNumberOfFeatures.getNumberOfFeatures() );
     }
 
-    @Test(description = "See NSG WFS 2.0 Profile: Requirement 17, 19, 33, 34", dataProvider = "feature-types", dependsOnMethods = "requestResultId")
+    @Test(description = "See NSG WFS 2.0 Profile: Requirement 19, 33, 34", dataProvider = "feature-types", dependsOnMethods = "requestResultId")
     public void pageResultsGet( ITestContext testContext, QName featureType ) {
         this.wfsMetadata = (Document) testContext.getSuite().getAttribute( SuiteAttribute.TEST_SUBJECT.getName() );
         URI uri = getOperationEndpoint( wfsMetadata, "PageResults", GET );
