@@ -46,7 +46,7 @@ public class CountParameter extends QueryFilterFixture {
 
     }
 
-    @Test(description = "See NSG WFS 2.0 Profile: Requirement 13 + 14")
+    @Test(description = "See NSG WFS 2.0 Profile: Requirement 13 + 14", dependsOnMethods = "checkCountDefaultIs10")
     public void defaultCountParameter( ITestContext testContext )
                             throws XPathExpressionException {
         this.wfsMetadata = (Document) testContext.getSuite().getAttribute( TEST_SUBJECT.getName() );
