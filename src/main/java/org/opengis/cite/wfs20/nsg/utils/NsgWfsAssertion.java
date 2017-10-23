@@ -1,5 +1,6 @@
 package org.opengis.cite.wfs20.nsg.utils;
 
+import static javax.xml.xpath.XPathConstants.BOOLEAN;
 import static org.opengis.cite.iso19142.util.NamespaceBindings.withStandardBindings;
 import static org.testng.Assert.assertNotEquals;
 import static org.testng.Assert.assertNotNull;
@@ -25,6 +26,8 @@ public class NsgWfsAssertion {
     private static final String UUID_PATTERN = "^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$";
 
     private static final String GUIDE_ID_PATTERN = "^guide://[0-9a-z]*/[0-9a-z]*";
+
+    private static final String XPATH_OPERATION_SUPPORTED = "//ows:OperationsMetadata/ows:Operation[@name='%s']";
 
     private static final String XPATH_PARAM_PER_OPERATION = "//ows:OperationsMetadata/ows:Operation[@name='%s']/ows:Parameter[@name='%s']/ows:AllowedValues/ows:Value";
 
@@ -68,7 +71,9 @@ public class NsgWfsAssertion {
                             throws XPathExpressionException {
         List<String> outputFormats = parseParameters( wfsMetadata, operation, "outputFormat" );
 
-        assertTrue( outputFormats.contains( "application/gml+xml; version=3.2" ) );
+        String msg = String.format( "The operation %s is not supported or does not support the outputFormat application/gml+xml; version=3.2",
+                                    operation );
+        assertTrue( outputFormats.contains( "application/gml+xml; version=3.2" ), msg );
     }
 
     /**
@@ -86,12 +91,24 @@ public class NsgWfsAssertion {
     public static List<String> parseParameters( Document wfsMetadata, String operationName, String parameterName )
                             throws XPathExpressionException {
         List<String> outputFormats = new ArrayList<>();
-        String xPathPerOperation = String.format( XPATH_PARAM_PER_OPERATION, operationName, parameterName );
-        addOutputFormats( wfsMetadata, outputFormats, xPathPerOperation );
+        if ( operationExists( wfsMetadata, operationName ) ) {
+            String xPathPerOperation = String.format( XPATH_PARAM_PER_OPERATION, operationName, parameterName );
+            addOutputFormats( wfsMetadata, outputFormats, xPathPerOperation );
 
-        String xPathCommon = String.format( XPATH_PARAM_GLOBAL, parameterName );
-        addOutputFormats( wfsMetadata, outputFormats, xPathCommon );
+            String xPathCommon = String.format( XPATH_PARAM_GLOBAL, parameterName );
+            addOutputFormats( wfsMetadata, outputFormats, xPathCommon );
+        }
         return outputFormats;
+    }
+
+    private static boolean operationExists( Document wfsMetadata, String operationName ) {
+        try {
+            String xPathOperation = String.format( XPATH_OPERATION_SUPPORTED, operationName, operationName );
+            Map<String, String> bindings = withStandardBindings().getAllBindings();
+            return (Boolean) XMLUtils.evaluateXPath( wfsMetadata, xPathOperation, bindings, BOOLEAN );
+        } catch ( XPathExpressionException e ) {
+        }
+        return false;
     }
 
     private static void addOutputFormats( Document wfsMetadata, List<String> outputFormats, String xPath )
