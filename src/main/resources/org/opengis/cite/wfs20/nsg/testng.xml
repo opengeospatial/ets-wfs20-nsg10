@@ -48,6 +48,7 @@
       <class name="org.opengis.cite.wfs20.nsg.testsuite.getcapabilities.CapabilitiesProfile" />
       <class name="org.opengis.cite.wfs20.nsg.testsuite.getcapabilities.CapabilitiesTimeout" />
       <class name="org.opengis.cite.wfs20.nsg.testsuite.getfeature.GetFeatureWIthResultTypeIndex" />
+      <class name="org.opengis.cite.wfs20.nsg.testsuite.getcapabilities.AccessConstraints" />
     </classes>
   </test>
 
