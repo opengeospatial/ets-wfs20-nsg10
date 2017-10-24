@@ -22,7 +22,6 @@ import org.opengis.cite.iso19142.FeatureTypeInfo;
 import org.opengis.cite.iso19142.basic.filter.QueryFilterFixture;
 import org.opengis.cite.iso19142.util.XMLUtils;
 import org.testng.ITestContext;
-import org.testng.SkipException;
 import org.testng.annotations.Test;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -36,17 +35,18 @@ public class CountParameter extends QueryFilterFixture {
 
     private final static Logger LOGR = Logger.getLogger( CountParameter.class.getName() );
 
+    private static final int COUNT_DEFAULT_VALUE = 10;
+
     @Test(description = "See NSG WFS 2.0 Profile: Requirement 13 + 14")
-    public void checkCountDefaultIs10( ITestContext testContext ) {
+    public void countDefaultIs10( ITestContext testContext ) {
         this.wfsMetadata = (Document) testContext.getSuite().getAttribute( TEST_SUBJECT.getName() );
         String constraintValueCountDefault = getConstraintValue( this.wfsMetadata, "CountDefault" );
-
-        if ( constraintValueCountDefault == null || !"10".equals( constraintValueCountDefault ))
-            throw new SkipException( "A value of 10 for DefaultCount is recommended" );
+        assertEquals( constraintValueCountDefault, COUNT_DEFAULT_VALUE,
+                      "A value of 10 for constraint CountDefault is expected" );
 
     }
 
-    @Test(description = "See NSG WFS 2.0 Profile: Requirement 13 + 14", dependsOnMethods = "checkCountDefaultIs10")
+    @Test(description = "See NSG WFS 2.0 Profile: Requirement 13 + 14", dependsOnMethods = "countDefaultIs10")
     public void defaultCountParameter( ITestContext testContext )
                             throws XPathExpressionException {
         this.wfsMetadata = (Document) testContext.getSuite().getAttribute( TEST_SUBJECT.getName() );
@@ -59,7 +59,7 @@ public class CountParameter extends QueryFilterFixture {
         assertEquals( rsp.getStatus(), OK.getStatusCode(), ErrorMessage.get( UNEXPECTED_STATUS ) );
 
         int numberOfFeatures = parseNumberOfFeatures( this.rspEntity );
-        assertEquals( numberOfFeatures, 10,
+        assertEquals( numberOfFeatures, COUNT_DEFAULT_VALUE,
                       "Expected 10 features in GetFeature request without count as CountDefault is 10" );
 
     }
@@ -82,9 +82,8 @@ public class CountParameter extends QueryFilterFixture {
     private int parseNumberOfFeatures( Document rspDocument ) {
         String xPath = "count(//wfs:member)";
         try {
-            return Integer.parseInt((String) XMLUtils.evaluateXPath( rspDocument, xPath,
-                                                             withStandardBindings().getAllBindings(),
-                                                             STRING ) );
+            return Integer.parseInt( (String) XMLUtils.evaluateXPath( rspDocument, xPath,
+                                                                      withStandardBindings().getAllBindings(), STRING ) );
         } catch ( XPathExpressionException e ) {
             LOGR.warning( "XPath " + xPath + " could not be evaluated" );
         }
