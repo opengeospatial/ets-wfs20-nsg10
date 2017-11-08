@@ -28,7 +28,8 @@ public class AccessConstraints extends BaseFixture {
     private static final Map<String, String> NAMESPACE_BINIDNGS = NamespaceUtils.withStandardBindings().getAllBindings();
 
     private static final List<String> EXPECTED_ACCESS_CONSTRAINTS = Arrays.asList( "TOP SECRET", "SECRET",
-                                                                                   "CONFIDENTIAL", "UNCLASSIFIED" );
+                                                                                   "CONFIDENTIAL", "RESTRICTED",
+                                                                                   "UNCLASSIFIED" );
 
     @Test(description = "See NSG WFS 2.0 Profile: Requirement 25")
     public void wfsCapabilitiesAccessConstraintsExists( ITestContext testContext ) {
