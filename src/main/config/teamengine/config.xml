@@ -13,6 +13,9 @@
         <local-name>ets-wfs20-nsg-${version}</local-name>
         <title>Test suite ets-wfs20-nsg</title>
         <description>Describe scope of testing.</description>
+        <BasicConformanceClasses>
+          <conformanceClass>NSG Basic WFS Conformance Class</conformanceClass>
+        </BasicConformanceClasses>
       </suite>
       <revision>
         <name>${version}</name>
