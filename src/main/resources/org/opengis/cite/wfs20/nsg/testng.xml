@@ -14,8 +14,31 @@
       <class name="org.opengis.cite.iso19142.SuitePreconditions"/>
     </classes>
   </test>
-  <test name="NSG Basic WFS Conformance Class">
+  <test name="All GML application schemas">
     <classes>
+      <class name="org.opengis.cite.iso19136.general.XMLSchemaTests" />
+      <class name="org.opengis.cite.iso19136.general.GeneralSchemaTests" />
+      <class name="org.opengis.cite.iso19136.general.ModelAndSyntaxTests" />
+      <class name="org.opengis.cite.iso19136.general.ComplexPropertyTests" />
+    </classes>
+  </test>
+  <test name="GML application schemas defining features">
+    <classes>
+      <class name="org.opengis.cite.iso19136.components.FeatureComponentTests" />
+    </classes>
+  </test>
+  <test name="NSG Basic WFS Conformance Class">
+    <packages>
+      <package name="org.opengis.cite.iso19142.simple" />
+      <package name="org.opengis.cite.iso19142.basic" />
+      <package name="org.opengis.cite.iso19142.basic.filter" />
+      <package name="org.opengis.cite.iso19142.basic.filter.temporal" />
+      <package name="org.opengis.cite.iso19142.basic.filter.spatial" />
+      <package name="org.opengis.cite.iso19142.paging" />
+      <package name="org.opengis.cite.iso19142.versioning" />
+    </packages>
+    <classes>
+      <class name="org.opengis.cite.iso19142.joins.SpatialJoinTests" />
       <class name="org.opengis.cite.wfs20.nsg.testsuite.getcapabilities.CapabilitiesServiceBindings" />
       <class name="org.opengis.cite.wfs20.nsg.testsuite.getcapabilities.ServiceConstraints">
         <methods>
@@ -36,7 +59,6 @@
           <include name="operationConstraintAuthentication" />
         </methods>
       </class>
-      <class name="org.opengis.cite.iso19142.versioning.VersioningTests" />
       <class name="org.opengis.cite.wfs20.nsg.testsuite.describefeaturetype.DescribeFeatureTypeOutputFormat" />
       <class name="org.opengis.cite.wfs20.nsg.testsuite.getfeature.GetFeatureOutputFormat" />
       <class name="org.opengis.cite.wfs20.nsg.testsuite.getfeaturewithlock.GetFeatureWithLockOutputFormat" />
@@ -54,6 +76,14 @@
 
   <test name="NSG Locking WFS">
     <classes>
+      <class name="org.opengis.cite.iso19142.transaction.TransactionCapabilitiesTests" />
+      <class name="org.opengis.cite.iso19142.transaction.Update" />
+      <class name="org.opengis.cite.iso19142.transaction.InsertTests" />
+      <class name="org.opengis.cite.iso19142.transaction.ReplaceTests" />
+      <class name="org.opengis.cite.iso19142.transaction.DeleteTests" />
+      <class name="org.opengis.cite.iso19142.locking.LockingCapabilitiesTests" />
+      <class name="org.opengis.cite.iso19142.locking.LockFeatureTests" />
+      <class name="org.opengis.cite.iso19142.locking.GetFeatureWithLockTests" />
       <class name="org.opengis.cite.wfs20.nsg.testsuite.getcapabilities.ServiceConstraints">
         <methods>
           <include name="serviceConstraintImplementsTransactionalWFS" />
@@ -76,6 +106,9 @@
   </test>
 
   <test name="NSG Manage Stored Queries">
+    <packages>
+      <package name="org.opengis.cite.iso19142.querymgmt" />
+    </packages>
   </test>
 
   <test name="SOAP">
