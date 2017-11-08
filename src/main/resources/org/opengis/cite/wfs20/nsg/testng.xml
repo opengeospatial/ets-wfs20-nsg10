@@ -39,6 +39,16 @@
     </packages>
     <classes>
       <class name="org.opengis.cite.iso19142.joins.SpatialJoinTests" />
+      <class name="de.latlon.ets.wfs20.core.dgiwg.testsuite.getcapabilities.GetCapabilitiesKeywordTest" />
+      <class name="de.latlon.ets.wfs20.core.dgiwg.testsuite.getcapabilities.GetCapabilitiesVersionTest" />
+      <class name="de.latlon.ets.wfs20.core.dgiwg.testsuite.getcapabilities.GetCapabilitiesFeatureTypeElementsTest" />
+      <class name="de.latlon.ets.wfs20.core.dgiwg.testsuite.describestoredqueries.DescribeStoredQueriesElementsTest" />
+      <class name="de.latlon.ets.wfs20.core.wfs20.testsuite.basic.filter.PropertyIsBetweenOperatorTests" />
+      <class name="de.latlon.ets.wfs20.core.wfs20.testsuite.spatialfilter.SpatialFilterTest" />
+      <class name="de.latlon.ets.wfs20.core.wfs20.testsuite.spatialfilter.ExtendedSpatialFilterTest" />
+      <class name="de.latlon.ets.wfs20.core.wfs20.testsuite.temporalfilter.TemporalFilterTest" />
+      <class name="de.latlon.ets.wfs20.core.wfs20.testsuite.temporalfilter.ExtendedTemporalFilterTest" />
+      <class name="de.latlon.ets.wfs20.core.dgiwg.testsuite.getcapabilities.GetCapabilitiesSrsTest" />
       <class name="org.opengis.cite.wfs20.nsg.testsuite.getcapabilities.CapabilitiesServiceBindings" />
       <class name="org.opengis.cite.wfs20.nsg.testsuite.getcapabilities.ServiceConstraints">
         <methods>
