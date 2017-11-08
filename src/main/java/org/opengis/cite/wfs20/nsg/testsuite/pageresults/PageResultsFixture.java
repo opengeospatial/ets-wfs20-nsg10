@@ -41,6 +41,9 @@ public class PageResultsFixture extends QueryFilterFixture {
 
     /**
      * Overwrites the used WFSClient.
+     * 
+     * @param testContext
+     *            never <code>null</code>
      */
     @BeforeClass(alwaysRun = true, dependsOnMethods = "initBaseFixture")
     public void initPageResultsFixture( ITestContext testContext ) {

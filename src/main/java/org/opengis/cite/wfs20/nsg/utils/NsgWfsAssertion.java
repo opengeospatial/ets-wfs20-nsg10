@@ -66,6 +66,11 @@ public class NsgWfsAssertion {
      * specified operation.
      * 
      * @param wfsMetadata
+     *            the document to parse, never <code>null</code>
+     * @param operation
+     *            the operation to parse the outputFormat for, never <code>null</code>
+     * @throws XPathExpressionException
+     *             if an expression could not be evaluated (should never happen)
      */
     public static void assertOutputFormat( Document wfsMetadata, String operation )
                             throws XPathExpressionException {
@@ -87,6 +92,7 @@ public class NsgWfsAssertion {
      *            the name of the parameter
      * @return all parameter values, never <code>null</code>
      * @throws XPathExpressionException
+     *             if an expression could not be evaluated (should never happen)
      */
     public static List<String> parseParameters( Document wfsMetadata, String operationName, String parameterName )
                             throws XPathExpressionException {
