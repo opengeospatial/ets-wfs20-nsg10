@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="wfs20-nsg-${version}" verbose="0" configfailurepolicy="continue">
-  <parameter name="iut" value="" />
-  <parameter name="ics" value="" />
+  <parameter name="wfs"  value=""/>
+  <parameter name="fid"  value=""/>
 
   <listeners>
     <listener class-name="org.opengis.cite.iso19142.TestRunListener" />
