@@ -36,9 +36,10 @@ listed below are covered by this test suite:
 The documents listed below stipulate requirements that must be satisfied by a 
 conforming implementation.
 
-* DGIWG Web Feature Service 2.0 Profile (DGIWG-122)
-*. OGC Web Feature Service standard, Version 2.0.2 [OGC 09-025r2]
-* OGC Filter Encoding standard, Version 2.0.2 [OGC 09-026r2].
+1. [Web Content Accessibility Guidelines (WCAG) 2.0](http://www.w3.org/TR/WCAG20/)
+2. [Extensible Markup Language (XML) 1.0, Fifth Edition](http://www.w3.org/TR/xml/)
+3. [RFC 7231](https://tools.ietf.org/html/rfc7231) - Hypertext Transfer Protocol 
+(HTTP/1.1): Semantics and Content 
 
 The test suite is schema-aware in the sense that the WFS under test does not need to support any particular application schema or to be pre-loaded with specialized test data. However, the following preconditions must be satisfied by the implementation under test (IUT):
 
@@ -63,45 +64,121 @@ The general structure of the test suite is shown in Table 1.
   <thead>
     <tr style="text-align: left; background-color: LightCyan">
       <th>Conformance class</th>
-      <th>Test classes</th>
+      <th>Test packages and classes</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td>Preconditions</td>
-      <td>TODO</td>
+      <td>
+       <ul>
+         <li>org.opengis.cite.iso19142.SuitePreconditions</li>
+       </ul>
+      </td>
     </tr>
     <tr>
       <td>All GML application schemas</td>
-      <td>TODO</td>
+      <td>
+       <ul>
+        <li>org.opengis.cite.iso19136.general.XMLSchemaTests</li>
+        <li>org.opengis.cite.iso19136.general.GeneralSchemaTests</li>
+        <li>org.opengis.cite.iso19136.general.ModelAndSyntaxTests</li>
+        <li>org.opengis.cite.iso19136.general.ComplexPropertyTests</li>
+       </ul>
+      </td>
     </tr>
     <tr>
       <td>GML application schemas defining features</td>
-      <td>TODO</td>
+      <td>
+       <ul>
+         <li>org.opengis.cite.iso19136.components.FeatureComponentTests</li>
+       </ul>
+      </td>
     </tr>
     <tr>
       <td>NSG Basic WFS Conformance Class</td>
-      <td>TODO</td>
+      <td>
+       <ul>
+        <li>org.opengis.cite.iso19142.simple</li>
+        <li>org.opengis.cite.iso19142.basic</li>
+        <li>org.opengis.cite.iso19142.basic.filter</li>
+        <li>org.opengis.cite.iso19142.basic.filter.temporal</li>
+        <li>org.opengis.cite.iso19142.basic.filter.spatial</li>
+        <li>org.opengis.cite.iso19142.paging</li>
+        <li>org.opengis.cite.iso19142.versioning</li>
+        <li>org.opengis.cite.iso19142.joins.SpatialJoinTests</li>
+        <li>de.latlon.ets.wfs20.core.dgiwg.testsuite.getcapabilities.GetCapabilitiesKeywordTest</li>
+        <li>de.latlon.ets.wfs20.core.dgiwg.testsuite.getcapabilities.GetCapabilitiesVersionTest</li>
+        <li>de.latlon.ets.wfs20.core.dgiwg.testsuite.getcapabilities.GetCapabilitiesFeatureTypeElementsTest</li>
+        <li>de.latlon.ets.wfs20.core.dgiwg.testsuite.describestoredqueries.DescribeStoredQueriesElementsTest</li>
+        <li>de.latlon.ets.wfs20.core.wfs20.testsuite.basic.filter.PropertyIsBetweenOperatorTests</li>
+        <li>de.latlon.ets.wfs20.core.wfs20.testsuite.spatialfilter.SpatialFilterTest</li>
+        <li>de.latlon.ets.wfs20.core.wfs20.testsuite.spatialfilter.ExtendedSpatialFilterTest</li>
+        <li>de.latlon.ets.wfs20.core.wfs20.testsuite.temporalfilter.TemporalFilterTest</li>
+        <li>de.latlon.ets.wfs20.core.wfs20.testsuite.temporalfilter.ExtendedTemporalFilterTest</li>
+        <li>de.latlon.ets.wfs20.core.dgiwg.testsuite.getcapabilities.GetCapabilitiesSrsTest</li>
+        <li>org.opengis.cite.wfs20.nsg.testsuite.getcapabilities.CapabilitiesServiceBindings</li>
+        <li>org.opengis.cite.wfs20.nsg.testsuite.getcapabilities.ServiceConstraints (partly)</li>
+        <li>org.opengis.cite.wfs20.nsg.testsuite.getcapabilities.OperationConstraints (partly)</li>
+        <li>org.opengis.cite.wfs20.nsg.testsuite.describefeaturetype.DescribeFeatureTypeOutputFormat</li>
+        <li>org.opengis.cite.wfs20.nsg.testsuite.getfeature.GetFeatureOutputFormat</li>
+        <li>org.opengis.cite.wfs20.nsg.testsuite.getfeaturewithlock.GetFeatureWithLockOutputFormat</li>
+        <li>org.opengis.cite.wfs20.nsg.testsuite.getpropertyvalue.GetPropertyValueOutputFormat</li>
+        <li>org.opengis.cite.wfs20.nsg.testsuite.pageresults.PageResultsOutputFormat</li>
+        <li>org.opengis.cite.wfs20.nsg.testsuite.featureinstance.InstanceIdentifier</li>
+        <li>org.opengis.cite.wfs20.nsg.testsuite.getfeature.CountParameter</li>
+        <li>org.opengis.cite.wfs20.nsg.testsuite.getcapabilities.CapabilitiesAbstract</li>
+        <li>org.opengis.cite.wfs20.nsg.testsuite.getcapabilities.CapabilitiesProfile</li>
+        <li>org.opengis.cite.wfs20.nsg.testsuite.getcapabilities.CapabilitiesTimeout</li>
+        <li>org.opengis.cite.wfs20.nsg.testsuite.getfeature.GetFeatureWIthResultTypeIndex</li>
+        <li>org.opengis.cite.wfs20.nsg.testsuite.getcapabilities.AccessConstraints</li>
+       </ul>
+      </td>
     </tr>
     <tr>
       <td>NSG Locking WFS</td>
-      <td>TODO</td>
+      <td>
+       <ul>
+        <li>org.opengis.cite.iso19142.transaction.TransactionCapabilitiesTests</li>
+        <li>org.opengis.cite.iso19142.transaction.Update</li>
+        <li>org.opengis.cite.iso19142.transaction.InsertTests</li>
+        <li>org.opengis.cite.iso19142.transaction.ReplaceTests</li>
+        <li>org.opengis.cite.iso19142.transaction.DeleteTests</li>
+        <li>org.opengis.cite.iso19142.locking.LockingCapabilitiesTests</li>
+        <li>org.opengis.cite.iso19142.locking.LockFeatureTests</li>
+        <li>org.opengis.cite.iso19142.locking.GetFeatureWithLockTests</li>
+        <li>org.opengis.cite.wfs20.nsg.testsuite.getcapabilities.ServiceConstraints (partly)</li>
+       </ul>
+      </td>
     </tr>
     <tr>
       <td>Inheritance</td>
-      <td>TODO</td>
+      <td>Not tested yet</td>
     </tr>
     <tr>
       <td>Remote Resolve</td>
-      <td>TODO</td>
+      <td>
+       <ul>
+         <li>org.opengis.cite.wfs20.nsg.testsuite.getcapabilities.OperationConstraints (partly)</li>
+       </ul>
+      </td>
     </tr>
     <tr>
       <td>NSG Manage Stored Queries</td>
-      <td>TODO</td>
+      <td>
+       <ul>
+         <li>org.opengis.cite.iso19142.querymgmt</li>
+       </ul>
+      </td>
     </tr>
     <tr>
       <td>Enhanced Paging</td>
-      <td>TODO</td>
+      <td>
+       <ul>
+         <li>org.opengis.cite.wfs20.nsg.testsuite.getcapabilities.ServiceConstraints(partly)</li>
+         <li>org.opengis.cite.wfs20.nsg.testsuite.pageresults.PageResults</li>
+       </ul>
+      </td>
     </tr>
   </tbody>
 </table>
@@ -137,7 +214,7 @@ have the following values: M (mandatory), O (optional), or C (conditional).
       <td>wfs</td>
       <td>URI</td>
       <td>M</td>
-      <td>A URI that refers to a representation of the service capabilities document. This document does not need to be obtained from the service under test (SUT), but it must describe the SUT. Ampersand ('&') characters appearing within a query parameter value must be percent-encoded as %26.</td>
+      <td>A URI that refers to a representation of the service capabilities document. This document does not need to be obtained from the service under test (SUT), but it must describe the SUT. Ampersand ('&amp;') characters appearing within a query parameter value must be percent-encoded as %26.</td>
     </tr>
 	  <tr>
       <td>fid</td>
