@@ -9,7 +9,6 @@ import static org.opengis.cite.iso19142.util.ServiceMetadataUtils.getConstraintV
 import static org.opengis.cite.iso19142.util.WFSMessage.appendSimpleQuery;
 import static org.opengis.cite.wfs20.nsg.utils.NamespaceUtils.withStandardBindings;
 import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertNotNull;
 
 import java.util.Map;
 import java.util.Set;
@@ -23,6 +22,7 @@ import org.opengis.cite.iso19142.FeatureTypeInfo;
 import org.opengis.cite.iso19142.basic.filter.QueryFilterFixture;
 import org.opengis.cite.iso19142.util.XMLUtils;
 import org.testng.ITestContext;
+import org.testng.SkipException;
 import org.testng.annotations.Test;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -49,16 +49,17 @@ public class CountParameter extends QueryFilterFixture {
 
     }
 
-    @Test(description = "See NSG WFS 2.0 Profile: Requirement 13 + 14", dependsOnMethods = "countDefaultIs10")
-    public void findAppropiateFeatureType()
-                            throws XPathExpressionException {
+    @Test(description = "See NSG WFS 2.0 Profile: Requirement 13 + 14")
+    public void findAppropriateFeatureType()
+                            throws XPathExpressionException {   
         QName featureType = findFeatureTypeWithEnoughFeatures();
-        assertNotNull( featureType,
-                       "Could not find feature type with more than 10 features to check if CountDefault=10 is correctly applied in GetFeature request." );
+        if( featureType == null )
+        throw new SkipException( 
+                                     "Feature type with more than 10 features is not available. This is required to check if CountDefault=10 is correctly applied in GetFeature request." );
         this.featureType = featureType;
     }
 
-        @Test(description = "See NSG WFS 2.0 Profile: Requirement 13 + 14", dependsOnMethods = "findAppropiateFeatureType")
+    @Test(description = "See NSG WFS 2.0 Profile: Requirement 13 + 14", dependsOnMethods = {"countDefaultIs10", "findAppropriateFeatureType" })
     public void defaultCountParameter( ITestContext testContext )
                             throws XPathExpressionException {
         this.wfsMetadata = (Document) testContext.getSuite().getAttribute( TEST_SUBJECT.getName() );
