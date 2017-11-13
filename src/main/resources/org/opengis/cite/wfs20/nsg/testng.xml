@@ -102,8 +102,10 @@
     </classes>
   </test>
 
+  <!-- Not implemented yet
   <test name="Inheritance">
   </test>
+  -->
 
   <test name="Remote Resolve">
     <classes>
@@ -121,8 +123,10 @@
     </packages>
   </test>
 
+  <!-- Not implemented yet
   <test name="SOAP">
   </test>
+  -->
 
   <test name="Enhanced Paging">
     <classes>

@@ -15,6 +15,10 @@
         <description>Describe scope of testing.</description>
         <BasicConformanceClasses>
           <conformanceClass>NSG Basic WFS Conformance Class</conformanceClass>
+          <conformanceClass>NSG Locking WFS</conformanceClass>
+          <conformanceClass>Remote Resolve</conformanceClass>
+          <conformanceClass>NSG Manage Stored Queries</conformanceClass>
+          <conformanceClass>Enhanced Paging</conformanceClass>
         </BasicConformanceClasses>
       </suite>
       <revision>
