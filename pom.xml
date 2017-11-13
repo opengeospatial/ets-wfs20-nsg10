@@ -57,9 +57,9 @@
 
   <dependencies>
     <dependency>
-      <groupId>de.latlon</groupId>
-      <artifactId>ets-dgiwg-wfs</artifactId>
-      <version>0.3-SNAPSHOT</version>
+      <groupId>org.opengis.cite</groupId>
+      <artifactId>ets-wfs20-dgiwg</artifactId>
+      <version>0.3</version>
     </dependency>
     <dependency>
       <groupId>org.opengis.cite.teamengine</groupId>
