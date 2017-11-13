@@ -34,7 +34,7 @@ public class AccessConstraints extends BaseFixture {
     @Test(description = "See NSG WFS 2.0 Profile: Requirement 25")
     public void wfsCapabilitiesAccessConstraintsExists( ITestContext testContext ) {
         this.wfsMetadata = (Document) testContext.getSuite().getAttribute( TEST_SUBJECT.getName() );
-        String xPathXml = "//ows:ServiceIdentification/ows:AccessConstraints  != ''";
+        String xPathXml = "//ows:ServiceIdentification/ows:AccessConstraints";
 
         assertXPath( xPathXml, this.wfsMetadata, NAMESPACE_BINIDNGS );
     }
