@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
-<properties version="1.0">
-    <comment>NSG WFS 2.0 reference implementation</comment>
-    <entry key="wfs">http://cloudsdi.geo-solutions.it/geoserver/osm/ows?service=wfs&version=2.0.0&request=GetCapabilities</entry>
-    <entry key="fid" />
-</properties>
