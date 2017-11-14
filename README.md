@@ -60,7 +60,6 @@ The latest test suite release are usually available at the [beta testing facilit
 You can also [build and deploy](https://github.com/opengeospatial/teamengine) the test 
 harness yourself and use a local installation.
 
-
 ### How to contribute
 
 If you would like to get involved, you can:
@@ -72,3 +71,39 @@ an enhancement request
 * Add new tests: Fork the repository, implement and verify the tests on a new topic branch, 
 and create a pull request (don't forget to periodically rebase long-lived branches so 
 there are no extraneous conflicts)
+
+### How to build the test suite
+
+All examples of this section refer to version 0.2 of this test suite.
+
+Several dependencies are not available via Central Maven Repository. Thus, these have to be built locally.
+
+Clone, checkout tag (in this example version 5.0) and build TEAM Engine dependency.
+* ```git clone https://github.com/opengeospatial/teamengine.git```
+* ```cd teamengine```
+* ```git checkout 5.0```
+* ```mvn clean install```
+
+Clone, checkout tag (in this example version 1.26) and build WFS 2.0 dependency.
+* ```git clone https://github.com/opengeospatial/ets-wfs20.git```
+* ```cd ets-wfs20```
+* ```git checkout 1.26```
+* ```mvn clean install```
+
+Clone, checkout tag (in this example version 0.4) and build DGIWG Core dependency.
+* ```git clone https://github.com/opengeospatial/ets-dgiwg-core.git```
+* ```cd ets-dgiwg-core```
+* ```git checkout 0.4```
+* ```mvn clean install```
+
+Clone, checkout tag (in this example version 0.3) and build WFS 2.0 DGIWG Profile dependency.
+* ```git clone https://github.com/opengeospatial/ets-wfs20-dgiwg.git```
+* ```cd ets-wfs20-dgiwg```
+* ```git checkout 0.3```
+* ```mvn clean install```
+
+Clone, checkout tag (in this example version 0.2) and build this repository.
+* ```git clone https://github.com/opengeospatial/ets-wfs20-nsg.git```
+* ```cd ets-wfs20-nsg```
+* ```git checkout 0.2```
+* ```mvn clean install```
