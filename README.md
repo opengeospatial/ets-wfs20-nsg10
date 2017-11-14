@@ -74,9 +74,9 @@ there are no extraneous conflicts)
 
 ### How to build the test suite
 
-All examples of this section refer to version 0.2 of this test suite.
-
 Several dependencies are not available via Central Maven Repository. Thus, these have to be built locally.
+
+All examples of this section refer to version 0.2 of this test suite.
 
 Clone, checkout tag (in this example version 5.0) and build **TEAM Engine dependency**.
 * ```git clone https://github.com/opengeospatial/teamengine.git```
