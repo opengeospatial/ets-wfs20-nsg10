@@ -78,31 +78,31 @@ All examples of this section refer to version 0.2 of this test suite.
 
 Several dependencies are not available via Central Maven Repository. Thus, these have to be built locally.
 
-Clone, checkout tag (in this example version 5.0) and build TEAM Engine dependency.
+Clone, checkout tag (in this example version 5.0) and build *TEAM Engine dependency*.
 * ```git clone https://github.com/opengeospatial/teamengine.git```
 * ```cd teamengine```
 * ```git checkout 5.0```
 * ```mvn clean install```
 
-Clone, checkout tag (in this example version 1.26) and build WFS 2.0 dependency.
+Clone, checkout tag (in this example version 1.26) and build *WFS 2.0 dependency*.
 * ```git clone https://github.com/opengeospatial/ets-wfs20.git```
 * ```cd ets-wfs20```
 * ```git checkout 1.26```
 * ```mvn clean install```
 
-Clone, checkout tag (in this example version 0.4) and build DGIWG Core dependency.
+Clone, checkout tag (in this example version 0.4) and build *DGIWG Core dependency*.
 * ```git clone https://github.com/opengeospatial/ets-dgiwg-core.git```
 * ```cd ets-dgiwg-core```
 * ```git checkout 0.4```
 * ```mvn clean install```
 
-Clone, checkout tag (in this example version 0.3) and build WFS 2.0 DGIWG Profile dependency.
+Clone, checkout tag (in this example version 0.3) and build WFS 2.0 *DGIWG Profile dependency*.
 * ```git clone https://github.com/opengeospatial/ets-wfs20-dgiwg.git```
 * ```cd ets-wfs20-dgiwg```
 * ```git checkout 0.3```
 * ```mvn clean install```
 
-Clone, checkout tag (in this example version 0.2) and build this repository.
+Clone, checkout tag (in this example version 0.2) and build *this repository*.
 * ```git clone https://github.com/opengeospatial/ets-wfs20-nsg.git```
 * ```cd ets-wfs20-nsg```
 * ```git checkout 0.2```
