@@ -11,6 +11,7 @@
     <ServiceTypeVersion>2.0.0</ServiceTypeVersion>
     <Abstract>This service implements the NSG BASIC WFS profile of WFS 2.0</Abstract>
     <Profile>urn:nga:service:wfs:2.0:profile:basic</Profile>
+    <AccessConstraints>TOP SECRET</AccessConstraints>
   </ServiceIdentification>
   <ServiceProvider>
     <ProviderName>ACME Corp</ProviderName>

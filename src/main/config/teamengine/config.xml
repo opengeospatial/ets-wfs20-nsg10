@@ -13,6 +13,16 @@
         <local-name>ets-wfs20-nsg-${version}</local-name>
         <title>Test suite ets-wfs20-nsg</title>
         <description>Describe scope of testing.</description>
+        <BasicConformanceClasses>
+          <conformanceClass>Preconditions</conformanceClass>
+          <conformanceClass>All GML application schemas</conformanceClass>
+          <conformanceClass>GML application schemas defining features</conformanceClass>
+          <conformanceClass>NSG Basic WFS Conformance Class</conformanceClass>
+          <conformanceClass>NSG Locking WFS</conformanceClass>
+          <conformanceClass>Remote Resolve</conformanceClass>
+          <conformanceClass>NSG Manage Stored Queries</conformanceClass>
+          <conformanceClass>Enhanced Paging</conformanceClass>
+        </BasicConformanceClasses>
       </suite>
       <revision>
         <name>${version}</name>

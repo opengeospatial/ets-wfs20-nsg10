@@ -6,7 +6,6 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.net.URL;
-import java.util.InvalidPropertiesFormatException;
 import java.util.Properties;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -20,6 +19,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
+import org.opengis.cite.iso19142.TestRunArg;
 import org.opengis.cite.iso19142.util.XMLUtils;
 import org.w3c.dom.Document;
 
@@ -46,7 +46,7 @@ public class VerifyTestNGController {
 
     @Before
     public void loadDefaultTestRunProperties()
-                            throws InvalidPropertiesFormatException, IOException {
+                            throws IOException {
         this.testRunProps = new Properties();
         this.testRunProps.loadFromXML( getClass().getResourceAsStream( "/test-run-props.xml" ) );
     }

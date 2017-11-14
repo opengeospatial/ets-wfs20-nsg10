@@ -9,6 +9,7 @@
   <ServiceIdentification>
     <ServiceType codeSpace="http://www.opengeospatial.org/standards/">wfs</ServiceType>
     <ServiceTypeVersion>2.0.0</ServiceTypeVersion>
+    <AccessConstraints>unknown</AccessConstraints>
   </ServiceIdentification>
   <ServiceProvider>
     <ProviderName>ACME Corp</ProviderName>
