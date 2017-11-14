@@ -102,7 +102,9 @@ Clone, checkout tag (in this example version 0.3) and build WFS 2.0 **DGIWG Prof
 * ```git checkout 0.3```
 * ```mvn clean install```
 
-Clone, checkout tag (in this example version 0.2) and build **this repository**.
+Finally, all dependencies are available.
+
+Now, clone, checkout tag (in this example version 0.2) and build **this repository**.
 * ```git clone https://github.com/opengeospatial/ets-wfs20-nsg.git```
 * ```cd ets-wfs20-nsg```
 * ```git checkout 0.2```
