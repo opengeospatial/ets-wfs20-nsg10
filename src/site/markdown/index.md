@@ -50,7 +50,10 @@ A feature identifier may be supplied for the purpose of verifying the behavior o
 
 ## Test coverage
 
-TODO: add list of not implemented conformance classes/tests
+Some optional conformance classes are not covered by the test suite. The following capabilities are not tested:
+
+ * Inheritance
+ + Remote resolve
 
 ## Test suite structure
 
