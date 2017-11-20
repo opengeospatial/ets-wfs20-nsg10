@@ -41,7 +41,16 @@ conforming implementation.
 Some optional conformance classes are not covered by the test suite. The following capabilities are not tested:
 
  * Inheritance
- + Remote resolve
+ * Remote resolve
+
+As a request timeout cannot be produced by a test suite, tests for following requirements are restricted:
+
+ * Requirement 12 - OperationProcessingTimeout is not tested.
+ * Requirement 15 - Is not tested as request timeout is required.
+
+Hints:
+
+ * Requirements 22 and 24 are included in NSG Basic WFS Conformance Class test group. However, the specification states that these two requirements should be included in NSG Locking WFS Conformance Class test group. Due to technical reasons this is not possible.
 
 ## Test suite structure
 
