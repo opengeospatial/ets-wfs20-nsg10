@@ -4,32 +4,27 @@
 ## Scope
 
 This executable test suite (ETS) verifies the conformance of the implementation 
-under test (IUT) with respect to the set of relevant specifications depicted in 
-Figure 1. Conformance testing is a kind of "black box" testing that examines the 
+under test (IUT). Conformance testing is a kind of "black box" testing that examines the 
 externally visible characteristics or behaviors of the IUT while disregarding 
 any implementation details.
-
-**Figure 1: Relevant specifications**
-
-![Set of relevant specifications](img/specifications.png)
 
 Several conformance classes are defined in the principal specifications; the ones 
 listed below are covered by this test suite:
 
 * NSG Basic WFS Conformance Class
-    - TODO: List capabilities of this conformance class
+    - The service shall comply with the DGIWG Basic WFS conformance class as extended and restricted by this specification.
 * NSG Locking WFS 
-    - TODO: List capabilities of this conformance class
+    - The service shall comply with the DGIWG Locking (Transactional) WFS conformance class as extended and restricted by this specification.
 * Inheritance
-    - TODO: List capabilities of this conformance class
+    - The service shall implement the schema-element() function for XPath expressions.
 * Remote Resolve
-    - TODO: List capabilities of this conformance class
+    - The service shall implement the ability to resolve remote resource references.
 * NSG Manage Stored Queries
-    - List capabilities of this conformance class
+    - The service shall implement the CreateStoredQuery and the DropStoredQuery operations.
 * SOAP
-    - TODO: List capabilities of this conformance class
+    - The service shall implement XML encoded requests and results within SOAP Envelopes.
 * Enhanced Paging
-    - TODO: List capabilities of this conformance class
+    - The service shall implement the ability to return the page specified by the user from a set of response features or values.
 
 ## Test requirements
 
