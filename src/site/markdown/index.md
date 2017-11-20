@@ -205,7 +205,7 @@ have the following values: M (mandatory), O (optional), or C (conditional).
       <td>wfs</td>
       <td>URI</td>
       <td>M</td>
-      <td>A URI that refers to a representation of the service capabilities document. This document does not need to be obtained from the service under test (SUT), but it must describe the SUT. Ampersand ('&') characters appearing within a query parameter value must be percent-encoded as '%26'.</td>
+      <td>A URI that refers to a representation of the service capabilities document. This document does not need to be obtained from the service under test (SUT), but it must describe the SUT. Ampersand ('&amp;') characters appearing within a query parameter value must be percent-encoded as '%26'.</td>
     </tr>
 	</tbody>
 </table>
