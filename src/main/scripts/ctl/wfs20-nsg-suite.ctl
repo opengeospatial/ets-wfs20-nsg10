@@ -35,12 +35,12 @@
                  <li><a href="https://nsgreg.nga.mil/doc/view?i=4283">National System for Geospatial-Intelligence
                    (NSG) Web Feature Service 2.0</a></li>
                </ul>
-               <p>Seven fundamental conformance levels are defined. The content of the capabilities document will determine which tests are run: :</p>
+               <p>Seven fundamental conformance levels are defined. The content of the capabilities document will determine which tests are run:</p>
                <ol>
                  <li>NSG Basic WFS</li>
                  <li>NSG Locking WFS</li>
-                 <li>Inheritance</li>
-                 <li>Remote Resolve</li>
+                 <li>Inheritance (not tested)</li>
+                 <li>Remote Resolve (not tested)</li>
                  <li>NSG Manage Stored Queries</li>
                  <li>SOAP</li>
                  <li>Enhanced Paging</li>
