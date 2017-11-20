@@ -39,8 +39,8 @@
                <ol>
                  <li>NSG Basic WFS</li>
                  <li>NSG Locking WFS</li>
-                 <li>Inheritance (not tested)</li>
-                 <li>Remote Resolve (not tested)</li>
+                 <li>Inheritance (not tested as optional)</li>
+                 <li>Remote Resolve (not tested as optional)</li>
                  <li>NSG Manage Stored Queries</li>
                  <li>SOAP</li>
                  <li>Enhanced Paging</li>
