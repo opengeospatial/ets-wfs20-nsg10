@@ -182,8 +182,8 @@ methods that constitute the suite.
 
 The test suite may be run in any of the following environments:
 
-* Integrated development environment (IDE): The main Java class is org.opengis.cite.iso19142.TestNGController.
-* REST API: Submit a request that includes the necessary arguments to the test run controller (/rest/suites/wfs20/1.26/run).
+* Integrated development environment (IDE): The main Java class is org.opengis.cite.wfs20.nsg.TestNGController.
+* REST API: Submit a request that includes the necessary arguments to the test run controller (/rest/suites/wfs20-nsg/0.2/run).
 * TEAM Engine: Run the CTL script located in the /src/main/ctl/ directory.
 
 
@@ -205,17 +205,9 @@ have the following values: M (mandatory), O (optional), or C (conditional).
       <td>wfs</td>
       <td>URI</td>
       <td>M</td>
-      <td>A URI that refers to a representation of the service capabilities document. This document does not need to be obtained from the service under test (SUT), but it must describe the SUT. Ampersand ('&amp;') characters appearing within a query parameter value must be percent-encoded as %26.</td>
-    </tr>
-	  <tr>
-      <td>fid</td>
-      <td>NCName</td>
-      <td>O</td>
-      <td>An identifier that matches the @gml:id attribute value of an available feature instance (may be omitted for "Basic WFS" implementations).</td>
+      <td>A URI that refers to a representation of the service capabilities document. This document does not need to be obtained from the service under test (SUT), but it must describe the SUT. Ampersand ('&') characters appearing within a query parameter value must be percent-encoded as '%26'.</td>
     </tr>
 	</tbody>
 </table>
 
 **Note:** A test method is skipped if any preconditions were not satisfied. Test prerequisites are usually checked in a configuration method; the results of these can be viewed in the TestNG report by selecting the "Config" check box.
-
-Which tests are actually run is determined by the content of the WFS capabilities document; in particular, the conformance classes that the implementation claims to support. There is a service constraint defined for each conformance class, except for the mandatory "Simple WFS" conformance class (see ISO 19142, Table 13). The boolean-valued service constraints are listed in the OperationsMetadata section of the capabilities document as shown below.
