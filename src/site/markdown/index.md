@@ -31,17 +31,10 @@ listed below are covered by this test suite:
 The documents listed below stipulate requirements that must be satisfied by a 
 conforming implementation.
 
-1. [Web Content Accessibility Guidelines (WCAG) 2.0](http://www.w3.org/TR/WCAG20/)
-2. [Extensible Markup Language (XML) 1.0, Fifth Edition](http://www.w3.org/TR/xml/)
-3. [RFC 7231](https://tools.ietf.org/html/rfc7231) - Hypertext Transfer Protocol 
-(HTTP/1.1): Semantics and Content 
-
-The test suite is schema-aware in the sense that the WFS under test does not need to support any particular application schema or to be pre-loaded with specialized test data. However, the following preconditions must be satisfied by the implementation under test (IUT):
-
-* The GML application schema meets the requirements of the GML conformance class "GML application schemas defining features and feature collections" (ISO 19136, A.1.4).
-* Data are available for at least one feature type advertised in the capabilities document.
-
-A feature identifier may be supplied for the purpose of verifying the behavior of the `GetFeatureById` stored query.
+1. [National System for Geospatial-Intelligence (NSG) Web Feature Service 2.0](https://nsgreg.nga.mil/doc/view?i=4283)
+2. [DGIWG - Web Feature Service 2.0 Profile](https://portal.opengeospatial.org/files/?artifact_id=66933)
+3. [OGC Web Feature Service 2.0 Interface Standard](http://docs.opengeospatial.org/is/09-025r2/09-025r2.html)
+4. [OGC Filter Encoding 2.0 Encoding Standard](http://docs.opengeospatial.org/is/09-026r2/09-026r2.html)
 
 ## Test coverage
 
