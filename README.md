@@ -37,8 +37,8 @@ You can modify the sample file in `src/main/config/test-run-props.xml`
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties version="1.0">
-  <comment>Test run arguments</comment>
-  <entry key="iut">http://schemas.opengis.net/gml/3.2.1/gml.xsd</entry>
+  <comment>NSG WFS 2.0 reference implementation - Test run arguments</comment>
+  <entry key="wfs">http://localhost:8080/wfs?SERVICE=wfs&VERSION=2.0.0&REQUEST=GetCapabilities</entry>
 </properties>
 ```
 
