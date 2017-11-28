@@ -216,6 +216,12 @@ have the following values: M (mandatory), O (optional), or C (conditional).
       <td>M</td>
       <td>A URI that refers to a representation of the service capabilities document. This document does not need to be obtained from the service under test (SUT), but it must describe the SUT. Ampersand ('&amp;') characters appearing within a query parameter value must be percent-encoded as '%26'.</td>
     </tr>
+    <tr>
+        <td>fid</td>
+        <td>NCName</td>
+        <td>M</td>
+        <td>An identifier that matches the @gml:id attribute value of an available featureinstance.</td>
+    </tr>
 	</tbody>
 </table>
 
