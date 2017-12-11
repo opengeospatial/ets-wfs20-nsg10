@@ -45,6 +45,8 @@
                  <li>SOAP</li>
                  <li>Enhanced Paging</li>
                </ol>
+               <p>A feature identifier must be supplied for the purpose of verifying the behavior of the
+                 <code>GetFeatureById</code> stored query. This is required in the conformance class NSG Basic WFS.</p>
              </div>
              <fieldset style="background:#ccffff">
                <legend style="font-family: sans-serif; color: #000099; 
@@ -62,6 +64,12 @@
                  </label>
                  <input name="doc" id="doc" size="128" type="file" />
                </p>
+               <p>
+                 <label for="fid">
+                   <h4 style="margin-bottom: 0.5em">Feature identifier</h4>
+                 </label>
+                 <input id="fid" name="fid" size="96" type="text" value="" />
+               </p>
              </fieldset>
              <p>
                <input class="form-button" type="submit" value="Start"/> | 
@@ -69,27 +77,27 @@
              </p>
            </ctl:form>
         </xsl:variable>
-        <xsl:variable name="iut-file" select="$form-data//value[@key='doc']/ctl:file-entry/@full-path" />
+        <xsl:variable name="wfs-file" select="$form-data//value[@key='doc']/ctl:file-entry/@full-path" />
 	      <xsl:variable name="test-run-props">
 		    <properties version="1.0">
-          <entry key="iut">
+          <entry key="wfs">
             <xsl:choose>
-              <xsl:when test="empty($iut-file)">
+              <xsl:when test="empty(wfs-file)">
                 <xsl:value-of select="normalize-space($form-data/values/value[@key='uri'])"/>
               </xsl:when>
               <xsl:otherwise>
-                <xsl:copy-of select="concat('file:///', $iut-file)" />
+                <xsl:copy-of select="concat('file:///', wfs-file)" />
               </xsl:otherwise>
             </xsl:choose>
           </entry>
-          <entry key="ics"><xsl:value-of select="$form-data/values/value[@key='level']"/></entry>
+          <entry key="fid"><xsl:value-of select="$form-data/values/value[@key='fid']"/></entry>
 		    </properties>
 		   </xsl:variable>
        <xsl:variable name="testRunDir">
          <xsl:value-of select="tec:getTestRunDirectory($te:core)"/>
        </xsl:variable>
        <xsl:variable name="test-results">
-        <ctl:call-function name="tns:run-ets-wfs20-nsg">
+          <ctl:call-function name="tns:run-ets-${ets-code}">
 			    <ctl:with-param name="testRunArgs" select="$test-run-props"/>
           <ctl:with-param name="outputDir" select="$testRunDir" />
 			  </ctl:call-function>
