@@ -9,6 +9,7 @@ import static org.opengis.cite.iso19142.util.ServiceMetadataUtils.getConstraintV
 import static org.opengis.cite.iso19142.util.WFSMessage.appendSimpleQuery;
 import static org.opengis.cite.wfs20.nsg.utils.NamespaceUtils.withStandardBindings;
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertNotNull;
 
 import java.util.Map;
 import java.util.Set;
@@ -44,9 +45,9 @@ public class CountParameter extends QueryFilterFixture {
     public void countDefaultIs10( ITestContext testContext ) {
         this.wfsMetadata = (Document) testContext.getSuite().getAttribute( TEST_SUBJECT.getName() );
         String constraintValueCountDefault = getConstraintValue( this.wfsMetadata, "CountDefault" );
-        assertEquals( constraintValueCountDefault, COUNT_DEFAULT_VALUE,
+        assertNotNull( constraintValueCountDefault, "A constraint CountDefault is expected" );
+        assertEquals( constraintValueCountDefault, Integer.toString( COUNT_DEFAULT_VALUE ),
                       "A value of 10 for constraint CountDefault is expected" );
-
     }
 
     @Test(description = "See NSG WFS 2.0 Profile: Requirement 13 + 14")

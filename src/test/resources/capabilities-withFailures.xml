@@ -146,6 +146,9 @@
       <ValuesReference ows:reference="http://www.w3.org/2001/XMLSchema#boolean"/>
       <DefaultValue>FALSE</DefaultValue>
     </Constraint>
+    <Constraint name="CountDefault">
+      <DefaultValue>100</DefaultValue>
+    </Constraint>
     <ExtendedCapabilities>
       <wadl:application xmlns:wadl="http://wadl.dev.java.net/2009/02">
         <wadl:resources base="http://localhost:1999/">
