@@ -67,6 +67,7 @@
     <dependency>
       <groupId>org.opengis.cite.teamengine</groupId>
       <artifactId>teamengine-spi</artifactId>
+      <version>5.5</version>
     </dependency>
     <dependency>
       <groupId>org.opengis.cite</groupId>
@@ -118,7 +119,7 @@
     <dependency>
       <groupId>org.opengis.cite</groupId>
       <artifactId>ets-wfs20</artifactId>
-      <version>1.28</version>
+      <version>1.38</version>
     </dependency>
     <dependency>
       <groupId>javax.ws.rs</groupId>
