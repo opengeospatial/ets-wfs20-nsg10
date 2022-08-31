@@ -1,5 +1,9 @@
 # Release Notes
 
+## 0.5 (2022-08-31)
+
+* [#20](https://github.com/opengeospatial/ets-wfs20-nsg10/pull/20): Set ets-wfs20-dgiwg to v0.6
+
 ## 0.4 (2022-08-23)
 
 * [#19](https://github.com/opengeospatial/ets-wfs20-nsg10/pull/19): Set ets-wfs20-dgiwg to v0.5
