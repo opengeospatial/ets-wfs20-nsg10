@@ -119,7 +119,7 @@
     <dependency>
       <groupId>org.opengis.cite</groupId>
       <artifactId>ets-wfs20</artifactId>
-      <version>1.38</version>
+      <version>1.40</version>
     </dependency>
     <dependency>
       <groupId>javax.ws.rs</groupId>
