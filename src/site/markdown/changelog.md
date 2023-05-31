@@ -1,5 +1,11 @@
 # Release Notes
 
+## 0.6 (2023-05-31)
+
+* [#25](https://github.com/opengeospatial/ets-wfs20-nsg10/issues/25): Update dependency ets-wfs20-dgiwg to latest version
+* [#22](https://github.com/opengeospatial/ets-wfs20-nsg10/issues/22): Update dependency ets-wfs20 to latest version
+* [#23](https://github.com/opengeospatial/ets-wfs20-nsg10/pull/23): Upgrade TEAM Engine dependency to v5.6.1
+
 ## 0.5 (2022-08-31)
 
 * [#20](https://github.com/opengeospatial/ets-wfs20-nsg10/pull/20): Set ets-wfs20-dgiwg to v0.6
