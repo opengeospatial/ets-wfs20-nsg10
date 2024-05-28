@@ -1,5 +1,9 @@
 # Release Notes
 
+## 0.7 (2024-05-28)
+
+* [#28](https://github.com/opengeospatial/ets-wfs20-nsg10/pull/28): Upgrade multiple dependencies
+
 ## 0.6 (2023-05-31)
 
 * [#25](https://github.com/opengeospatial/ets-wfs20-nsg10/issues/25): Update dependency ets-wfs20-dgiwg to latest version
