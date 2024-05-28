@@ -62,16 +62,32 @@
     <dependency>
       <groupId>org.opengis.cite</groupId>
       <artifactId>ets-wfs20-dgiwg</artifactId>
-      <version>0.7</version>
+      <version>0.8</version>
     </dependency>
     <dependency>
       <groupId>org.opengis.cite.teamengine</groupId>
       <artifactId>teamengine-spi</artifactId>
-      <version>5.6.1</version>
+      <version>5.7</version>
+      <exclusions>
+        <exclusion>
+          <artifactId>xercesImpl</artifactId>
+          <groupId>xerces</groupId>
+        </exclusion>
+        <exclusion>
+          <artifactId>slf4j-api</artifactId>
+          <groupId>org.slf4j</groupId>
+        </exclusion>
+      </exclusions>
     </dependency>
     <dependency>
       <groupId>org.opengis.cite</groupId>
       <artifactId>schema-utils</artifactId>
+      <exclusions>
+        <exclusion>
+          <artifactId>xercesImpl</artifactId>
+          <groupId>xerces</groupId>
+        </exclusion>
+      </exclusions>
     </dependency>
     <dependency>
       <groupId>com.sun.jersey</groupId>
@@ -89,11 +105,23 @@
       <groupId>org.testng</groupId>
       <artifactId>testng</artifactId>
       <version>6.9.10</version>
+      <exclusions>
+        <exclusion>
+          <artifactId>jcommander</artifactId>
+          <groupId>com.beust</groupId>
+        </exclusion>
+      </exclusions>
     </dependency>
     <dependency>
       <groupId>org.opengis.cite</groupId>
       <artifactId>ets-dgiwg-core</artifactId>
       <version>0.5</version>
+      <exclusions>
+        <exclusion>
+          <artifactId>teamengine-spi</artifactId>
+          <groupId>org.opengis.cite.teamengine</groupId>
+        </exclusion>
+      </exclusions>
     </dependency>
     <dependency>
       <groupId>org.hamcrest</groupId>
@@ -104,7 +132,7 @@
     <dependency>
       <groupId>com.beust</groupId>
       <artifactId>jcommander</artifactId>
-      <version>1.48</version>
+      <version>1.82</version>
     </dependency>
     <dependency>
       <groupId>org.opengis.cite.saxon</groupId>
@@ -119,7 +147,13 @@
     <dependency>
       <groupId>org.opengis.cite</groupId>
       <artifactId>ets-wfs20</artifactId>
-      <version>1.40</version>
+      <version>1.41</version>
+      <exclusions>
+        <exclusion>
+          <artifactId>teamengine-spi</artifactId>
+          <groupId>org.opengis.cite.teamengine</groupId>
+        </exclusion>
+      </exclusions>
     </dependency>
     <dependency>
       <groupId>javax.ws.rs</groupId>
