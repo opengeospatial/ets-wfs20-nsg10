@@ -1,6 +1,5 @@
 package org.opengis.cite.wfs20.nsg.testsuite.pageresults;
 
-import static com.sun.jersey.api.client.ClientResponse.Status.OK;
 import static org.opengis.cite.iso19142.ETSAssert.assertXPath;
 import static org.opengis.cite.iso19142.ErrorMessageKeys.UNEXPECTED_STATUS;
 import static org.opengis.cite.iso19142.ProtocolBinding.GET;
@@ -16,6 +15,7 @@ import java.util.Map;
 
 import javax.xml.namespace.QName;
 
+import org.glassfish.jersey.client.ClientResponse;
 import org.opengis.cite.iso19142.ErrorMessage;
 import org.opengis.cite.iso19142.SuiteAttribute;
 import org.opengis.cite.wfs20.nsg.utils.NamespaceUtils;
@@ -24,7 +24,8 @@ import org.testng.SkipException;
 import org.testng.annotations.Test;
 import org.w3c.dom.Document;
 
-import com.sun.jersey.api.client.ClientResponse;
+import jakarta.ws.rs.core.Response;
+import jakarta.ws.rs.core.Response.Status;
 
 /**
  * Contains the test for the PageReults operation.
@@ -37,8 +38,8 @@ public class PageResults extends PageResultsFixture {
 
     @Test(description = "See NSG WFS 2.0 Profile: Requirement 19, 33, 34", dataProvider = "feature-types", dependsOnMethods = "checkIfEnhancedPagingIsSupported")
     public void requestResultId( QName featureType ) {
-        ClientResponse indexResponse = submitGetFeatureIndexRequest( featureType );
-        assertEquals( indexResponse.getStatus(), OK.getStatusCode(), ErrorMessage.get( UNEXPECTED_STATUS ) );
+        Response indexResponse = submitGetFeatureIndexRequest( featureType );
+        assertEquals( indexResponse.getStatus(), Status.OK.getStatusCode(), ErrorMessage.get( UNEXPECTED_STATUS ) );
 
         Document indexRspDocument = extractBodyAsDocument( indexResponse );
         assertNotNull( indexRspDocument, "Response with resultType index must not be null" );
@@ -67,7 +68,7 @@ public class PageResults extends PageResultsFixture {
         ResultSetIdAndNumberOfFeatures resultSetAndNumberOfFeatures = findResultSetIdAndNumberOfFeatures( featureType );
 
         initResultSetRequest( resultSetAndNumberOfFeatures.getResultSetId() );
-        ClientResponse clientResponse = wfsClient.submitRequest( this.reqEntity, POST );
+        Response clientResponse = wfsClient.submitRequest( this.reqEntity, POST );
         assertNumberOfFeatures( clientResponse, resultSetAndNumberOfFeatures.getNumberOfFeatures() );
     }
 
@@ -80,7 +81,7 @@ public class PageResults extends PageResultsFixture {
         ResultSetIdAndNumberOfFeatures resultSetAndNumberOfFeatures = findResultSetIdAndNumberOfFeatures( featureType );
 
         initResultSetRequest( resultSetAndNumberOfFeatures.getResultSetId() );
-        ClientResponse clientResponse = wfsClient.submitRequest( this.reqEntity, GET );
+        Response clientResponse = wfsClient.submitRequest( this.reqEntity, GET );
         assertNumberOfFeatures( clientResponse, resultSetAndNumberOfFeatures.getNumberOfFeatures() );
     }
 
@@ -91,7 +92,7 @@ public class PageResults extends PageResultsFixture {
                                  + featureType );
     }
 
-    private void assertNumberOfFeatures( ClientResponse clientResponse, int numberOfFeaturesFromIndexResponse ) {
+    private void assertNumberOfFeatures( Response clientResponse, int numberOfFeaturesFromIndexResponse ) {
         this.rspEntity = extractBodyAsDocument( clientResponse );
         int numberOfFeaturesFromPageResult = parseNumberOfFeatures( this.rspEntity );
         assertEquals( numberOfFeaturesFromPageResult, numberOfFeaturesFromIndexResponse,

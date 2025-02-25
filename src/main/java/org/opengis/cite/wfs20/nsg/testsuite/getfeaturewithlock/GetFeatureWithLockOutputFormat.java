@@ -24,7 +24,8 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.w3c.dom.Document;
 
-import com.sun.jersey.api.client.ClientResponse;
+import jakarta.ws.rs.core.Response;
+import jakarta.ws.rs.core.Response.Status;
 
 /**
  * Contains test for the outputFormat parameter in GetFeature requests.
@@ -61,8 +62,8 @@ public class GetFeatureWithLockOutputFormat extends LockingFixture {
         appendSimpleQuery( this.reqEntity, featureType );
         setOutputFormatAttribute( this.reqEntity, GML_OUTPUTFORMAT );
 
-        ClientResponse rsp = wfsClient.submitRequest( reqEntity, POST );
-        assertEquals( rsp.getStatus(), ClientResponse.Status.OK.getStatusCode(), ErrorMessage.get( UNEXPECTED_STATUS ) );
+        Response rsp = wfsClient.submitRequest( reqEntity, POST );
+        assertEquals( rsp.getStatus(), Status.OK.getStatusCode(), ErrorMessage.get( UNEXPECTED_STATUS ) );
         this.rspEntity = extractBodyAsDocument( rsp );
         assertSchemaValid( wfsSchema, this.rspEntity );
         // TODO: Check if response contains GML

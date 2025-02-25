@@ -26,7 +26,7 @@ import org.testng.annotations.Test;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-import com.sun.jersey.api.client.ClientResponse;
+import jakarta.ws.rs.core.Response;
 
 /**
  * Fixture for PageResults operation.
@@ -79,7 +79,7 @@ public class PageResultsFixture extends QueryFilterFixture {
      *            the feature type to request
      * @return the GetFeature response, never <code>null</code>
      */
-    protected ClientResponse submitGetFeatureIndexRequest( QName featureType ) {
+    protected Response submitGetFeatureIndexRequest( QName featureType ) {
         Document requestEntity = createRequestEntity( "GetFeature-Minimal", this.wfsVersion );
         appendSimpleQuery( requestEntity, featureType );
         setPresentationParameters( requestEntity, "index" );
@@ -95,7 +95,7 @@ public class PageResultsFixture extends QueryFilterFixture {
      * @return the resultSetId from the response, may be <code>null</code> or empty
      */
     public String submitGetFeatureIndexRequestAndParseResultSetId( QName featureType ) {
-        ClientResponse rsp = submitGetFeatureIndexRequest( featureType );
+        Response rsp = submitGetFeatureIndexRequest( featureType );
         Document rspDocument = extractBodyAsDocument( rsp );
         return parseResultSetId( rspDocument );
     }

@@ -1,6 +1,5 @@
 package org.opengis.cite.wfs20.nsg.testsuite.getfeature;
 
-import static com.sun.jersey.api.client.ClientResponse.Status.OK;
 import static javax.xml.xpath.XPathConstants.STRING;
 import static org.opengis.cite.iso19142.ErrorMessageKeys.UNEXPECTED_STATUS;
 import static org.opengis.cite.iso19142.ProtocolBinding.POST;
@@ -28,7 +27,8 @@ import org.testng.annotations.Test;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-import com.sun.jersey.api.client.ClientResponse;
+import jakarta.ws.rs.core.Response;
+import jakarta.ws.rs.core.Response.Status;
 
 /**
  * @author <a href="mailto:goltz@lat-lon.de">Lyn Goltz </a>
@@ -67,9 +67,9 @@ public class CountParameter extends QueryFilterFixture {
 
         appendSimpleQuery( this.reqEntity, featureType );
         removeCountAttribute( this.reqEntity );
-        ClientResponse rsp = this.wfsClient.submitRequest( this.reqEntity, POST );
+        Response rsp = this.wfsClient.submitRequest( this.reqEntity, POST );
         this.rspEntity = extractBodyAsDocument( rsp );
-        assertEquals( rsp.getStatus(), OK.getStatusCode(), ErrorMessage.get( UNEXPECTED_STATUS ) );
+        assertEquals( rsp.getStatus(), Status.OK.getStatusCode(), ErrorMessage.get( UNEXPECTED_STATUS ) );
 
         int numberOfFeatures = parseNumberOfFeatures( this.rspEntity );
         assertEquals( numberOfFeatures, COUNT_DEFAULT_VALUE,

@@ -18,7 +18,8 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import org.w3c.dom.Document;
 
-import com.sun.jersey.api.client.ClientResponse;
+import jakarta.ws.rs.core.Response;
+import jakarta.ws.rs.core.Response.Status;
 
 /**
  * Contains test for the outputFormat parameter in PageResults requests.
@@ -48,8 +49,8 @@ public class PageResultsOutputFormat extends PageResultsFixture {
         String resultSetId = submitGetFeatureIndexRequestAndParseResultSetId( featureType );
         initResultSetRequest( resultSetId );
 
-        ClientResponse rsp = wfsClient.submitRequest( reqEntity, POST );
-        assertEquals( rsp.getStatus(), ClientResponse.Status.OK.getStatusCode(), ErrorMessage.get( UNEXPECTED_STATUS ) );
+        Response rsp = wfsClient.submitRequest( reqEntity, POST );
+        assertEquals( rsp.getStatus(), Status.OK.getStatusCode(), ErrorMessage.get( UNEXPECTED_STATUS ) );
         this.rspEntity = extractBodyAsDocument( rsp );
         assertSchemaValid( wfsSchema, this.rspEntity );
         // TODO: check that response contains GML

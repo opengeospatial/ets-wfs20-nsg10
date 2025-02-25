@@ -8,7 +8,6 @@ import java.net.URI;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.ws.rs.core.UriBuilder;
 import javax.xml.transform.Source;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.xpath.XPathExpressionException;
@@ -19,8 +18,10 @@ import org.opengis.cite.iso19142.util.XMLUtils;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 
-import com.sun.jersey.api.client.ClientResponse;
-import com.sun.jersey.api.client.WebResource;
+import jakarta.ws.rs.client.Invocation.Builder;
+import jakarta.ws.rs.client.WebTarget;
+import jakarta.ws.rs.core.Response;
+import jakarta.ws.rs.core.UriBuilder;
 
 /**
  * Enhanced the {@link WFSClient} by the support of transforming PageResults POST binding requests to GET query string
@@ -39,17 +40,17 @@ public class NsgWfsClient extends WFSClient {
     }
 
     @Override
-    public ClientResponse submitRequest( Source entity, ProtocolBinding binding, URI endpoint ) {
+    public Response submitRequest( Source entity, ProtocolBinding binding, URI endpoint ) {
         if ( entity instanceof DOMSource ) {
             Node node = ( (DOMSource) entity ).getNode();
             String docElemName = node.getLocalName();
             if ( "PageResults".equals( docElemName ) && GET.equals( binding ) ) {
                 String queryString = createQueryString( node );
-                WebResource resource = client.resource( endpoint );
-                URI requestURI = UriBuilder.fromUri( resource.getURI() ).replaceQuery( queryString ).build();
+                URI requestURI = UriBuilder.fromUri( endpoint ).replaceQuery( queryString ).build();
                 LOGR.log( Level.FINE, String.format( "Request URI: %s", requestURI ) );
-                resource = resource.uri( requestURI );
-                return resource.get( ClientResponse.class );
+                WebTarget target = this.client.target(requestURI);
+                Builder reqBuilder = target.request();                
+                return reqBuilder.buildGet().invoke();
             }
         }
         return super.submitRequest( entity, binding, endpoint );
