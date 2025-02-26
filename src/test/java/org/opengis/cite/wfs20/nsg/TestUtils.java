@@ -22,27 +22,26 @@ import org.xml.sax.SAXException;
  */
 public class TestUtils {
 
-    public static ITestContext createTestContext( String resource )
-                            throws Exception {
-        ITestContext testContext = mock( ITestContext.class );
-        ISuite suite = mock( ISuite.class );
-        when( testContext.getSuite() ).thenReturn( suite );
-        Document capabilities = readCapabilities( resource );
+	public static ITestContext createTestContext(String resource) throws Exception {
+		ITestContext testContext = mock(ITestContext.class);
+		ISuite suite = mock(ISuite.class);
+		when(testContext.getSuite()).thenReturn(suite);
+		Document capabilities = readCapabilities(resource);
 
-        when( suite.getAttribute( TEST_SUBJECT.getName() ) ).thenReturn( capabilities );
-        return testContext;
-    }
+		when(suite.getAttribute(TEST_SUBJECT.getName())).thenReturn(capabilities);
+		return testContext;
+	}
 
-    public static Document readCapabilities( String resource )
-                            throws ParserConfigurationException, SAXException, IOException {
-        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-        dbf.setNamespaceAware( true );
-        dbf.newDocumentBuilder();
-        dbf.setFeature( "http://apache.org/xml/features/xinclude/fixup-base-uris", false );
-        DocumentBuilder docBuilder = dbf.newDocumentBuilder();
+	public static Document readCapabilities(String resource)
+			throws ParserConfigurationException, SAXException, IOException {
+		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+		dbf.setNamespaceAware(true);
+		dbf.newDocumentBuilder();
+		dbf.setFeature("http://apache.org/xml/features/xinclude/fixup-base-uris", false);
+		DocumentBuilder docBuilder = dbf.newDocumentBuilder();
 
-        InputStream resourceAsStream = CapabilitiesAbstractTest.class.getResourceAsStream( resource );
-        return docBuilder.parse( resourceAsStream );
-    }
+		InputStream resourceAsStream = CapabilitiesAbstractTest.class.getResourceAsStream(resource);
+		return docBuilder.parse(resourceAsStream);
+	}
 
 }

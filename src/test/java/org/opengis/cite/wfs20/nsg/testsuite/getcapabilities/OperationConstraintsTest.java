@@ -10,22 +10,20 @@ import org.testng.ITestContext;
  */
 public class OperationConstraintsTest {
 
-    @Test
-    public void testOoperationConstraintCountDefault_Configured()
-                            throws Exception {
-        ITestContext testContext = createTestContext( "/capabilities-simple2.xml" );
+	@Test
+	public void testOoperationConstraintCountDefault_Configured() throws Exception {
+		ITestContext testContext = createTestContext("/capabilities-simple2.xml");
 
-        OperationConstraints operationConstraints = new OperationConstraints();
-        operationConstraints.operationConstraintCountDefault( testContext );
-    }
+		OperationConstraints operationConstraints = new OperationConstraints();
+		operationConstraints.operationConstraintCountDefault(testContext);
+	}
 
-    @Test(expected = AssertionError.class)
-    public void testOoperationConstraintCountDefault_Missing()
-                            throws Exception {
-        ITestContext testContext = createTestContext( "/capabilities-simple.xml" );
+	@Test(expected = AssertionError.class)
+	public void testOoperationConstraintCountDefault_Missing() throws Exception {
+		ITestContext testContext = createTestContext("/capabilities-simple.xml");
 
-        OperationConstraints operationConstraints = new OperationConstraints();
-        operationConstraints.operationConstraintCountDefault( testContext );
-    }
+		OperationConstraints operationConstraints = new OperationConstraints();
+		operationConstraints.operationConstraintCountDefault(testContext);
+	}
 
 }

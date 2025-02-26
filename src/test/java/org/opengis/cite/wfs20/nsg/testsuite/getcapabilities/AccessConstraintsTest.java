@@ -10,50 +10,46 @@ import org.testng.ITestContext;
  */
 public class AccessConstraintsTest {
 
-    @Test
-    public void testWfsCapabilitiesAccessConstraintsExists()
-                            throws Exception {
-        ITestContext testContext = createTestContext( "/capabilities-simple.xml" );
+	@Test
+	public void testWfsCapabilitiesAccessConstraintsExists() throws Exception {
+		ITestContext testContext = createTestContext("/capabilities-simple.xml");
 
-        AccessConstraints accessConstraints = new AccessConstraints();
-        accessConstraints.wfsCapabilitiesAccessConstraintsExists( testContext );
-        accessConstraints.wfsCapabilitiesAccessConstraintsContainsValueFromISM( testContext );
-    }
+		AccessConstraints accessConstraints = new AccessConstraints();
+		accessConstraints.wfsCapabilitiesAccessConstraintsExists(testContext);
+		accessConstraints.wfsCapabilitiesAccessConstraintsContainsValueFromISM(testContext);
+	}
 
-    @Test(expected = AssertionError.class)
-    public void testWfsCapabilitiesAccessConstraintsExists_NO_AccessConstraints()
-                            throws Exception {
-        ITestContext testContext = createTestContext( "/capabilities-withFailures.xml" );
+	@Test(expected = AssertionError.class)
+	public void testWfsCapabilitiesAccessConstraintsExists_NO_AccessConstraints() throws Exception {
+		ITestContext testContext = createTestContext("/capabilities-withFailures.xml");
 
-        AccessConstraints accessConstraints = new AccessConstraints();
-        accessConstraints.wfsCapabilitiesAccessConstraintsExists( testContext );
-    }
+		AccessConstraints accessConstraints = new AccessConstraints();
+		accessConstraints.wfsCapabilitiesAccessConstraintsExists(testContext);
+	}
 
-    @Test
-    public void testWfsCapabilitiesAccessConstraintsContainsValueFromISM()
-                            throws Exception {
-        ITestContext testContext = createTestContext( "/capabilities-simple.xml" );
+	@Test
+	public void testWfsCapabilitiesAccessConstraintsContainsValueFromISM() throws Exception {
+		ITestContext testContext = createTestContext("/capabilities-simple.xml");
 
-        AccessConstraints accessConstraints = new AccessConstraints();
-        accessConstraints.wfsCapabilitiesAccessConstraintsContainsValueFromISM( testContext );
-    }
+		AccessConstraints accessConstraints = new AccessConstraints();
+		accessConstraints.wfsCapabilitiesAccessConstraintsContainsValueFromISM(testContext);
+	}
 
-    @Test(expected = AssertionError.class)
-    public void testWfsCapabilitiesAccessConstraintsContainsValueFromISM_Unexpected_AccessConstraints()
-                            throws Exception {
-        ITestContext testContext = createTestContext( "/capabilities-simple2.xml" );
+	@Test(expected = AssertionError.class)
+	public void testWfsCapabilitiesAccessConstraintsContainsValueFromISM_Unexpected_AccessConstraints()
+			throws Exception {
+		ITestContext testContext = createTestContext("/capabilities-simple2.xml");
 
-        AccessConstraints accessConstraints = new AccessConstraints();
-        accessConstraints.wfsCapabilitiesAccessConstraintsContainsValueFromISM( testContext );
-    }
+		AccessConstraints accessConstraints = new AccessConstraints();
+		accessConstraints.wfsCapabilitiesAccessConstraintsContainsValueFromISM(testContext);
+	}
 
-    @Test(expected = AssertionError.class)
-    public void testWfsCapabilitiesAccessConstraintsContainsValueFromISM_NO_AccessConstraints()
-                            throws Exception {
-        ITestContext testContext = createTestContext( "/capabilities-withFailures.xml" );
+	@Test(expected = AssertionError.class)
+	public void testWfsCapabilitiesAccessConstraintsContainsValueFromISM_NO_AccessConstraints() throws Exception {
+		ITestContext testContext = createTestContext("/capabilities-withFailures.xml");
 
-        AccessConstraints accessConstraints = new AccessConstraints();
-        accessConstraints.wfsCapabilitiesAccessConstraintsContainsValueFromISM( testContext );
-    }
+		AccessConstraints accessConstraints = new AccessConstraints();
+		accessConstraints.wfsCapabilitiesAccessConstraintsContainsValueFromISM(testContext);
+	}
 
 }

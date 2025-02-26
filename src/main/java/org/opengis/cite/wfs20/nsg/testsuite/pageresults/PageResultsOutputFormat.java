@@ -28,32 +28,49 @@ import jakarta.ws.rs.core.Response.Status;
  */
 public class PageResultsOutputFormat extends PageResultsFixture {
 
-    private Schema wfsSchema;
+	private Schema wfsSchema;
 
-    @BeforeClass
-    public void init( ITestContext testContext ) {
-        this.wfsSchema = SchemaUtils.createWFSSchema();
-    }
+	/**
+	 * <p>
+	 * init.
+	 * </p>
+	 * @param testContext a {@link org.testng.ITestContext} object
+	 */
+	@BeforeClass
+	public void init(ITestContext testContext) {
+		this.wfsSchema = SchemaUtils.createWFSSchema();
+	}
 
-    @Test(description = "See NSG WFS 2.0 Profile: Requirement 16")
-    public void pageResultsOperationParameterOutputFormat( ITestContext testContext )
-                            throws XPathExpressionException {
-        this.wfsMetadata = (Document) testContext.getSuite().getAttribute( TEST_SUBJECT.getName() );
-        assertOutputFormat( this.wfsMetadata, "PageResults" );
-    }
+	/**
+	 * <p>
+	 * pageResultsOperationParameterOutputFormat.
+	 * </p>
+	 * @param testContext a {@link org.testng.ITestContext} object
+	 * @throws javax.xml.xpath.XPathExpressionException if any.
+	 */
+	@Test(description = "See NSG WFS 2.0 Profile: Requirement 16")
+	public void pageResultsOperationParameterOutputFormat(ITestContext testContext) throws XPathExpressionException {
+		this.wfsMetadata = (Document) testContext.getSuite().getAttribute(TEST_SUBJECT.getName());
+		assertOutputFormat(this.wfsMetadata, "PageResults");
+	}
 
-    @Test(description = "See NSG WFS 2.0 Profile: Requirement 8", dataProvider = "feature-types", dependsOnMethods = {
-                                                                                                                      "pageResultsOperationParameterOutputFormat",
-                                                                                                                      "checkIfEnhancedPagingIsSupported" })
-    public void pageResultsOutputFormat( QName featureType ) {
-        String resultSetId = submitGetFeatureIndexRequestAndParseResultSetId( featureType );
-        initResultSetRequest( resultSetId );
+	/**
+	 * <p>
+	 * pageResultsOutputFormat.
+	 * </p>
+	 * @param featureType a {@link javax.xml.namespace.QName} object
+	 */
+	@Test(description = "See NSG WFS 2.0 Profile: Requirement 8", dataProvider = "feature-types",
+			dependsOnMethods = { "pageResultsOperationParameterOutputFormat", "checkIfEnhancedPagingIsSupported" })
+	public void pageResultsOutputFormat(QName featureType) {
+		String resultSetId = submitGetFeatureIndexRequestAndParseResultSetId(featureType);
+		initResultSetRequest(resultSetId);
 
-        Response rsp = wfsClient.submitRequest( reqEntity, POST );
-        assertEquals( rsp.getStatus(), Status.OK.getStatusCode(), ErrorMessage.get( UNEXPECTED_STATUS ) );
-        this.rspEntity = extractBodyAsDocument( rsp );
-        assertSchemaValid( wfsSchema, this.rspEntity );
-        // TODO: check that response contains GML
-    }
+		Response rsp = wfsClient.submitRequest(reqEntity, POST);
+		assertEquals(rsp.getStatus(), Status.OK.getStatusCode(), ErrorMessage.get(UNEXPECTED_STATUS));
+		this.rspEntity = extractBodyAsDocument(rsp);
+		assertSchemaValid(wfsSchema, this.rspEntity);
+		// TODO: check that response contains GML
+	}
 
 }

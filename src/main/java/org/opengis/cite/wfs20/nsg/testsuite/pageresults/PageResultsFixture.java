@@ -35,99 +35,115 @@ import jakarta.ws.rs.core.Response;
  */
 public class PageResultsFixture extends QueryFilterFixture {
 
-    private final static Logger LOGR = Logger.getLogger( PageResultsFixture.class.getName() );
+	private final static Logger LOGR = Logger.getLogger(PageResultsFixture.class.getName());
 
-    public static final String COUNT_VALUE = "10";
+	/** Constant <code>COUNT_VALUE="10"</code> */
+	public static final String COUNT_VALUE = "10";
 
-    /**
-     * Overwrites the used WFSClient.
-     * 
-     * @param testContext
-     *            never <code>null</code>
-     */
-    @BeforeClass(alwaysRun = true, dependsOnMethods = "initBaseFixture")
-    public void initPageResultsFixture( ITestContext testContext ) {
-        this.wfsMetadata = (Document) testContext.getSuite().getAttribute( TEST_SUBJECT.getName() );
-        this.wfsClient = new NsgWfsClient( this.wfsMetadata );
-    }
+	/**
+	 * Overwrites the used WFSClient.
+	 * @param testContext never <code>null</code>
+	 */
+	@BeforeClass(alwaysRun = true, dependsOnMethods = "initBaseFixture")
+	public void initPageResultsFixture(ITestContext testContext) {
+		this.wfsMetadata = (Document) testContext.getSuite().getAttribute(TEST_SUBJECT.getName());
+		this.wfsClient = new NsgWfsClient(this.wfsMetadata);
+	}
 
-    @Test
-    public void checkIfEnhancedPagingIsSupported( ITestContext testContext ) {
-        this.wfsMetadata = (Document) testContext.getSuite().getAttribute( TEST_SUBJECT.getName() );
+	/**
+	 * <p>
+	 * checkIfEnhancedPagingIsSupported.
+	 * </p>
+	 * @param testContext a {@link org.testng.ITestContext} object
+	 */
+	@Test
+	public void checkIfEnhancedPagingIsSupported(ITestContext testContext) {
+		this.wfsMetadata = (Document) testContext.getSuite().getAttribute(TEST_SUBJECT.getName());
 
-        boolean isDefined = implementsConformanceClass( this.wfsMetadata, "ImplementsEnhancedPaging" );
-        if ( !isDefined )
-            throw new SkipException( "EnhancedPaging is not supported" );
-    }
+		boolean isDefined = implementsConformanceClass(this.wfsMetadata, "ImplementsEnhancedPaging");
+		if (!isDefined)
+			throw new SkipException("EnhancedPaging is not supported");
+	}
 
-    /**
-     * Initialises a PageResults request to this.reqEntity with the passed resultSetID
-     * 
-     * @param resultSetId
-     *            the resultSetId to append to the request
-     */
-    protected void initResultSetRequest( String resultSetId ) {
-        this.reqEntity = createRequestEntity( "/org/opengis/cite/wfs20/nsg/request/PageResults", this.wfsVersion );
-        setPresentationParameters( this.reqEntity, "results" );
-        appendResultSetId( this.reqEntity, resultSetId );
-    }
+	/**
+	 * Initialises a PageResults request to this.reqEntity with the passed resultSetID
+	 * @param resultSetId the resultSetId to append to the request
+	 */
+	protected void initResultSetRequest(String resultSetId) {
+		this.reqEntity = createRequestEntity("/org/opengis/cite/wfs20/nsg/request/PageResults", this.wfsVersion);
+		setPresentationParameters(this.reqEntity, "results");
+		appendResultSetId(this.reqEntity, resultSetId);
+	}
 
-    /**
-     * Submits a GetFeature request with resultType=index for the passed feature type.
-     * 
-     * @param featureType
-     *            the feature type to request
-     * @return the GetFeature response, never <code>null</code>
-     */
-    protected Response submitGetFeatureIndexRequest( QName featureType ) {
-        Document requestEntity = createRequestEntity( "GetFeature-Minimal", this.wfsVersion );
-        appendSimpleQuery( requestEntity, featureType );
-        setPresentationParameters( requestEntity, "index" );
+	/**
+	 * Submits a GetFeature request with resultType=index for the passed feature type.
+	 * @param featureType the feature type to request
+	 * @return the GetFeature response, never <code>null</code>
+	 */
+	protected Response submitGetFeatureIndexRequest(QName featureType) {
+		Document requestEntity = createRequestEntity("GetFeature-Minimal", this.wfsVersion);
+		appendSimpleQuery(requestEntity, featureType);
+		setPresentationParameters(requestEntity, "index");
 
-        return wfsClient.submitRequest( requestEntity, POST );
-    }
+		return wfsClient.submitRequest(requestEntity, POST);
+	}
 
-    /**
-     * Submits a GetFeature request with resultType=index for the passed feature type and parses the resultSetId.
-     *
-     * @param featureType
-     *            the feature type to request
-     * @return the resultSetId from the response, may be <code>null</code> or empty
-     */
-    public String submitGetFeatureIndexRequestAndParseResultSetId( QName featureType ) {
-        Response rsp = submitGetFeatureIndexRequest( featureType );
-        Document rspDocument = extractBodyAsDocument( rsp );
-        return parseResultSetId( rspDocument );
-    }
+	/**
+	 * Submits a GetFeature request with resultType=index for the passed feature type and
+	 * parses the resultSetId.
+	 * @param featureType the feature type to request
+	 * @return the resultSetId from the response, may be <code>null</code> or empty
+	 */
+	public String submitGetFeatureIndexRequestAndParseResultSetId(QName featureType) {
+		Response rsp = submitGetFeatureIndexRequest(featureType);
+		Document rspDocument = extractBodyAsDocument(rsp);
+		return parseResultSetId(rspDocument);
+	}
 
-    private void setPresentationParameters( Document requestEntity, String resultType ) {
-        Element docElem = requestEntity.getDocumentElement();
-        docElem.setAttribute( "resultType", resultType );
-        docElem.setAttribute( "count", COUNT_VALUE );
-        docElem.setAttribute( "startIndex", "0" );
-        docElem.setAttribute( "outputFormat", GML_OUTPUTFORMAT );
-    }
+	private void setPresentationParameters(Document requestEntity, String resultType) {
+		Element docElem = requestEntity.getDocumentElement();
+		docElem.setAttribute("resultType", resultType);
+		docElem.setAttribute("count", COUNT_VALUE);
+		docElem.setAttribute("startIndex", "0");
+		docElem.setAttribute("outputFormat", GML_OUTPUTFORMAT);
+	}
 
-    protected String parseResultSetId( Document rspDocument ) {
-        assertNotNull( rspDocument, "No response available" );
-        Element documentElement = rspDocument.getDocumentElement();
-        return documentElement.getAttribute( "resultSetID" );
-    }
+	/**
+	 * <p>
+	 * parseResultSetId.
+	 * </p>
+	 * @param rspDocument a {@link org.w3c.dom.Document} object
+	 * @return a {@link java.lang.String} object
+	 */
+	protected String parseResultSetId(Document rspDocument) {
+		assertNotNull(rspDocument, "No response available");
+		Element documentElement = rspDocument.getDocumentElement();
+		return documentElement.getAttribute("resultSetID");
+	}
 
-    protected int parseNumberOfFeatures( Document rspDocument ) {
-        String xPath = "//nsg:FeatureCollection/@numberMatched";
-        try {
-            return Integer.parseInt( (String) XMLUtils.evaluateXPath( rspDocument, xPath,
-                                                                      withStandardBindings().getAllBindings(), STRING ) );
-        } catch ( XPathExpressionException e ) {
-            LOGR.warning( "XPath " + xPath + " could not be evaluated" );
-        }
-        return 0;
-    }
+	/**
+	 * <p>
+	 * parseNumberOfFeatures.
+	 * </p>
+	 * @param rspDocument a {@link org.w3c.dom.Document} object
+	 * @return a int
+	 */
+	protected int parseNumberOfFeatures(Document rspDocument) {
+		String xPath = "//nsg:FeatureCollection/@numberMatched";
+		try {
+			return Integer.parseInt((String) XMLUtils.evaluateXPath(rspDocument, xPath,
+					withStandardBindings().getAllBindings(), STRING));
+		}
+		catch (XPathExpressionException e) {
+			LOGR.warning("XPath " + xPath + " could not be evaluated");
+		}
+		return 0;
+	}
 
-    private void appendResultSetId( Document reqEntity, String resultSetId ) {
-        Element valueRef = XMLUtils.createElement( new QName( NSG_NAMESPACE, "resultSetID", "nsg" ) );
-        valueRef.setTextContent( resultSetId );
-        reqEntity.getDocumentElement().appendChild( valueRef );
-    }
+	private void appendResultSetId(Document reqEntity, String resultSetId) {
+		Element valueRef = XMLUtils.createElement(new QName(NSG_NAMESPACE, "resultSetID", "nsg"));
+		valueRef.setTextContent(resultSetId);
+		reqEntity.getDocumentElement().appendChild(valueRef);
+	}
+
 }

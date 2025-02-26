@@ -10,21 +10,20 @@ import org.testng.ITestContext;
  */
 public class CapabilitiesAbstractTest {
 
-    @Test
-    public void testCapabilitiesContainsNsgAbstract()
-                            throws Exception {
-        ITestContext testContext = createTestContext( "/capabilities-simple.xml" );
+	@Test
+	public void testCapabilitiesContainsNsgAbstract() throws Exception {
+		ITestContext testContext = createTestContext("/capabilities-simple.xml");
 
-        CapabilitiesAbstract capabilitiesAbstract = new CapabilitiesAbstract();
-        capabilitiesAbstract.capabilitiesContainsNsgAbstract( testContext );
-    }
+		CapabilitiesAbstract capabilitiesAbstract = new CapabilitiesAbstract();
+		capabilitiesAbstract.capabilitiesContainsNsgAbstract(testContext);
+	}
 
-    @Test(expected = AssertionError.class)
-    public void testCapabilitiesContainsNsgAbstract_Missing()
-                            throws Exception {
-        ITestContext testContext = createTestContext( "/capabilities-simple2.xml" );
+	@Test(expected = AssertionError.class)
+	public void testCapabilitiesContainsNsgAbstract_Missing() throws Exception {
+		ITestContext testContext = createTestContext("/capabilities-simple2.xml");
 
-        CapabilitiesAbstract capabilitiesAbstract = new CapabilitiesAbstract();
-        capabilitiesAbstract.capabilitiesContainsNsgAbstract( testContext );
-    }
+		CapabilitiesAbstract capabilitiesAbstract = new CapabilitiesAbstract();
+		capabilitiesAbstract.capabilitiesContainsNsgAbstract(testContext);
+	}
+
 }

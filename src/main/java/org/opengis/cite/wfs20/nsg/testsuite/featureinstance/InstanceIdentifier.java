@@ -21,27 +21,32 @@ import static org.opengis.cite.wfs20.nsg.utils.NsgWfsAssertion.assertUuidOrGuide
  */
 public class InstanceIdentifier extends BaseFixture {
 
-    private DataSampler dataSampler;
+	private DataSampler dataSampler;
 
-    /**
-     * Obtains a DataSampler object from the test run context (the value of the {@link SuiteAttribute#SAMPLER
-     * SuiteAttribute.SAMPLER attribute}).
-     * 
-     * @param testContext
-     *            The test run context.
-     */
-    @BeforeClass(alwaysRun = true)
-    public void initTransactionFixture( ITestContext testContext ) {
-        ISuite suite = testContext.getSuite();
-        this.dataSampler = (DataSampler) suite.getAttribute( SuiteAttribute.SAMPLER.getName() );
-    }
+	/**
+	 * Obtains a DataSampler object from the test run context (the value of the
+	 * {@link org.opengis.cite.iso19142.SuiteAttribute#SAMPLER SuiteAttribute.SAMPLER
+	 * attribute}).
+	 * @param testContext The test run context.
+	 */
+	@BeforeClass(alwaysRun = true)
+	public void initTransactionFixture(ITestContext testContext) {
+		ISuite suite = testContext.getSuite();
+		this.dataSampler = (DataSampler) suite.getAttribute(SuiteAttribute.SAMPLER.getName());
+	}
 
-    @Test(description = "See NSG WFS 2.0 Profile: Requirement 9", dataProvider = "feature-types")
-    public void featureInstanceIdentifier( QName featureType ) {
-        Set<String> ids = this.dataSampler.selectRandomFeatureIdentifiers( featureType, 10 );
-        for ( String id : ids ) {
-            assertUuidOrGuideId( id );
-        }
-    }
+	/**
+	 * <p>
+	 * featureInstanceIdentifier.
+	 * </p>
+	 * @param featureType a {@link javax.xml.namespace.QName} object
+	 */
+	@Test(description = "See NSG WFS 2.0 Profile: Requirement 9", dataProvider = "feature-types")
+	public void featureInstanceIdentifier(QName featureType) {
+		Set<String> ids = this.dataSampler.selectRandomFeatureIdentifiers(featureType, 10);
+		for (String id : ids) {
+			assertUuidOrGuideId(id);
+		}
+	}
 
 }

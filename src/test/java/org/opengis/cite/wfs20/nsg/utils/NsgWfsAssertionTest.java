@@ -20,71 +20,63 @@ import org.w3c.dom.Document;
  */
 public class NsgWfsAssertionTest {
 
-    @Test
-    public void testAssertOutputFormat_Global_DescribeFeatureType()
-                            throws Exception {
-        Document wfsMetadata = readCapabilities( "/capabilities-simple.xml" );
-        assertOutputFormat( wfsMetadata, "DescribeFeatureType" );
-    }
+	@Test
+	public void testAssertOutputFormat_Global_DescribeFeatureType() throws Exception {
+		Document wfsMetadata = readCapabilities("/capabilities-simple.xml");
+		assertOutputFormat(wfsMetadata, "DescribeFeatureType");
+	}
 
-    @Test
-    public void testAssertOutputFormat_Global_GetFeature()
-                            throws Exception {
-        Document wfsMetadata = readCapabilities( "/capabilities-simple.xml" );
-        assertOutputFormat( wfsMetadata, "GetFeature" );
-    }
+	@Test
+	public void testAssertOutputFormat_Global_GetFeature() throws Exception {
+		Document wfsMetadata = readCapabilities("/capabilities-simple.xml");
+		assertOutputFormat(wfsMetadata, "GetFeature");
+	}
 
-    @Test
-    public void testAssertOutputFormat_PerOperation_DescribeFeatureType()
-                            throws Exception {
-        Document wfsMetadata = readCapabilities( "/capabilities-simple2.xml" );
-        assertOutputFormat( wfsMetadata, "DescribeFeatureType" );
-    }
+	@Test
+	public void testAssertOutputFormat_PerOperation_DescribeFeatureType() throws Exception {
+		Document wfsMetadata = readCapabilities("/capabilities-simple2.xml");
+		assertOutputFormat(wfsMetadata, "DescribeFeatureType");
+	}
 
-    @Test
-    public void testAssertOutputFormat_PerOperation_MultipleValues_DescribeFeatureType()
-                            throws Exception {
-        Document wfsMetadata = readCapabilities( "/capabilities-simple2.xml" );
-        assertOutputFormat( wfsMetadata, "ListStoredQueries" );
-    }
+	@Test
+	public void testAssertOutputFormat_PerOperation_MultipleValues_DescribeFeatureType() throws Exception {
+		Document wfsMetadata = readCapabilities("/capabilities-simple2.xml");
+		assertOutputFormat(wfsMetadata, "ListStoredQueries");
+	}
 
-    @Test(expected = AssertionError.class)
-    public void testAssertOutputFormat_PerOperation_GetFeature()
-                            throws Exception {
-        Document wfsMetadata = readCapabilities( "/capabilities-simple2.xml" );
-        assertOutputFormat( wfsMetadata, "GetFeature" );
-    }
+	@Test(expected = AssertionError.class)
+	public void testAssertOutputFormat_PerOperation_GetFeature() throws Exception {
+		Document wfsMetadata = readCapabilities("/capabilities-simple2.xml");
+		assertOutputFormat(wfsMetadata, "GetFeature");
+	}
 
-    @Test
-    public void testParseParameters_DescribeFeatureType()
-                            throws Exception {
-        Document wfsMetadata = readCapabilities( "/capabilities-simple.xml" );
+	@Test
+	public void testParseParameters_DescribeFeatureType() throws Exception {
+		Document wfsMetadata = readCapabilities("/capabilities-simple.xml");
 
-        List<String> parameters = parseParameters( wfsMetadata, "DescribeFeatureType", "Timeout" );
-        assertThat( parameters.size(), is( 1 ) );
-        assertThat( parameters, hasItem( "5" ) );
-    }
+		List<String> parameters = parseParameters(wfsMetadata, "DescribeFeatureType", "Timeout");
+		assertThat(parameters.size(), is(1));
+		assertThat(parameters, hasItem("5"));
+	}
 
-    @Test
-    public void testParseParameters_ListStoredQueries()
-                            throws Exception {
-        Document wfsMetadata = readCapabilities( "/capabilities-simple2.xml" );
+	@Test
+	public void testParseParameters_ListStoredQueries() throws Exception {
+		Document wfsMetadata = readCapabilities("/capabilities-simple2.xml");
 
-        List<String> parameters = parseParameters( wfsMetadata, "ListStoredQueries", "Timeout" );
-        assertThat( parameters.size(), is( 1 ) );
-        assertThat( parameters, hasItem( "10" ) );
-    }
+		List<String> parameters = parseParameters(wfsMetadata, "ListStoredQueries", "Timeout");
+		assertThat(parameters.size(), is(1));
+		assertThat(parameters, hasItem("10"));
+	}
 
-    private Document readCapabilities( String resource )
-                            throws Exception {
-        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-        dbf.setNamespaceAware( true );
-        dbf.newDocumentBuilder();
-        dbf.setFeature( "http://apache.org/xml/features/xinclude/fixup-base-uris", false );
-        DocumentBuilder docBuilder = dbf.newDocumentBuilder();
+	private Document readCapabilities(String resource) throws Exception {
+		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+		dbf.setNamespaceAware(true);
+		dbf.newDocumentBuilder();
+		dbf.setFeature("http://apache.org/xml/features/xinclude/fixup-base-uris", false);
+		DocumentBuilder docBuilder = dbf.newDocumentBuilder();
 
-        InputStream resourceAsStream = NsgWfsAssertion.class.getResourceAsStream( resource );
-        return docBuilder.parse( resourceAsStream );
-    }
+		InputStream resourceAsStream = NsgWfsAssertion.class.getResourceAsStream(resource);
+		return docBuilder.parse(resourceAsStream);
+	}
 
 }

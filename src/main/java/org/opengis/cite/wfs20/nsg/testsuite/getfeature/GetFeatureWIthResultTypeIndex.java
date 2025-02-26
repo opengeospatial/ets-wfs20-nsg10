@@ -23,22 +23,28 @@ import jakarta.ws.rs.core.Response.Status;
  */
 public class GetFeatureWIthResultTypeIndex extends PageResultsFixture {
 
-    @Test(description = "See NSG WFS 2.0 Profile: Requirement 17, 19", dataProvider = "feature-types")
-    public void getFeatureWithResultTypeIndex( QName featureType ) {
-        Response indexResponse = submitGetFeatureIndexRequest( featureType );
-        assertEquals( indexResponse.getStatus(), Status.OK.getStatusCode(), ErrorMessage.get( UNEXPECTED_STATUS ) );
+	/**
+	 * <p>
+	 * getFeatureWithResultTypeIndex.
+	 * </p>
+	 * @param featureType a {@link javax.xml.namespace.QName} object
+	 */
+	@Test(description = "See NSG WFS 2.0 Profile: Requirement 17, 19", dataProvider = "feature-types")
+	public void getFeatureWithResultTypeIndex(QName featureType) {
+		Response indexResponse = submitGetFeatureIndexRequest(featureType);
+		assertEquals(indexResponse.getStatus(), Status.OK.getStatusCode(), ErrorMessage.get(UNEXPECTED_STATUS));
 
-        Document indexRspDocument = extractBodyAsDocument( indexResponse );
-        assertNotNull( indexRspDocument, "Response with resultType index must not be null" );
+		Document indexRspDocument = extractBodyAsDocument(indexResponse);
+		assertNotNull(indexRspDocument, "Response with resultType index must not be null");
 
-        assertXPath( "count(//wfs:member) = 0", indexRspDocument,
-                     NamespaceUtils.withStandardBindings().getAllBindings() );
+		assertXPath("count(//wfs:member) = 0", indexRspDocument,
+				NamespaceUtils.withStandardBindings().getAllBindings());
 
-        assertXPath( "//nsg:FeatureCollection/@next", indexRspDocument,
-                     NamespaceUtils.withStandardBindings().getAllBindings() );
+		assertXPath("//nsg:FeatureCollection/@next", indexRspDocument,
+				NamespaceUtils.withStandardBindings().getAllBindings());
 
-        assertXPath( "//nsg:FeatureCollection/nsg:resultSetID", indexRspDocument,
-                     NamespaceUtils.withStandardBindings().getAllBindings() );
-    }
+		assertXPath("//nsg:FeatureCollection/nsg:resultSetID", indexRspDocument,
+				NamespaceUtils.withStandardBindings().getAllBindings());
+	}
 
 }

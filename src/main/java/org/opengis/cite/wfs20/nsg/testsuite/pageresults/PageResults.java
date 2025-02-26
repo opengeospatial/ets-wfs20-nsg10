@@ -34,69 +34,92 @@ import jakarta.ws.rs.core.Response.Status;
  */
 public class PageResults extends PageResultsFixture {
 
-    private Map<QName, ResultSetIdAndNumberOfFeatures> featureTypeToAdditionalInfos = new HashMap<>();
+	private Map<QName, ResultSetIdAndNumberOfFeatures> featureTypeToAdditionalInfos = new HashMap<>();
 
-    @Test(description = "See NSG WFS 2.0 Profile: Requirement 19, 33, 34", dataProvider = "feature-types", dependsOnMethods = "checkIfEnhancedPagingIsSupported")
-    public void requestResultId( QName featureType ) {
-        Response indexResponse = submitGetFeatureIndexRequest( featureType );
-        assertEquals( indexResponse.getStatus(), Status.OK.getStatusCode(), ErrorMessage.get( UNEXPECTED_STATUS ) );
+	/**
+	 * <p>
+	 * requestResultId.
+	 * </p>
+	 * @param featureType a {@link javax.xml.namespace.QName} object
+	 */
+	@Test(description = "See NSG WFS 2.0 Profile: Requirement 19, 33, 34", dataProvider = "feature-types",
+			dependsOnMethods = "checkIfEnhancedPagingIsSupported")
+	public void requestResultId(QName featureType) {
+		Response indexResponse = submitGetFeatureIndexRequest(featureType);
+		assertEquals(indexResponse.getStatus(), Status.OK.getStatusCode(), ErrorMessage.get(UNEXPECTED_STATUS));
 
-        Document indexRspDocument = extractBodyAsDocument( indexResponse );
-        assertNotNull( indexRspDocument, "Response with resultType index must not be null" );
+		Document indexRspDocument = extractBodyAsDocument(indexResponse);
+		assertNotNull(indexRspDocument, "Response with resultType index must not be null");
 
-        assertXPath( "count(//wfs:member) = 0", indexRspDocument,
-                     NamespaceUtils.withStandardBindings().getAllBindings() );
+		assertXPath("count(//wfs:member) = 0", indexRspDocument,
+				NamespaceUtils.withStandardBindings().getAllBindings());
 
-        assertXPath( "//nsg:FeatureCollection/nsg:resultSetID", indexRspDocument,
-                     NamespaceUtils.withStandardBindings().getAllBindings() );
+		assertXPath("//nsg:FeatureCollection/nsg:resultSetID", indexRspDocument,
+				NamespaceUtils.withStandardBindings().getAllBindings());
 
-        String resultSetId = parseResultSetId( indexRspDocument );
-        assertNotNull( resultSetId, "resultSetID from response must not be null" );
+		String resultSetId = parseResultSetId(indexRspDocument);
+		assertNotNull(resultSetId, "resultSetID from response must not be null");
 
-        int numberOfFeatures = parseNumberOfFeatures( indexRspDocument );
+		int numberOfFeatures = parseNumberOfFeatures(indexRspDocument);
 
-        featureTypeToAdditionalInfos.put( featureType, new ResultSetIdAndNumberOfFeatures( resultSetId,
-                                                                                           numberOfFeatures ) );
-    }
+		featureTypeToAdditionalInfos.put(featureType,
+				new ResultSetIdAndNumberOfFeatures(resultSetId, numberOfFeatures));
+	}
 
-    @Test(description = "See NSG WFS 2.0 Profile: Requirement 19, 33, 34", dataProvider = "feature-types", dependsOnMethods = "requestResultId")
-    public void pageResultsPost( ITestContext testContext, QName featureType ) {
-        this.wfsMetadata = (Document) testContext.getSuite().getAttribute( SuiteAttribute.TEST_SUBJECT.getName() );
-        URI uri = getOperationEndpoint( wfsMetadata, "PageResults", POST );
-        assertUri( uri, "POST Binding for operation PageResults must be supported." );
+	/**
+	 * <p>
+	 * pageResultsPost.
+	 * </p>
+	 * @param testContext a {@link org.testng.ITestContext} object
+	 * @param featureType a {@link javax.xml.namespace.QName} object
+	 */
+	@Test(description = "See NSG WFS 2.0 Profile: Requirement 19, 33, 34", dataProvider = "feature-types",
+			dependsOnMethods = "requestResultId")
+	public void pageResultsPost(ITestContext testContext, QName featureType) {
+		this.wfsMetadata = (Document) testContext.getSuite().getAttribute(SuiteAttribute.TEST_SUBJECT.getName());
+		URI uri = getOperationEndpoint(wfsMetadata, "PageResults", POST);
+		assertUri(uri, "POST Binding for operation PageResults must be supported.");
 
-        ResultSetIdAndNumberOfFeatures resultSetAndNumberOfFeatures = findResultSetIdAndNumberOfFeatures( featureType );
+		ResultSetIdAndNumberOfFeatures resultSetAndNumberOfFeatures = findResultSetIdAndNumberOfFeatures(featureType);
 
-        initResultSetRequest( resultSetAndNumberOfFeatures.getResultSetId() );
-        Response clientResponse = wfsClient.submitRequest( this.reqEntity, POST );
-        assertNumberOfFeatures( clientResponse, resultSetAndNumberOfFeatures.getNumberOfFeatures() );
-    }
+		initResultSetRequest(resultSetAndNumberOfFeatures.getResultSetId());
+		Response clientResponse = wfsClient.submitRequest(this.reqEntity, POST);
+		assertNumberOfFeatures(clientResponse, resultSetAndNumberOfFeatures.getNumberOfFeatures());
+	}
 
-    @Test(description = "See NSG WFS 2.0 Profile: Requirement 19, 33, 34", dataProvider = "feature-types", dependsOnMethods = "requestResultId")
-    public void pageResultsGet( ITestContext testContext, QName featureType ) {
-        this.wfsMetadata = (Document) testContext.getSuite().getAttribute( SuiteAttribute.TEST_SUBJECT.getName() );
-        URI uri = getOperationEndpoint( wfsMetadata, "PageResults", GET );
-        assertUri( uri, "GET Binding for operation PageResults must be supported." );
+	/**
+	 * <p>
+	 * pageResultsGet.
+	 * </p>
+	 * @param testContext a {@link org.testng.ITestContext} object
+	 * @param featureType a {@link javax.xml.namespace.QName} object
+	 */
+	@Test(description = "See NSG WFS 2.0 Profile: Requirement 19, 33, 34", dataProvider = "feature-types",
+			dependsOnMethods = "requestResultId")
+	public void pageResultsGet(ITestContext testContext, QName featureType) {
+		this.wfsMetadata = (Document) testContext.getSuite().getAttribute(SuiteAttribute.TEST_SUBJECT.getName());
+		URI uri = getOperationEndpoint(wfsMetadata, "PageResults", GET);
+		assertUri(uri, "GET Binding for operation PageResults must be supported.");
 
-        ResultSetIdAndNumberOfFeatures resultSetAndNumberOfFeatures = findResultSetIdAndNumberOfFeatures( featureType );
+		ResultSetIdAndNumberOfFeatures resultSetAndNumberOfFeatures = findResultSetIdAndNumberOfFeatures(featureType);
 
-        initResultSetRequest( resultSetAndNumberOfFeatures.getResultSetId() );
-        Response clientResponse = wfsClient.submitRequest( this.reqEntity, GET );
-        assertNumberOfFeatures( clientResponse, resultSetAndNumberOfFeatures.getNumberOfFeatures() );
-    }
+		initResultSetRequest(resultSetAndNumberOfFeatures.getResultSetId());
+		Response clientResponse = wfsClient.submitRequest(this.reqEntity, GET);
+		assertNumberOfFeatures(clientResponse, resultSetAndNumberOfFeatures.getNumberOfFeatures());
+	}
 
-    private ResultSetIdAndNumberOfFeatures findResultSetIdAndNumberOfFeatures( QName featureType ) {
-        if ( featureTypeToAdditionalInfos.containsKey( featureType ) )
-            return featureTypeToAdditionalInfos.get( featureType );
-        throw new SkipException( "GetFeature request with resultType='index' already failed for feature type "
-                                 + featureType );
-    }
+	private ResultSetIdAndNumberOfFeatures findResultSetIdAndNumberOfFeatures(QName featureType) {
+		if (featureTypeToAdditionalInfos.containsKey(featureType))
+			return featureTypeToAdditionalInfos.get(featureType);
+		throw new SkipException(
+				"GetFeature request with resultType='index' already failed for feature type " + featureType);
+	}
 
-    private void assertNumberOfFeatures( Response clientResponse, int numberOfFeaturesFromIndexResponse ) {
-        this.rspEntity = extractBodyAsDocument( clientResponse );
-        int numberOfFeaturesFromPageResult = parseNumberOfFeatures( this.rspEntity );
-        assertEquals( numberOfFeaturesFromPageResult, numberOfFeaturesFromIndexResponse,
-                      "Number of features from the responses must be the same" );
-    }
+	private void assertNumberOfFeatures(Response clientResponse, int numberOfFeaturesFromIndexResponse) {
+		this.rspEntity = extractBodyAsDocument(clientResponse);
+		int numberOfFeaturesFromPageResult = parseNumberOfFeatures(this.rspEntity);
+		assertEquals(numberOfFeaturesFromPageResult, numberOfFeaturesFromIndexResponse,
+				"Number of features from the responses must be the same");
+	}
 
 }

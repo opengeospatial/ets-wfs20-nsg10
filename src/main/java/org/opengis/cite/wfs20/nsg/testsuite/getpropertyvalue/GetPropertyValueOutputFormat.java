@@ -30,31 +30,51 @@ import jakarta.ws.rs.core.Response.Status;
  */
 public class GetPropertyValueOutputFormat extends PropertyValueFixture {
 
-    private Schema wfsSchema;
+	private Schema wfsSchema;
 
-    @BeforeClass
-    public void init( ITestContext testContext ) {
-        this.wfsSchema = SchemaUtils.createWFSSchema();
-    }
+	/**
+	 * <p>
+	 * init.
+	 * </p>
+	 * @param testContext a {@link org.testng.ITestContext} object
+	 */
+	@BeforeClass
+	public void init(ITestContext testContext) {
+		this.wfsSchema = SchemaUtils.createWFSSchema();
+	}
 
-    @Test(description = "See NSG WFS 2.0 Profile: Requirement 16")
-    public void getPropertyValueOperationParameterOutputFormat( ITestContext testContext )
-                            throws XPathExpressionException {
-        this.wfsMetadata = (Document) testContext.getSuite().getAttribute( TEST_SUBJECT.getName() );
-        assertOutputFormat( this.wfsMetadata, "GetPropertyValue" );
-    }
+	/**
+	 * <p>
+	 * getPropertyValueOperationParameterOutputFormat.
+	 * </p>
+	 * @param testContext a {@link org.testng.ITestContext} object
+	 * @throws javax.xml.xpath.XPathExpressionException if any.
+	 */
+	@Test(description = "See NSG WFS 2.0 Profile: Requirement 16")
+	public void getPropertyValueOperationParameterOutputFormat(ITestContext testContext)
+			throws XPathExpressionException {
+		this.wfsMetadata = (Document) testContext.getSuite().getAttribute(TEST_SUBJECT.getName());
+		assertOutputFormat(this.wfsMetadata, "GetPropertyValue");
+	}
 
-    @Test(description = "See NSG WFS 2.0 Profile: Requirement 8", dataProvider = "feature-types", dependsOnMethods = "getPropertyValueOperationParameterOutputFormat")
-    public void getPropertyValueOutputFormat( QName featureType ) {
-        setOutputFormatAttribute( this.reqEntity, GML_OUTPUTFORMAT );
-        setValueReference( reqEntity, "@gml:id" );
-        addQuery( this.reqEntity, featureType );
+	/**
+	 * <p>
+	 * getPropertyValueOutputFormat.
+	 * </p>
+	 * @param featureType a {@link javax.xml.namespace.QName} object
+	 */
+	@Test(description = "See NSG WFS 2.0 Profile: Requirement 8", dataProvider = "feature-types",
+			dependsOnMethods = "getPropertyValueOperationParameterOutputFormat")
+	public void getPropertyValueOutputFormat(QName featureType) {
+		setOutputFormatAttribute(this.reqEntity, GML_OUTPUTFORMAT);
+		setValueReference(reqEntity, "@gml:id");
+		addQuery(this.reqEntity, featureType);
 
-        Response rsp = wfsClient.submitRequest( reqEntity, POST );
-        assertEquals( rsp.getStatus(), Status.OK.getStatusCode(), ErrorMessage.get( UNEXPECTED_STATUS ) );
-        this.rspEntity = extractBodyAsDocument( rsp );
-        assertSchemaValid( wfsSchema, this.rspEntity );
-        // TODO: Check if response contains GML
-    }
+		Response rsp = wfsClient.submitRequest(reqEntity, POST);
+		assertEquals(rsp.getStatus(), Status.OK.getStatusCode(), ErrorMessage.get(UNEXPECTED_STATUS));
+		this.rspEntity = extractBodyAsDocument(rsp);
+		assertSchemaValid(wfsSchema, this.rspEntity);
+		// TODO: Check if response contains GML
+	}
 
 }

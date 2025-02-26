@@ -10,31 +10,28 @@ import org.testng.ITestContext;
  */
 public class CountParameterTest {
 
-    @Test
-    public void testCountParameter()
-                            throws Exception {
-        ITestContext testContext = createTestContext( "/capabilities-simple2.xml" );
+	@Test
+	public void testCountParameter() throws Exception {
+		ITestContext testContext = createTestContext("/capabilities-simple2.xml");
 
-        CountParameter countParameter = new CountParameter();
-        countParameter.countDefaultIs10( testContext );
-    }
+		CountParameter countParameter = new CountParameter();
+		countParameter.countDefaultIs10(testContext);
+	}
 
-    @Test(expected = AssertionError.class)
-    public void testCountParameter_Missing()
-                            throws Exception {
-        ITestContext testContext = createTestContext( "/capabilities-simple.xml" );
+	@Test(expected = AssertionError.class)
+	public void testCountParameter_Missing() throws Exception {
+		ITestContext testContext = createTestContext("/capabilities-simple.xml");
 
-        CountParameter countParameter = new CountParameter();
-        countParameter.countDefaultIs10( testContext );
-    }
+		CountParameter countParameter = new CountParameter();
+		countParameter.countDefaultIs10(testContext);
+	}
 
-    @Test(expected = AssertionError.class)
-    public void testCountParameter_Unexpected()
-                            throws Exception {
-        ITestContext testContext = createTestContext( "/capabilities-withFailures.xml" );
+	@Test(expected = AssertionError.class)
+	public void testCountParameter_Unexpected() throws Exception {
+		ITestContext testContext = createTestContext("/capabilities-withFailures.xml");
 
-        CountParameter countParameter = new CountParameter();
-        countParameter.countDefaultIs10( testContext );
-    }
+		CountParameter countParameter = new CountParameter();
+		countParameter.countDefaultIs10(testContext);
+	}
 
 }
