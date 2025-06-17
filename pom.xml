@@ -1,9 +1,10 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
   <parent>
     <groupId>org.opengis.cite</groupId>
     <artifactId>ets-common</artifactId>
-    <version>15-SNAPSHOT</version>
+    <version>16</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
   <artifactId>ets-wfs20-nsg</artifactId>
@@ -12,17 +13,17 @@
 
   <name>NSG WFS 2.0 Profile Conformance Test Suite</name>
   <description>Verifies that a WFS implementation conforms to the NSG WFS v2 Profile, v1.0.</description>
-  <url>http://opengeospatial.github.io/ets-wfs20-nsg/</url>
+  <url>https://opengeospatial.github.io/ets-wfs20-nsg/</url>
   <licenses>
     <license>
       <name>Apache License, Version 2.0</name>
-      <url>http://opensource.org/licenses/Apache-2.0</url>
+      <url>https://opensource.org/licenses/Apache-2.0</url>
     </license>
   </licenses>
 
   <organization>
     <name>Open Geospatial Consortium</name>
-    <url>http://www.opengeospatial.org/</url>
+    <url>https://www.ogc.org/</url>
   </organization>
   <scm>
     <connection>scm:git:https://github.com/opengeospatial/ets-wfs20-nsg.git</connection>
@@ -54,37 +55,37 @@
 
   <dependencies>
     <dependency>
-      <groupId>commons-io</groupId>
-      <artifactId>commons-io</artifactId>
-    </dependency>
-    <dependency>
       <groupId>org.opengis.cite</groupId>
       <artifactId>ets-wfs20-dgiwg</artifactId>
       <version>0.9-SNAPSHOT</version>
     </dependency>
     <dependency>
-      <groupId>org.opengis.cite.teamengine</groupId>
-      <artifactId>teamengine-spi</artifactId>
+      <groupId>org.opengis.cite</groupId>
+      <artifactId>ets-dgiwg-core</artifactId>
+      <version>0.6-SNAPSHOT</version>
       <exclusions>
         <exclusion>
-          <artifactId>xercesImpl</artifactId>
-          <groupId>xerces</groupId>
-        </exclusion>
-        <exclusion>
-          <artifactId>slf4j-api</artifactId>
-          <groupId>org.slf4j</groupId>
+          <groupId>org.glassfish.metro</groupId>
+          <artifactId>webservices-api</artifactId>
         </exclusion>
       </exclusions>
     </dependency>
     <dependency>
       <groupId>org.opengis.cite</groupId>
+      <artifactId>ets-wfs20</artifactId>
+      <version>1.43</version>
+    </dependency>
+    <dependency>
+      <groupId>commons-io</groupId>
+      <artifactId>commons-io</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.opengis.cite.teamengine</groupId>
+      <artifactId>teamengine-spi</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.opengis.cite</groupId>
       <artifactId>schema-utils</artifactId>
-      <exclusions>
-        <exclusion>
-          <artifactId>xercesImpl</artifactId>
-          <groupId>xerces</groupId>
-        </exclusion>
-      </exclusions>
     </dependency>
     <dependency>
       <groupId>junit</groupId>
@@ -97,27 +98,6 @@
     <dependency>
       <groupId>org.testng</groupId>
       <artifactId>testng</artifactId>
-      <exclusions>
-        <exclusion>
-          <artifactId>jcommander</artifactId>
-          <groupId>com.beust</groupId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>org.opengis.cite</groupId>
-      <artifactId>ets-dgiwg-core</artifactId>
-      <version>0.6-SNAPSHOT</version>
-      <exclusions>
-        <exclusion>
-          <artifactId>teamengine-spi</artifactId>
-          <groupId>org.opengis.cite.teamengine</groupId>
-        </exclusion>
-        <exclusion>
-        	<groupId>org.glassfish.metro</groupId>
-        	<artifactId>webservices-api</artifactId>
-        </exclusion>
-      </exclusions>
     </dependency>
     <dependency>
       <groupId>org.hamcrest</groupId>
@@ -131,17 +111,6 @@
     <dependency>
       <groupId>org.opengis.cite.saxon</groupId>
       <artifactId>saxon9</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.opengis.cite</groupId>
-      <artifactId>ets-wfs20</artifactId>
-      <version>1.44-SNAPSHOT</version>
-      <exclusions>
-        <exclusion>
-          <artifactId>teamengine-spi</artifactId>
-          <groupId>org.opengis.cite.teamengine</groupId>
-        </exclusion>
-      </exclusions>
     </dependency>
     <dependency>
       <groupId>one.gfw</groupId>
@@ -159,24 +128,15 @@
               <mainClass>org.opengis.cite.wfs20.nsg.TestNGController</mainClass>
             </manifest>
           </archive>
-          <descriptors>
-            <descriptor>${basedir}/src/assembly/deps.xml</descriptor>
-            <descriptor>${basedir}/src/assembly/ctl-scripts.xml</descriptor>
-            <descriptor>${basedir}/src/assembly/aio.xml</descriptor>
-          </descriptors>
         </configuration>
-        <executions>
-          <execution>
-            <phase>package</phase>
-            <goals>
-              <goal>single</goal>
-            </goals>
-          </execution>
-        </executions>
       </plugin>
       <plugin>
         <artifactId>maven-scm-publish-plugin</artifactId>
       </plugin>
+    </plugins>
+
+    <pluginManagement>
+      <plugins>
         <plugin>
           <groupId>io.fabric8</groupId>
           <artifactId>docker-maven-plugin</artifactId>
@@ -198,7 +158,8 @@
             </images>
           </configuration>
         </plugin>
-    </plugins>
+      </plugins>
+    </pluginManagement>
   </build>
 
   <profiles>
@@ -240,10 +201,6 @@
   </profiles>
 
   <distributionManagement>
-    <repository>
-      <id>sonatype-nexus-staging</id>
-      <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-    </repository>
     <site>
       <id>site</id>
       <url>scm:git:git@github.com:opengeospatial/ets-wfs20-nsg.git</url>
