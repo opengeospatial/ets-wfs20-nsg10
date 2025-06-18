@@ -24,7 +24,8 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.w3c.dom.Document;
 
-import com.sun.jersey.api.client.ClientResponse;
+import jakarta.ws.rs.core.Response;
+import jakarta.ws.rs.core.Response.Status;
 
 /**
  * Contains test for the outputFormat parameter in GetFeature requests.
@@ -33,39 +34,59 @@ import com.sun.jersey.api.client.ClientResponse;
  */
 public class GetFeatureWithLockOutputFormat extends LockingFixture {
 
-    private Schema wfsSchema;
+	private Schema wfsSchema;
 
-    @BeforeClass
-    public void init( ITestContext testContext ) {
-        this.wfsSchema = SchemaUtils.createWFSSchema();
-    }
+	/**
+	 * <p>
+	 * init.
+	 * </p>
+	 * @param testContext a {@link org.testng.ITestContext} object
+	 */
+	@BeforeClass
+	public void init(ITestContext testContext) {
+		this.wfsSchema = SchemaUtils.createWFSSchema();
+	}
 
-    /**
-     * Builds a DOM Document representing a GetFeatureWithLock request entity. It contains default values for all
-     * lock-related attributes.
-     */
-    @BeforeMethod
-    public void buildGetFeatureWithLockRequest() {
-        this.reqEntity = WFSMessage.createRequestEntity( "GetFeatureWithLock", this.wfsVersion );
-    }
+	/**
+	 * Builds a DOM Document representing a GetFeatureWithLock request entity. It contains
+	 * default values for all lock-related attributes.
+	 */
+	@BeforeMethod
+	public void buildGetFeatureWithLockRequest() {
+		this.reqEntity = WFSMessage.createRequestEntity("GetFeatureWithLock", this.wfsVersion);
+	}
 
-    @Test(description = "See NSG WFS 2.0 Profile: Requirement 16")
-    public void getFeatureWithLockOperationParameterOutputFormat( ITestContext testContext )
-                            throws XPathExpressionException {
-        this.wfsMetadata = (Document) testContext.getSuite().getAttribute( TEST_SUBJECT.getName() );
-        assertOutputFormat( this.wfsMetadata, "GetFeatureWithLock" );
-    }
+	/**
+	 * <p>
+	 * getFeatureWithLockOperationParameterOutputFormat.
+	 * </p>
+	 * @param testContext a {@link org.testng.ITestContext} object
+	 * @throws javax.xml.xpath.XPathExpressionException if any.
+	 */
+	@Test(description = "See NSG WFS 2.0 Profile: Requirement 16")
+	public void getFeatureWithLockOperationParameterOutputFormat(ITestContext testContext)
+			throws XPathExpressionException {
+		this.wfsMetadata = (Document) testContext.getSuite().getAttribute(TEST_SUBJECT.getName());
+		assertOutputFormat(this.wfsMetadata, "GetFeatureWithLock");
+	}
 
-    @Test(description = "See NSG WFS 2.0 Profile: Requirement 8", dataProvider = "feature-types", dependsOnMethods = "getFeatureWithLockOperationParameterOutputFormat")
-    public void getFeatureWithLockOutputFormat( QName featureType ) {
-        appendSimpleQuery( this.reqEntity, featureType );
-        setOutputFormatAttribute( this.reqEntity, GML_OUTPUTFORMAT );
+	/**
+	 * <p>
+	 * getFeatureWithLockOutputFormat.
+	 * </p>
+	 * @param featureType a {@link javax.xml.namespace.QName} object
+	 */
+	@Test(description = "See NSG WFS 2.0 Profile: Requirement 8", dataProvider = "feature-types",
+			dependsOnMethods = "getFeatureWithLockOperationParameterOutputFormat")
+	public void getFeatureWithLockOutputFormat(QName featureType) {
+		appendSimpleQuery(this.reqEntity, featureType);
+		setOutputFormatAttribute(this.reqEntity, GML_OUTPUTFORMAT);
 
-        ClientResponse rsp = wfsClient.submitRequest( reqEntity, POST );
-        assertEquals( rsp.getStatus(), ClientResponse.Status.OK.getStatusCode(), ErrorMessage.get( UNEXPECTED_STATUS ) );
-        this.rspEntity = extractBodyAsDocument( rsp );
-        assertSchemaValid( wfsSchema, this.rspEntity );
-        // TODO: Check if response contains GML
-    }
+		Response rsp = wfsClient.submitRequest(reqEntity, POST);
+		assertEquals(rsp.getStatus(), Status.OK.getStatusCode(), ErrorMessage.get(UNEXPECTED_STATUS));
+		this.rspEntity = extractBodyAsDocument(rsp);
+		assertSchemaValid(wfsSchema, this.rspEntity);
+		// TODO: Check if response contains GML
+	}
 
 }

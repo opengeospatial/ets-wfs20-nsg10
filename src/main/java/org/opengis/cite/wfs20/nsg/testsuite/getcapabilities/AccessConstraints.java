@@ -25,34 +25,50 @@ import org.w3c.dom.Document;
  * @author <a href="mailto:goltz@lat-lon.de">Lyn Goltz </a>
  */
 public class AccessConstraints extends BaseFixture {
-    private static final Map<String, String> NAMESPACE_BINIDNGS = NamespaceUtils.withStandardBindings().getAllBindings();
 
-    private static final List<String> EXPECTED_ACCESS_CONSTRAINTS = Arrays.asList( "TOP SECRET", "SECRET",
-                                                                                   "CONFIDENTIAL", "RESTRICTED",
-                                                                                   "UNCLASSIFIED" );
+	private static final Map<String, String> NAMESPACE_BINIDNGS = NamespaceUtils.withStandardBindings()
+		.getAllBindings();
 
-    @Test(description = "See NSG WFS 2.0 Profile: Requirement 25")
-    public void wfsCapabilitiesAccessConstraintsExists( ITestContext testContext ) {
-        this.wfsMetadata = (Document) testContext.getSuite().getAttribute( TEST_SUBJECT.getName() );
-        String xPathXml = "//ows:ServiceIdentification/ows:AccessConstraints";
+	private static final List<String> EXPECTED_ACCESS_CONSTRAINTS = Arrays.asList("TOP SECRET", "SECRET",
+			"CONFIDENTIAL", "RESTRICTED", "UNCLASSIFIED");
 
-        assertXPath( xPathXml, this.wfsMetadata, NAMESPACE_BINIDNGS );
-    }
+	/**
+	 * <p>
+	 * wfsCapabilitiesAccessConstraintsExists.
+	 * </p>
+	 * @param testContext a {@link org.testng.ITestContext} object
+	 */
+	@Test(description = "See NSG WFS 2.0 Profile: Requirement 25")
+	public void wfsCapabilitiesAccessConstraintsExists(ITestContext testContext) {
+		this.wfsMetadata = (Document) testContext.getSuite().getAttribute(TEST_SUBJECT.getName());
+		String xPathXml = "//ows:ServiceIdentification/ows:AccessConstraints";
 
-    @Test(description = "See NSG WFS 2.0 Profile: Requirement 25", dependsOnMethods = "wfsCapabilitiesAccessConstraintsExists")
-    public void wfsCapabilitiesAccessConstraintsContainsValueFromISM( ITestContext testContext )
-                            throws XPathFactoryConfigurationException, XPathExpressionException {
-        this.wfsMetadata = (Document) testContext.getSuite().getAttribute( TEST_SUBJECT.getName() );
-        String accessConstraints = parseAccessConstraints( this.wfsMetadata );
-        assertTrue( EXPECTED_ACCESS_CONSTRAINTS.contains( accessConstraints ),
-                    "AccessConstraints are not valid, must be one of " + EXPECTED_ACCESS_CONSTRAINTS + " but was "
-                                            + accessConstraints );
-    }
+		assertXPath(xPathXml, this.wfsMetadata, NAMESPACE_BINIDNGS);
+	}
 
-    private String parseAccessConstraints( Document wfsCapabilities )
-                            throws XPathFactoryConfigurationException, XPathExpressionException {
-        String xPathAccessConstraints = "//ows:ServiceIdentification/ows:AccessConstraints ";
-        return (String) XMLUtils.evaluateXPath( wfsCapabilities, xPathAccessConstraints, NAMESPACE_BINIDNGS, STRING );
-    }
+	/**
+	 * <p>
+	 * wfsCapabilitiesAccessConstraintsContainsValueFromISM.
+	 * </p>
+	 * @param testContext a {@link org.testng.ITestContext} object
+	 * @throws javax.xml.xpath.XPathFactoryConfigurationException if any.
+	 * @throws javax.xml.xpath.XPathExpressionException if any.
+	 */
+	@Test(description = "See NSG WFS 2.0 Profile: Requirement 25",
+			dependsOnMethods = "wfsCapabilitiesAccessConstraintsExists")
+	public void wfsCapabilitiesAccessConstraintsContainsValueFromISM(ITestContext testContext)
+			throws XPathFactoryConfigurationException, XPathExpressionException {
+		this.wfsMetadata = (Document) testContext.getSuite().getAttribute(TEST_SUBJECT.getName());
+		String accessConstraints = parseAccessConstraints(this.wfsMetadata);
+		assertTrue(EXPECTED_ACCESS_CONSTRAINTS.contains(accessConstraints),
+				"AccessConstraints are not valid, must be one of " + EXPECTED_ACCESS_CONSTRAINTS + " but was "
+						+ accessConstraints);
+	}
+
+	private String parseAccessConstraints(Document wfsCapabilities)
+			throws XPathFactoryConfigurationException, XPathExpressionException {
+		String xPathAccessConstraints = "//ows:ServiceIdentification/ows:AccessConstraints ";
+		return (String) XMLUtils.evaluateXPath(wfsCapabilities, xPathAccessConstraints, NAMESPACE_BINIDNGS, STRING);
+	}
 
 }

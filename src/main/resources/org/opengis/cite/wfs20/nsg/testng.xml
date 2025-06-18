@@ -5,7 +5,6 @@
   <parameter name="fid"  value=""/>
 
   <listeners>
-    <listener class-name="org.opengis.cite.iso19142.TestRunListener" />
     <listener class-name="org.opengis.cite.iso19142.SuiteFixtureListener" />
   </listeners>
 

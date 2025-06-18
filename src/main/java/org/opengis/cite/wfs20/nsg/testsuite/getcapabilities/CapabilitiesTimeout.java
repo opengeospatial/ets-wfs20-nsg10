@@ -22,51 +22,84 @@ import org.w3c.dom.Document;
  */
 public class CapabilitiesTimeout extends BaseFixture {
 
-    private static final String TIMEOUT_PARAMETER_NAME = "Timeout";
+	private static final String TIMEOUT_PARAMETER_NAME = "Timeout";
 
-    @Test(description = "See NSG WFS 2.0 Profile: Requirement 27")
-    public void capabilitiesContainsTimeoutForGetPropertyValue( ITestContext testContext )
-                            throws XPathFactoryConfigurationException, XPathExpressionException {
-        this.wfsMetadata = (Document) testContext.getSuite().getAttribute( TEST_SUBJECT.getName() );
-        List<String> parameters = parseParameters( this.wfsMetadata, "GetPropertyValue", TIMEOUT_PARAMETER_NAME );
-        assertTimeoutIsInteger( "GetPropertyValue", parameters );
-    }
+	/**
+	 * <p>
+	 * capabilitiesContainsTimeoutForGetPropertyValue.
+	 * </p>
+	 * @param testContext a {@link org.testng.ITestContext} object
+	 * @throws javax.xml.xpath.XPathFactoryConfigurationException if any.
+	 * @throws javax.xml.xpath.XPathExpressionException if any.
+	 */
+	@Test(description = "See NSG WFS 2.0 Profile: Requirement 27")
+	public void capabilitiesContainsTimeoutForGetPropertyValue(ITestContext testContext)
+			throws XPathFactoryConfigurationException, XPathExpressionException {
+		this.wfsMetadata = (Document) testContext.getSuite().getAttribute(TEST_SUBJECT.getName());
+		List<String> parameters = parseParameters(this.wfsMetadata, "GetPropertyValue", TIMEOUT_PARAMETER_NAME);
+		assertTimeoutIsInteger("GetPropertyValue", parameters);
+	}
 
-    @Test(description = "See NSG WFS 2.0 Profile: Requirement 27")
-    public void capabilitiesContainsTimeoutForGetFeature( ITestContext testContext )
-                            throws XPathFactoryConfigurationException, XPathExpressionException {
-        this.wfsMetadata = (Document) testContext.getSuite().getAttribute( TEST_SUBJECT.getName() );
-        List<String> parameters = parseParameters( this.wfsMetadata, "GetFeature", TIMEOUT_PARAMETER_NAME );
-        assertTimeoutIsInteger( "GetFeature", parameters );
-    }
+	/**
+	 * <p>
+	 * capabilitiesContainsTimeoutForGetFeature.
+	 * </p>
+	 * @param testContext a {@link org.testng.ITestContext} object
+	 * @throws javax.xml.xpath.XPathFactoryConfigurationException if any.
+	 * @throws javax.xml.xpath.XPathExpressionException if any.
+	 */
+	@Test(description = "See NSG WFS 2.0 Profile: Requirement 27")
+	public void capabilitiesContainsTimeoutForGetFeature(ITestContext testContext)
+			throws XPathFactoryConfigurationException, XPathExpressionException {
+		this.wfsMetadata = (Document) testContext.getSuite().getAttribute(TEST_SUBJECT.getName());
+		List<String> parameters = parseParameters(this.wfsMetadata, "GetFeature", TIMEOUT_PARAMETER_NAME);
+		assertTimeoutIsInteger("GetFeature", parameters);
+	}
 
-    @Test(description = "See NSG WFS 2.0 Profile: Requirement 27")
-    public void capabilitiesContainsTimeoutForPageResults( ITestContext testContext )
-                            throws XPathFactoryConfigurationException, XPathExpressionException {
-        this.wfsMetadata = (Document) testContext.getSuite().getAttribute( TEST_SUBJECT.getName() );
-        List<String> parameters = parseParameters( this.wfsMetadata, "PageResults", TIMEOUT_PARAMETER_NAME );
-        assertTimeoutIsInteger( "PageResults", parameters );
-    }
+	/**
+	 * <p>
+	 * capabilitiesContainsTimeoutForPageResults.
+	 * </p>
+	 * @param testContext a {@link org.testng.ITestContext} object
+	 * @throws javax.xml.xpath.XPathFactoryConfigurationException if any.
+	 * @throws javax.xml.xpath.XPathExpressionException if any.
+	 */
+	@Test(description = "See NSG WFS 2.0 Profile: Requirement 27")
+	public void capabilitiesContainsTimeoutForPageResults(ITestContext testContext)
+			throws XPathFactoryConfigurationException, XPathExpressionException {
+		this.wfsMetadata = (Document) testContext.getSuite().getAttribute(TEST_SUBJECT.getName());
+		List<String> parameters = parseParameters(this.wfsMetadata, "PageResults", TIMEOUT_PARAMETER_NAME);
+		assertTimeoutIsInteger("PageResults", parameters);
+	}
 
-    @Test(description = "See NSG WFS 2.0 Profile: Requirement 27")
-    public void capabilitiesContainsTimeoutForGetFeatureWithLock( ITestContext testContext )
-                            throws XPathFactoryConfigurationException, XPathExpressionException {
-        this.wfsMetadata = (Document) testContext.getSuite().getAttribute( TEST_SUBJECT.getName() );
-        List<String> parameters = parseParameters( this.wfsMetadata, "GetFeatureWithLock", TIMEOUT_PARAMETER_NAME );
-        assertTimeoutIsInteger( "GetFeatureWithLock", parameters );
-    }
+	/**
+	 * <p>
+	 * capabilitiesContainsTimeoutForGetFeatureWithLock.
+	 * </p>
+	 * @param testContext a {@link org.testng.ITestContext} object
+	 * @throws javax.xml.xpath.XPathFactoryConfigurationException if any.
+	 * @throws javax.xml.xpath.XPathExpressionException if any.
+	 */
+	@Test(description = "See NSG WFS 2.0 Profile: Requirement 27")
+	public void capabilitiesContainsTimeoutForGetFeatureWithLock(ITestContext testContext)
+			throws XPathFactoryConfigurationException, XPathExpressionException {
+		this.wfsMetadata = (Document) testContext.getSuite().getAttribute(TEST_SUBJECT.getName());
+		List<String> parameters = parseParameters(this.wfsMetadata, "GetFeatureWithLock", TIMEOUT_PARAMETER_NAME);
+		assertTimeoutIsInteger("GetFeatureWithLock", parameters);
+	}
 
-    private void assertTimeoutIsInteger( String operation, List<String> parameters ) {
-        if ( parameters.isEmpty() )
-            throw new SkipException( "Timeout is not configured for operation " + operation );
-        for ( String parameter : parameters ) {
-            try {
-                Integer.parseInt( parameter );
-            } catch ( NumberFormatException e ) {
-                assertFalse( true, "Value for timeout parameter of GetPropertyValue operation (value: " + parameter
-                                   + ") is not a valid integer" );
-            }
-        }
-    }
+	private void assertTimeoutIsInteger(String operation, List<String> parameters) {
+		if (parameters.isEmpty())
+			throw new SkipException("Timeout is not configured for operation " + operation);
+		for (String parameter : parameters) {
+			try {
+				Integer.parseInt(parameter);
+			}
+			catch (NumberFormatException e) {
+				assertFalse(true, "Value for timeout parameter of GetPropertyValue operation (value: " + parameter
+						+ ") is not a valid integer");
+			}
+		}
+	}
 
 }
