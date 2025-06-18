@@ -1,5 +1,11 @@
 # Release Notes
 
+## 0.8 (2025-06-18)
+
+Attention: Java 17 and Tomcat 10.1 are required.
+
+* [#29](https://github.com/opengeospatial/ets-wfs20-nsg10/issues/29): Migrate test suite to TEAM Engine 6 (Java 17)
+
 ## 0.7 (2024-05-28)
 
 * [#28](https://github.com/opengeospatial/ets-wfs20-nsg10/pull/28): Upgrade multiple dependencies
